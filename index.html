@@ -23,23 +23,30 @@
             flex-wrap: wrap;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 20px;
-        }
+        .header {
+    background: #0a1a2f;
+    color: white;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    border-bottom: 3px solid #c9a227;
+}
 
-        nav a {
-            color: white;
-            margin: 0 10px;
-            text-decoration: none;
-        }
+.nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 6px 10px;
+    border-radius: 4px;
+    transition: 0.3s;
+}
 
-        .hero {
-            background: #1c3557;
-            color: white;
-            text-align: center;
-            padding: 80px 20px;
-        }
+.nav a:hover {
+    background: #c9a227;
+    color: #0a1a2f;
+}
 
         .section {
             max-width: 1000px;
