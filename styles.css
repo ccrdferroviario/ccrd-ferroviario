@@ -398,3 +398,183 @@ body {
     }
     .legal-links { justify-content: center; }
 }
+/* ==========================================
+   ESTILOS DEL FORMULARIO DE SOCIOS
+   ========================================== */
+.form-socios-container {
+    background-color: var(--color-texto-claro);
+    padding: 40px;
+    margin: 40px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    max-width: 850px;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 35px;
+    border-bottom: 2px solid var(--color-gris-fondo);
+    padding-bottom: 20px;
+}
+
+.form-header h2 {
+    color: var(--color-primario);
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.form-header p {
+    color: #7f8c8d;
+    font-size: 0.95rem;
+}
+
+.styled-form h3 {
+    color: var(--color-secundario);
+    font-size: 1.25rem;
+    margin: 30px 0 15px 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* Bloques y grupos de inputs */
+.form-section-block {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+    color: var(--color-texto-oscuro);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="date"],
+.form-group input[type="tel"],
+.form-group select,
+.form-group textarea {
+    padding: 10px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    font-family: var(--fuente-principal);
+    font-size: 0.95rem;
+    transition: var(--transition-suave);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 3px rgba(15, 45, 89, 0.1);
+}
+
+/* Campos en paralelo con CSS Grid / Flexbox heredable */
+.inline-fields {
+    display: flex;
+    gap: 20px;
+}
+
+.inline-fields > div, .form-group-sub {
+    flex: 1;
+}
+
+.inline-three-fields {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+    gap: 20px;
+}
+
+/* Textos legales y checkboxes */
+.form-legal-text {
+    background-color: #f1f5f9;
+    padding: 15px;
+    border-left: 4px solid var(--color-oro);
+    font-size: 0.88rem;
+    color: #475569;
+    margin: 15px 0;
+    line-height: 1.5;
+}
+
+.form-checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.88rem;
+    color: var(--color-texto-oscuro);
+    margin: 20px 0;
+    cursor: pointer;
+}
+
+.form-checkbox-label input {
+    margin-top: 3px;
+}
+
+/* Sección de acciones y botones */
+.form-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 2px solid var(--color-gris-fondo);
+}
+
+.btn-submit-form {
+    background-color: var(--color-primario);
+    color: var(--color-texto-claro);
+    border: none;
+    padding: 14px 40px;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition-suave);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.btn-submit-form:hover {
+    background-color: #164380;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(15, 45, 89, 0.2);
+}
+
+.actions-divider {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-download-word {
+    color: var(--color-secundario);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 8px 16px;
+    border: 1px dashed var(--color-secundario);
+    border-radius: 4px;
+    transition: var(--transition-suave);
+}
+
+.btn-download-word:hover {
+    background-color: #fff5f5;
+    color: #a82a29;
+}
+
+/* Responsive para el formulario */
+@media (max-width: 768px) {
+    .inline-fields { flex-direction: column; gap: 15px; }
+    .inline-three-fields { grid-template-columns: 1fr; gap: 15px; }
+    .form-socios-container { padding: 20px; margin: 20px 10px; }
+}
