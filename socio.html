@@ -1,97 +1,165 @@
-<section class="form-socios">
+<!DOCTYPE html>
+<html lang="es">
 
-    <h2>Solicitud de Ingreso o Cambio de Datos</h2>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hazte Socio – CCRD Ferroviario</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
 
-    <form action="https://api.web3forms.com/submit" method="POST">
+<body>
 
-        <!-- CLAVE DE WEB3FORMS -->
-        <input type="hidden" name="access_key" value="93a69bac-615d-4e3f-999c-4cb1be97ab36">
+    <!-- MENÚ LATERAL -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="img/logo.png" alt="Logo CCRD">
+        </div>
 
-        <!-- DESTINO DEL CORREO -->
-        <input type="hidden" name="email" value="ccrdferroviario@hotmail.com">
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="conocenos.html">Conócenos</a></li>
+            <li><a href="noticias.html">Noticias</a></li>
+            <li><a href="junta.html">Junta Directiva</a></li>
+            <li><a href="equipaciones.html">Equipaciones</a></li>
+            <li><a href="secciones.html">Secciones</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
 
-        <!-- Nº SOCIO Y FECHA ALTA -->
-        <label>Nº Socio</label>
-        <input type="text" name="numero_socio">
+    <!-- CABECERA -->
+    <header>
+        <div class="topbar">
 
-        <label>Fecha de Alta</label>
-        <input type="date" name="fecha_alta">
+            <button class="menu-btn" onclick="toggleMenu()">☰</button>
 
-        <h3>Datos Personales</h3>
+            <div class="brand">
+                <img src="img/logo.png" alt="Logo CCRD">
+                <div class="brand-text">
+                    <h1>CCRD FERROVIARIO</h1>
+                    <p>Centro Cultural Recreativo y Deportivo Ferroviario</p>
+                </div>
+            </div>
 
-        <label>Nombre y Apellidos *</label>
-        <input type="text" name="nombre" required>
+            <div class="search-box">
+                <input type="text" placeholder="Buscar...">
+                <button>🔍</button>
+            </div>
 
-        <label>DNI *</label>
-        <input type="text" name="dni" required>
+        </div>
+    </header>
 
-        <label>Fecha de nacimiento *</label>
-        <input type="date" name="fecha_nacimiento" required>
+    <!-- BANNER -->
+    <section class="hero">
+        <h2>Hazte Socio</h2>
+        <p>Únete al CCRD Ferroviario</p>
+    </section>
 
-        <label>Domicilio *</label>
-        <input type="text" name="domicilio" required>
+    <!-- FORMULARIO DE SOCIOS -->
+    <main>
+        <section class="form-socios">
 
-        <label>Código Postal *</label>
-        <input type="text" name="cp" required>
+            <h2>Solicitud de Ingreso o Cambio de Datos</h2>
 
-        <label>Población *</label>
-        <input type="text" name="poblacion" required>
+            <form action="https://api.web3forms.com/submit" method="POST">
 
-        <label>Provincia *</label>
-        <input type="text" name="provincia" required>
+                <!-- CLAVE DE WEB3FORMS -->
+                <input type="hidden" name="access_key" value="93a69bac-615d-4e3f-999c-4cb1be97ab36">
 
-        <label>Teléfono</label>
-        <input type="text" name="telefono">
+                <!-- DESTINO DEL CORREO -->
+                <input type="hidden" name="email" value="ccrdferroviario@hotmail.com">
 
-        <label>Móvil *</label>
-        <input type="text" name="movil" required>
+                <!-- Nº SOCIO Y FECHA ALTA -->
+                <label>Nº Socio</label>
+                <input type="text" name="numero_socio">
 
-        <label>Correo electrónico *</label>
-        <input type="email" name="correo" required>
+                <label>Fecha de Alta</label>
+                <input type="date" name="fecha_alta">
 
-        <h3>Vinculación con el Club</h3>
+                <h3>Datos Personales</h3>
 
-        <label>Tipo de socio *</label>
-        <select name="vinculacion" required>
-            <option value="">Seleccione…</option>
-            <option value="Ferroviario">Ferroviario</option>
-            <option value="Protector">Protector</option>
-        </select>
+                <label>Nombre y Apellidos *</label>
+                <input type="text" name="nombre" required>
 
-        <label>Socio que propone (si procede)</label>
-        <input type="text" name="socio_propone">
+                <label>DNI *</label>
+                <input type="text" name="dni" required>
 
-        <label>Fecha de baja</label>
-        <input type="date" name="fecha_baja">
+                <label>Fecha de nacimiento *</label>
+                <input type="date" name="fecha_nacimiento" required>
 
-        <label>Causa de baja</label>
-        <textarea name="causa_baja"></textarea>
+                <label>Domicilio *</label>
+                <input type="text" name="domicilio" required>
 
-        <h3>Autorización Bancaria</h3>
+                <label>Código Postal *</label>
+                <input type="text" name="cp" required>
 
-        <label>Entidad bancaria *</label>
-        <input type="text" name="entidad" required>
+                <label>Población *</label>
+                <input type="text" name="poblacion" required>
 
-        <label>IBAN *</label>
-        <input type="text" name="iban" placeholder="ES00 0000 0000 00 0000000000" required>
+                <label>Provincia *</label>
+                <input type="text" name="provincia" required>
 
-        <label>Fecha de domiciliación *</label>
-        <input type="date" name="fecha_domiciliacion" required>
+                <label>Teléfono</label>
+                <input type="text" name="telefono">
 
-        <p class="legal">
-            Mediante la firma de esta domiciliación, autorizo al CCRD Ferroviario de Sevilla al cobro de la cuota anual del Club a través de mi cuenta.
-        </p>
+                <label>Móvil *</label>
+                <input type="text" name="movil" required>
 
-        <label class="checkbox">
-            <input type="checkbox" name="proteccion_datos" required>
-            Acepto la Política de Privacidad y el tratamiento de mis datos personales *
-        </label>
+                <label>Correo electrónico *</label>
+                <input type="email" name="correo" required>
 
-        <button type="submit" class="btn-enviar">Enviar Solicitud</button>
+                <h3>Vinculación con el Club</h3>
 
-        <a href="Ficha socios.docx" class="btn-descargar" download>Descargar formulario en Word</a>
+                <label>Tipo de socio *</label>
+                <select name="vinculacion" required>
+                    <option value="">Seleccione…</option>
+                    <option value="Ferroviario">Ferroviario</option>
+                    <option value="Protector">Protector</option>
+                </select>
 
-    </form>
+                <label>Socio que propone (si procede)</label>
+                <input type="text" name="socio_propone">
 
-</section>
+                <label>Fecha de baja</label>
+                <input type="date" name="fecha_baja">
 
+                <label>Causa de baja</label>
+                <textarea name="causa_baja"></textarea>
+
+                <h3>Autorización Bancaria</h3>
+
+                <label>Entidad bancaria *</label>
+                <input type="text" name="entidad" required>
+
+                <label>IBAN *</label>
+                <input type="text" name="iban" placeholder="ES00 0000 0000 00 0000000000" required>
+
+                <label>Fecha de domiciliación *</label>
+                <input type="date" name="fecha_domiciliacion" required>
+
+                <p class="legal">
+                    Mediante la firma de esta domiciliación, autorizo al CCRD Ferroviario de Sevilla al cobro de la cuota anual del Club a través de mi cuenta.
+                </p>
+
+                <label class="checkbox">
+                    <input type="checkbox" name="proteccion_datos" required>
+                    Acepto la Política de Privacidad y el tratamiento de mis datos personales *
+                </label>
+
+                <button type="submit" class="btn-enviar">Enviar Solicitud</button>
+
+                <a href="Ficha socios.docx" class="btn-descargar" download>Descargar formulario en Word</a>
+
+            </form>
+
+        </section>
+    </main>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById("sidebar").classList.toggle("active");
+        }
+    </script>
+
+</body>
+</html>
