@@ -1,1 +1,97 @@
+<section class="form-socios">
+
+    <h2>Solicitud de Ingreso o Cambio de Datos</h2>
+
+    <form action="https://api.web3forms.com/submit" method="POST">
+
+        <!-- CLAVE DE WEB3FORMS -->
+        <input type="hidden" name="access_key" value="AQUÍ_TU_CLAVE">
+
+        <!-- DESTINO DEL CORREO -->
+        <input type="hidden" name="email" value="ccrdferroviario@hotmail.com">
+
+        <!-- Nº SOCIO Y FECHA ALTA -->
+        <label>Nº Socio</label>
+        <input type="text" name="numero_socio">
+
+        <label>Fecha de Alta</label>
+        <input type="date" name="fecha_alta">
+
+        <h3>Datos Personales</h3>
+
+        <label>Nombre y Apellidos *</label>
+        <input type="text" name="nombre" required>
+
+        <label>DNI *</label>
+        <input type="text" name="dni" required>
+
+        <label>Fecha de nacimiento *</label>
+        <input type="date" name="fecha_nacimiento" required>
+
+        <label>Domicilio *</label>
+        <input type="text" name="domicilio" required>
+
+        <label>Código Postal *</label>
+        <input type="text" name="cp" required>
+
+        <label>Población *</label>
+        <input type="text" name="poblacion" required>
+
+        <label>Provincia *</label>
+        <input type="text" name="provincia" required>
+
+        <label>Teléfono</label>
+        <input type="text" name="telefono">
+
+        <label>Móvil *</label>
+        <input type="text" name="movil" required>
+
+        <label>Correo electrónico *</label>
+        <input type="email" name="correo" required>
+
+        <h3>Vinculación con el Club</h3>
+
+        <label>Tipo de socio *</label>
+        <select name="vinculacion" required>
+            <option value="">Seleccione…</option>
+            <option value="Ferroviario">Ferroviario</option>
+            <option value="Protector">Protector</option>
+        </select>
+
+        <label>Socio que propone (si procede)</label>
+        <input type="text" name="socio_propone">
+
+        <label>Fecha de baja</label>
+        <input type="date" name="fecha_baja">
+
+        <label>Causa de baja</label>
+        <textarea name="causa_baja"></textarea>
+
+        <h3>Autorización Bancaria</h3>
+
+        <label>Entidad bancaria *</label>
+        <input type="text" name="entidad" required>
+
+        <label>IBAN *</label>
+        <input type="text" name="iban" placeholder="ES00 0000 0000 00 0000000000" required>
+
+        <label>Fecha de domiciliación *</label>
+        <input type="date" name="fecha_domiciliacion" required>
+
+        <p class="legal">
+            Mediante la firma de esta domiciliación, autorizo al CCRD Ferroviario de Sevilla al cobro de la cuota anual del Club a través de mi cuenta.
+        </p>
+
+        <label class="checkbox">
+            <input type="checkbox" name="proteccion_datos" required>
+            Acepto la Política de Privacidad y el tratamiento de mis datos personales *
+        </label>
+
+        <button type="submit" class="btn-enviar">Enviar Solicitud</button>
+
+        <a href="Ficha socios.docx" class="btn-descargar" download>Descargar formulario en Word</a>
+
+    </form>
+
+</section>
 
