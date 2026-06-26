@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <!-- BLOQUE 2: MENÚ LATERAL -->
+    <!-- BLOQUE 2 — MENÚ LATERAL -->
     <nav class="sidebar" id="sidebar">
 
         <div class="sidebar-header">
@@ -16,10 +16,8 @@
         </div>
 
         <ul class="menu-list">
+
             <li><a href="index.html">Inicio</a></li>
-            <li><a href="conocenos.html">Conócenos</a></li>
-            <li><a href="noticias.html">Noticias</a></li>
-            <li><a href="junta.html">Junta Directiva</a></li>
 
             <!-- SUBMENÚ CCRD -->
             <li class="submenu">
@@ -30,22 +28,35 @@
                 <ul class="submenu-content">
                     <li><a href="bienvenida.html">Bienvenida del Presidente</a></li>
                     <li><a href="historia.html">Historia</a></li>
+                    <li><a href="junta.html">Junta Directiva</a></li>
                     <li><a href="estatutos.html">Estatutos</a></li>
-                    <li><a href="reglamento.html">Reglamento</a></li>
-                    <li><a href="instalaciones.html">Instalaciones</a></li>
-                    <li><a href="actividades.html">Actividades</a></li>
-                    <li><a href="galeria.html">Galería</a></li>
+                    <li><a href="actas.html">Actas</a></li>
                 </ul>
             </li>
 
-            <li><a href="secciones.html">Secciones</a></li>
+            <!-- SUBMENÚ SECCIONES -->
+            <li class="submenu">
+                <button class="submenu-btn">
+                    Secciones <span class="plus">+</span>
+                </button>
+
+                <ul class="submenu-content">
+                    <li><a href="futbol.html">Fútbol</a></li>
+                    <li><a href="baloncesto.html">Baloncesto</a></li>
+                    <li><a href="ajedrez.html">Ajedrez</a></li>
+                    <li><a href="ferroviaria.html">Ferroviaria</a></li>
+                </ul>
+            </li>
+
             <li><a href="equipaciones.html">Equipaciones</a></li>
             <li><a href="socio.html">Hazte socio</a></li>
             <li><a href="contacto.html">Contacto</a></li>
+
         </ul>
+
     </nav>
 
-    <!-- BLOQUE 1: CABECERA -->
+    <!-- BLOQUE 1 — CABECERA -->
     <header>
         <div class="topbar">
 
@@ -67,21 +78,39 @@
         </div>
     </header>
 
-    <!-- CONTENIDO ESPECÍFICO DE CADA PÁGINA -->
     <main>
-        <!-- Aquí va lo propio de cada página (bienvenida, socio, noticias, etc.) -->
-    </main>
 
-    <!-- PATROCINADORES MODULAR -->
-    <div id="patrocinadores"></div>
-    <script>
-        fetch("patrocinadores.html")
-            .then(r => r.text())
-            .then(d => document.getElementById("patrocinadores").innerHTML = d);
-    </script>
+        <!-- BLOQUE 3 — BANNER BIENVENIDA -->
+        <section class="hero">
+            <h2>Bienvenidos al Club Ferroviario</h2>
+            <p>Un espacio para el deporte, la recreación y la comunidad ferroviaria.</p>
+        </section>
 
-    <!-- FOOTER + RRSS MODULAR -->
-    <footer>
+        <!-- BLOQUE 4 — BANNER HAZTE SOCIO -->
+        <section class="banner-socio" onclick="location.href='socio.html'">
+            <h3>Hazte Socio</h3>
+        </section>
+
+        <!-- BLOQUE 5 — BANNER EQUIPACIONES -->
+        <section class="banner-equipaciones" onclick="location.href='equipaciones.html'">
+            <h3>Equipaciones 2025/2026</h3>
+        </section>
+
+        <!-- BLOQUE 6 — CALENDARIO (pendiente) -->
+        <section class="calendario">
+            <h2>Calendario de Actividades</h2>
+            <p>Próximamente disponible.</p>
+        </section>
+
+        <!-- BLOQUE 7 — PATROCINADORES -->
+        <div id="patrocinadores"></div>
+        <script>
+            fetch("patrocinadores.html")
+                .then(r => r.text())
+                .then(d => document.getElementById("patrocinadores").innerHTML = d);
+        </script>
+
+        <!-- BLOQUE 8 — RRSS -->
         <div id="rrss"></div>
         <script>
             fetch("rrss.html")
@@ -89,17 +118,26 @@
                 .then(d => document.getElementById("rrss").innerHTML = d);
         </script>
 
-        <p>© 2026 CCRD Ferroviario – Todos los derechos reservados</p>
-    </footer>
+        <!-- BLOQUE 9 — POLÍTICAS -->
+        <footer class="footer-legal">
+            <a href="privacidad.html">Política de Privacidad</a> |
+            <a href="cookies.html">Política de Cookies</a> |
+            <a href="aviso-legal.html">Aviso Legal</a>
+            <p>© 2026 CCRD Ferroviario — Todos los derechos reservados</p>
+        </footer>
 
-    <!-- JS MENÚ LATERAL + SUBMENÚ CCRD -->
+    </main>
+
+    <!-- JS MENÚ Y SUBMENÚS -->
     <script>
         function toggleMenu() {
             document.getElementById("sidebar").classList.toggle("active");
         }
 
-        document.querySelector(".submenu-btn").addEventListener("click", function () {
-            document.querySelector(".submenu").classList.toggle("open");
+        document.querySelectorAll(".submenu-btn").forEach(btn => {
+            btn.addEventListener("click", function () {
+                this.parentElement.classList.toggle("open");
+            });
         });
     </script>
 
