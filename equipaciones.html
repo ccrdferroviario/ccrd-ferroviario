@@ -1,1 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipaciones | Club Deportivo y Recreativo Ferroviario</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Banner principal */
+        .banner {
+            background: url('img/banner-equipaciones.jpg') center/cover no-repeat;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .banner:hover {
+            opacity: 0.9;
+        }
+
+        /* Sección de equipaciones */
+        .equipaciones {
+            padding: 50px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .equipaciones h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #1b3a57;
+        }
+
+        .equipacion {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .equipacion img {
+            width: 40%;
+            object-fit: cover;
+        }
+
+        .equipacion .info {
+            padding: 20px;
+            width: 60%;
+        }
+
+        .equipacion .info h3 {
+            color: #1b3a57;
+            margin-top: 0;
+        }
+
+        .equipacion .info p {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CABECERA -->
+    <header>
+        <img src="img/logo.png" alt="Logo del Club" class="logo">
+        <h1>Club Deportivo y Recreativo Ferroviario</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="secciones.html">Secciones</a></li>
+                <li><a href="equipaciones.html" class="active">Equipaciones</a></li>
+                <li><a href="socio.html">Hazte Socio</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- BANNER -->
+    <div class="banner" onclick="document.getElementById('equipaciones').scrollIntoView({behavior: 'smooth'});">
+        Equipaciones temporada 2025/2026
+    </div>
+
+    <!-- SECCIÓN DE EQUIPACIONES -->
+    <section id="equipaciones" class="equipaciones">
+        <h2>Catálogo de Equipaciones</h2>
+
+        <!-- Aquí irán las equipaciones que me envíes -->
+    </section>
+
+    <footer>
+        <p>© 2024 Club Deportivo y Recreativo Ferroviario — Todos los derechos reservados</p>
+    </footer>
+
+</body>
+</html>
 
