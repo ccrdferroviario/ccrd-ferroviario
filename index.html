@@ -61,6 +61,16 @@
 
     <!-- PIE DE PÁGINA -->
     <footer>
+        <div id="rrss"></div>
+
+<script>
+    fetch("rrss.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("rrss").innerHTML = data;
+        });
+</script>
+
         <p>© 2024 Club Deportivo y Recreativo Ferroviario — Todos los derechos reservados</p>
     </footer>
 
