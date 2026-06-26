@@ -578,3 +578,44 @@ body {
     .inline-three-fields { grid-template-columns: 1fr; gap: 15px; }
     .form-socios-container { padding: 20px; margin: 20px 10px; }
 }
+/* ==========================================
+   ESTILOS DE LA PÁGINA DE GRACIAS
+   ========================================== */
+.gracias-container {
+    background-color: var(--color-texto-claro);
+    padding: 50px 40px;
+    margin: 80px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    max-width: 650px;
+    text-align: center;
+}
+
+.gracias-icon {
+    font-size: 3rem;
+    color: #2ec4b6; /* Verde éxito limpio */
+    background-color: #e6f9f7;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 20px auto;
+    font-weight: bold;
+}
+
+.gracias-container h1 {
+    color: var(--color-primario);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.gracias-container p {
+    color: #5a6a85;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.gracias-actions {
+    margin-top: 20px;
+}
