@@ -3,76 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Club Deportivo y Recreativo Ferroviario</title>
+    <title>CCRD Ferroviario</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<div id="patrocinadores"></div>
-
-<script>
-    fetch("patrocinadores.html")
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById("patrocinadores").innerHTML = data;
-        });
-</script>
-
 <body>
 
-    <!-- CABECERA -->
-    <header>
-        <img src="img/logo.png" alt="Logo del Club" class="logo">
-        <h1>Club Deportivo y Recreativo Ferroviario</h1>
+    <!-- BLOQUE 2: MENÚ LATERAL -->
+    <nav class="sidebar" id="sidebar">
 
-        <nav>
-            <ul>
-                <li><a href="index.html" class="active">Inicio</a></li>
-                <li><a href="secciones.html">Secciones</a></li>
-                <li><a href="equipaciones.html">Equipaciones</a></li>
-                <li><a href="socio.html">Hazte Socio</a></li>
-            </ul>
-        </nav>
+        <div class="sidebar-header">
+            <img src="img/logo.png" alt="Logo CCRD">
+        </div>
+
+        <ul class="menu-list">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="conocenos.html">Conócenos</a></li>
+            <li><a href="noticias.html">Noticias</a></li>
+            <li><a href="junta.html">Junta Directiva</a></li>
+
+            <!-- SUBMENÚ CCRD -->
+            <li class="submenu">
+                <button class="submenu-btn">
+                    CCRD <span class="plus">+</span>
+                </button>
+
+                <ul class="submenu-content">
+                    <li><a href="bienvenida.html">Bienvenida del Presidente</a></li>
+                    <li><a href="historia.html">Historia</a></li>
+                    <li><a href="estatutos.html">Estatutos</a></li>
+                    <li><a href="reglamento.html">Reglamento</a></li>
+                    <li><a href="instalaciones.html">Instalaciones</a></li>
+                    <li><a href="actividades.html">Actividades</a></li>
+                    <li><a href="galeria.html">Galería</a></li>
+                </ul>
+            </li>
+
+            <li><a href="secciones.html">Secciones</a></li>
+            <li><a href="equipaciones.html">Equipaciones</a></li>
+            <li><a href="socio.html">Hazte socio</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- BLOQUE 1: CABECERA -->
+    <header>
+        <div class="topbar">
+
+            <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+            <div class="brand">
+                <img src="img/logo.png" alt="Logo CCRD">
+                <div class="brand-text">
+                    <h1>CCRD FERROVIARIO</h1>
+                    <p>Centro Cultural Recreativo y Deportivo Ferroviario</p>
+                </div>
+            </div>
+
+            <div class="search-box">
+                <input type="text" placeholder="Buscar...">
+                <button>🔍</button>
+            </div>
+
+        </div>
     </header>
 
-    <!-- SECCIÓN PRINCIPAL -->
-    <section class="hero">
-        <h2>Bienvenidos al Club</h2>
-        <p>Un espacio para el deporte, la recreación y la comunidad ferroviaria.</p>
-    </section>
+    <!-- CONTENIDO ESPECÍFICO DE CADA PÁGINA -->
+    <main>
+        <!-- Aquí va lo propio de cada página (bienvenida, socio, noticias, etc.) -->
+    </main>
 
-    <!-- NOTICIAS -->
-    <section class="noticias">
-        <h2>Últimas Noticias</h2>
+    <!-- PATROCINADORES MODULAR -->
+    <div id="patrocinadores"></div>
+    <script>
+        fetch("patrocinadores.html")
+            .then(r => r.text())
+            .then(d => document.getElementById("patrocinadores").innerHTML = d);
+    </script>
 
-        <article class="noticia">
-            <h3>🏆 Torneo Interno de Fútbol 2024</h3>
-            <p>El equipo juvenil se coronó campeón en una final emocionante. ¡Felicidades a todos los participantes!</p>
-        </article>
-
-        <article class="noticia">
-            <h3>🎉 Nueva sala de actividades</h3>
-            <p>Ya está disponible la nueva sala multiusos para yoga, pilates y entrenamiento funcional.</p>
-        </article>
-
-        <article class="noticia">
-            <h3>🚂 Jornada Ferroviaria</h3>
-            <p>Este mes celebraremos la tradicional jornada ferroviaria con actividades para toda la familia.</p>
-        </article>
-    </section>
-
-    <!-- PIE DE PÁGINA -->
+    <!-- FOOTER + RRSS MODULAR -->
     <footer>
         <div id="rrss"></div>
+        <script>
+            fetch("rrss.html")
+                .then(r => r.text())
+                .then(d => document.getElementById("rrss").innerHTML = d);
+        </script>
 
-<script>
-    fetch("rrss.html")
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById("rrss").innerHTML = data;
-        });
-</script>
-
-        <p>© 2024 Club Deportivo y Recreativo Ferroviario — Todos los derechos reservados</p>
+        <p>© 2026 CCRD Ferroviario – Todos los derechos reservados</p>
     </footer>
+
+    <!-- JS MENÚ LATERAL + SUBMENÚ CCRD -->
+    <script>
+        function toggleMenu() {
+            document.getElementById("sidebar").classList.toggle("active");
+        }
+
+        document.querySelector(".submenu-btn").addEventListener("click", function () {
+            document.querySelector(".submenu").classList.toggle("open");
+        });
+    </script>
 
 </body>
 </html>
