@@ -260,3 +260,19 @@ textarea {
 .patrocinadores-grid img:hover {
     transform: scale(1.1);
 }
+.rrss-modular {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.rrss-modular img {
+    width: 35px;
+    filter: invert(1);
+    transition: .3s;
+}
+
+.rrss-modular img:hover {
+    transform: scale(1.2);
+}
