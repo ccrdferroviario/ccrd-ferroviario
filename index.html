@@ -157,6 +157,106 @@
             </div>
         </div>
     </footer>
+<script>
+        // Base de datos interna del club (¡Aquí puedes añadir o cambiar la información de los días!)
+        // El formato es 'AÑO-MES-DÍA' (Importante: los meses van del 0 al 11. Enero es 0, Junio es 5, Diciembre es 11)
+        const eventosClub = {
+            '2026-5-15': '🏃‍♂️ <strong>Atletismo:</strong> Entrenamiento oficial de series en pista larga a las 19:00h.',
+            '2026-5-22': '🎯 <strong>Tiro al Plato:</strong> Campeonato local clasificatorio en las instalaciones del club. Comienzo a las 10:00h.',
+            '2026-5-28': '♟️ <strong>Ajedrez:</strong> Torneo de primavera por categorías en la Sede Social. Inscripciones abiertas.',
+            '2026-6-5': '📅 <strong>Reunión de Junta:</strong> Asamblea general extraordinaria para socios en el salón principal.'
+        };
 
+        let fechaActual = new Date();
+
+        const nombresMeses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+
+        function renderizarCalendario() {
+            const año = fechaActual.getFullYear();
+            const mes = fechaActual.getMonth();
+
+            // Actualizar título del encabezado
+            document.getElementById('calendar-month-year').innerText = `${nombresMeses[mes]} ${año}`;
+
+            const primerDiaMes = new Date(año, mes, 1).getDay();
+            // Ajustar para que la semana empiece en Lunes (en JS 0 es Domingo, 1 es Lunes...)
+            const lunesIndex = primerDiaMes === 0 ? 6 : primerDiaMes - 1;
+
+            const diasTotalesMes = new Date(año, mes + 1, 0).getDate();
+            const gridDias = document.getElementById('calendar-days');
+            gridDias.innerHTML = '';
+
+            // Rellenar huecos del mes anterior
+            for (let i = 0; i < lunesIndex; i++) {
+                const divVacio = document.createElement('div');
+                divVacio.classList.add('calendar-day', 'empty');
+                gridDias.appendChild(divVacio);
+            }
+
+            // Crear los días del mes actual
+            for (let dia = 1; dia <= diasTotalesMes; dia++) {
+                const elementoDia = document.createElement('div');
+                elementoDia.classList.add('calendar-day');
+                elementoDia.innerText = dia;
+
+                const claveFecha = `${año}-${mes}-${dia}`;
+
+                // Comprobar si tiene evento asignado
+                if (eventosClub[claveFecha]) {
+                    elementoDia.classList.add('has-event');
+                }
+
+                // Destacar el día de hoy
+                const hoy = new Date();
+                if (dia === hoy.getDate() && mes === hoy.getMonth() && año === hoy.getFullYear()) {
+                    elementoDia.classList.add('today');
+                }
+
+                // Evento clic para abrir el cuadro de texto
+                elementoDia.addEventListener('click', () => {
+                    abrirModalInformacion(dia, nombresMeses[mes], año, eventosClub[claveFecha]);
+                });
+
+                gridDias.appendChild(elementoDia);
+            }
+        }
+
+        // Funciones del Modal emergente
+        function abrirModalInformacion(dia, mesTxt, año, info) {
+            const modal = document.getElementById('event-modal');
+            document.getElementById('modal-date-title').innerText = `${dia} de ${mesTxt} de ${año}`;
+            
+            if (info) {
+                document.getElementById('modal-info-text').innerHTML = info;
+            } else {
+                document.getElementById('modal-info-text').innerHTML = 'ℹ️ No hay eventos programados o modificaciones para este día. Las secciones deportivas mantienen sus horarios habituales.';
+            }
+            
+            modal.classList.add('active');
+        }
+
+        // Controladores de cierre
+        document.querySelector('.modal-close-btn').addEventListener('click', () => {
+            document.getElementById('event-modal').classList.remove('active');
+        });
+        window.addEventListener('click', (e) => {
+            const modal = document.getElementById('event-modal');
+            if (e.target === modal) modal.classList.remove('active');
+        });
+
+        // Botones de navegación del calendario
+        document.getElementById('prev-month-btn').addEventListener('click', () => {
+            fechaActual.setMonth(fechaActual.getMonth() - 1);
+            renderizarCalendario();
+        });
+
+        document.getElementById('next-month-btn').addEventListener('click', () => {
+            fechaActual.setMonth(fechaActual.getMonth() + 1);
+            renderizarCalendario();
+        });
+
+        // Carga inicial al entrar en la web
+        renderizarCalendario();
+    </script>
 </body>
 </html>
