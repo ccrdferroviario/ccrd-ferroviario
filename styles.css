@@ -30,3 +30,87 @@ header h1 {
 }
 
 /* ------------------------------
+   MENÚ DE NAVEGACIÓN
+--------------------------------*/
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    background-color: #2d5d89;
+}
+
+/* ------------------------------
+   SECCIÓN PRINCIPAL (HERO)
+--------------------------------*/
+.hero {
+    background: url('img/hero.jpg') center/cover no-repeat;
+    padding: 80px 20px;
+    text-align: center;
+    color: white;
+    background-color: #2d5d89; /* fallback si no hay imagen */
+}
+
+.hero h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+}
+
+/* ------------------------------
+   NOTICIAS
+--------------------------------*/
+.noticias {
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.noticias h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+.noticia {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-left: 6px solid #1b3a57;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.noticia h3 {
+    margin-top: 0;
+    color: #1b3a57;
+}
+
+/* ------------------------------
+   PIE DE PÁGINA
+--------------------------------*/
+footer {
+    background-color: #1b3a57;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+}
