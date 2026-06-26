@@ -76,7 +76,38 @@
 
         </div>
     </section>
+<section class="calendar-section">
+        <div class="container">
+            <div class="calendar-header-block">
+                <h2>Calendario de Actividades</h2>
+                <p>Consulte los próximos eventos, entrenamientos y citas importantes del club.</p>
+            </div>
+            
+            <div class="calendar-wrapper">
+                <div class="calendar-nav">
+                    <button id="prev-month-btn">◀</button>
+                    <h3 id="calendar-month-year">Junio 2026</h3>
+                    <button id="next-month-btn">▶</button>
+                </div>
+                
+                <div class="calendar-weekdays">
+                    <div>Lun</div><div>Mar</div><div>Mié</div><div>Jue</div><div>Vie</div><div>Sáb</div><div>Dom</div>
+                </div>
+                
+                <div id="calendar-days" class="calendar-days-grid">
+                    </div>
+            </div>
+        </div>
+    </section>
 
+    <div id="event-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close-btn">&times;</span>
+            <h3 id="modal-date-title">Fecha del evento</h3>
+            <div id="modal-info-text">
+                </div>
+        </div>
+    </div>
     <section class="sponsors-section">
         <div class="container">
             <h3 class="sponsors-title">Nuestros Colaboradores</h3>
