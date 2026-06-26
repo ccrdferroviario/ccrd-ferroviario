@@ -619,3 +619,133 @@ body {
 .gracias-actions {
     margin-top: 20px;
 }
+/* ==========================================
+   ESTILOS DEL CATÁLOGO DE EQUIPACIONES
+   ========================================== */
+.page-content-padding {
+    padding: 50px 0;
+}
+
+.catalog-header {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.titulo-equipaciones {
+    color: var(--color-primario);
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    position: relative;
+    display: inline-block;
+}
+
+.catalog-header p {
+    color: #64748b;
+    font-size: 1.05rem;
+}
+
+/* Ajustes de la Cuadrícula Grid */
+.equipaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas en pantallas grandes */
+    gap: 30px;
+}
+
+/* Tarjetas Individuales */
+.equipacion-card {
+    background-color: var(--color-texto-claro);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Espacio contenedor de la imagen */
+.equipacion-img-container {
+    background-color: #f8fafc;
+    height: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #edf2f7;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Imagen temporal o iconos de carga */
+.equipacion-placeholder-img {
+    font-size: 4rem;
+    opacity: 0.7;
+    transition: transform 0.3s ease;
+}
+
+/* Bloque inferior de información */
+.equipacion-info {
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.equipacion-info h3 {
+    font-size: 1.1rem;
+    color: var(--color-texto-oscuro);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+/* Botón interno simulado */
+.equipacion-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: var(--color-gris-fondo);
+    color: var(--color-primario);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 4px;
+    transition: var(--transition-suave);
+    border: 1px solid #cbd5e1;
+}
+
+/* --- EFECTOS HOVER (ANIMACIONES) --- */
+.equipacion-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(15, 45, 89, 0.1);
+    border-color: rgba(15, 45, 89, 0.15);
+}
+
+.equipacion-card:hover .equipacion-placeholder-img {
+    transform: scale(1.15); /* Crece sutilmente el icono */
+}
+
+.equipacion-card:hover .equipacion-btn {
+    background-color: var(--color-secundario);
+    color: var(--color-texto-claro);
+    border-color: var(--color-secundario);
+}
+
+/* ==========================================
+   RESPONSIVE PARA EL CATÁLOGO
+   ========================================== */
+@media (max-width: 992px) {
+    .equipaciones-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablets */
+        gap: 20px;
+    }
+    .equipacion-img-container { height: 240px; }
+}
+
+@media (max-width: 576px) {
+    .equipaciones-grid {
+        grid-template-columns: 1fr; /* 1 sola columna en móviles */
+    }
+    .titulo-equipaciones { font-size: 1.8rem; }
+}
