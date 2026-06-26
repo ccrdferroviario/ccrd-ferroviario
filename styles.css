@@ -212,3 +212,24 @@ textarea {
     border-radius: 10px;
     text-decoration: none;
 }
+.gracias {
+    max-width: 700px;
+    margin: 80px auto;
+    text-align: center;
+    padding: 40px;
+}
+
+.gracias h1 {
+    color: var(--morado);
+    margin-bottom: 20px;
+}
+
+.btn-volver {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 20px;
+    background: var(--verde);
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+}
