@@ -233,3 +233,30 @@ textarea {
     border-radius: 10px;
     text-decoration: none;
 }
+.patrocinadores {
+    padding: 40px;
+    background: #f5f5f5;
+    text-align: center;
+}
+
+.patrocinadores h2 {
+    color: var(--morado);
+    margin-bottom: 20px;
+}
+
+.patrocinadores-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.patrocinadores-grid img {
+    height: 80px;
+    object-fit: contain;
+    transition: .3s;
+}
+
+.patrocinadores-grid img:hover {
+    transform: scale(1.1);
+}
