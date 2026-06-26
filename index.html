@@ -3,130 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CCRD Ferroviario</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>CCRD Ferroviario - Inicio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- BLOQUE 2 — MENÚ LATERAL -->
-    <nav class="sidebar" id="sidebar">
-
-        <div class="sidebar-header">
-            <img src="img/logo.png" alt="Logo CCRD">
+    <header class="main-header">
+        <div class="top-bar">
+            <div class="container top-bar-container">
+                <div class="top-info">
+                    <span>📍 Sevilla, España</span>
+                    <span>✉️ contacto@ccrdferroviario.com</span>
+                </div>
+                <div class="top-social">
+                    <a href="#" target="_blank">Facebook</a>
+                    <a href="#" target="_blank">Instagram</a>
+                    <a href="#" target="_blank">Twitter/X</a>
+                </div>
+            </div>
         </div>
 
-        <ul class="menu-list">
+        <nav class="navbar">
+            <div class="container navbar-container">
+                <a href="index.html" class="logo">
+                    <span class="logo-accent">CCRD</span> FERROVIARIO
+                </a>
 
-            <li><a href="index.html">Inicio</a></li>
+                <ul class="nav-menu">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">CCRD <span class="arrow">▾</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Bienvenida del presidente</a></li>
+                            <li><a href="#">Nuestra historia</a></li>
+                            <li><a href="#">Junta directiva</a></li>
+                            <li><a href="#">Estatutos</a></li>
+                            <li><a href="#">Actas</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Secciones <span class="arrow">▾</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Atletismo</a></li>
+                            <li><a href="#">Tiro al plato</a></li>
+                            <li><a href="#">Ajedrez</a></li>
+                        </ul>
+                    </li>
 
-            <!-- SUBMENÚ CCRD -->
-            <li class="submenu">
-                <button class="submenu-btn">
-                    CCRD <span class="plus">+</span>
-                </button>
-
-                <ul class="submenu-content">
-                    <li><a href="bienvenida.html">Bienvenida del Presidente</a></li>
-                    <li><a href="historia.html">Historia</a></li>
-                    <li><a href="junta.html">Junta Directiva</a></li>
-                    <li><a href="estatutos.html">Estatutos</a></li>
-                    <li><a href="actas.html">Actas</a></li>
+                    <li><a href="#">Caseta de feria</a></li>
+                    <li><a href="#">Sede Social</a></li>
+                    <li><a href="#">Noticias</a></li>
                 </ul>
-            </li>
+            </div>
+        </nav>
+    </header>
 
-            <!-- SUBMENÚ SECCIONES -->
-            <li class="submenu">
-                <button class="submenu-btn">
-                    Secciones <span class="plus">+</span>
-                </button>
+    <section class="welcome-banner">
+        <div class="container">
+            <div class="banner-content">
+                <h1>Bienvenido al CCRD Ferroviario</h1>
+                <p>Cultura, Deporte y Tradición</p>
+            </div>
+        </div>
+    </section>
 
-                <ul class="submenu-content">
-                    <li><a href="futbol.html">Fútbol</a></li>
-                    <li><a href="baloncesto.html">Baloncesto</a></li>
-                    <li><a href="ajedrez.html">Ajedrez</a></li>
-                    <li><a href="ferroviaria.html">Ferroviaria</a></li>
-                </ul>
-            </li>
+    <section class="action-banners">
+        <div class="container banners-grid">
+            
+            <a href="https://tu-enlace-aqui.com/hazte-socio" class="card-banner partner-banner" target="_blank">
+                <div class="card-overlay"></div>
+                <div class="card-content">
+                    <h2>Hazte socio</h2>
+                    <p>Únete a nuestra gran familia y disfruta de todas las ventajas exclusivas del club.</p>
+                    <span class="btn-action">Registrarse ahora →</span>
+                </div>
+            </a>
 
-            <li><a href="equipaciones.html">Equipaciones</a></li>
-            <li><a href="socio.html">Hazte socio</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
+            <a href="https://tu-enlace-aqui.com/equipaciones" class="card-banner kit-banner" target="_blank">
+                <div class="card-overlay"></div>
+                <div class="card-content">
+                    <h2>Equipaciones 2025/2026</h2>
+                    <p>Ya disponible la nueva piel de nuestras secciones deportivas. ¡Consigue la tuya!</p>
+                    <span class="btn-action">Ver catálogo →</span>
+                </div>
+            </a>
 
-        </ul>
+        </div>
+    </section>
 
-    </nav>
-
-    <!-- BLOQUE 1 — CABECERA -->
-    <header class="header-minimal">
-    <div class="header-left">
-        <img src="img/logo.png" alt="Logo CCRD" class="logo-pequeno">
-        <button class="menu-btn" onclick="toggleMenu()">☰</button>
-    </div>
-</header>
-
-
-    <main>
-
-        <!-- BLOQUE 3 — BANNER BIENVENIDA -->
-        <section class="hero">
-            <h2>Bienvenidos al Club Ferroviario</h2>
-            <p>Un espacio para el deporte, la recreación y la comunidad ferroviaria.</p>
-        </section>
-
-        <!-- BLOQUE 4 — BANNER HAZTE SOCIO -->
-        <section class="banner-socio" onclick="location.href='socio.html'">
-            <h3>Hazte Socio</h3>
-        </section>
-
-        <!-- BLOQUE 5 — BANNER EQUIPACIONES -->
-        <section class="banner-equipaciones" onclick="location.href='equipaciones.html'">
-            <h3>Equipaciones 2025/2026</h3>
-        </section>
-
-        <!-- BLOQUE 6 — CALENDARIO (pendiente) -->
-        <section class="calendario">
-            <h2>Calendario de Actividades</h2>
-            <p>Próximamente disponible.</p>
-        </section>
-
-        <!-- BLOQUE 7 — PATROCINADORES -->
-        <div id="patrocinadores"></div>
-        <script>
-            fetch("patrocinadores.html")
-                .then(r => r.text())
-                .then(d => document.getElementById("patrocinadores").innerHTML = d);
-        </script>
-
-        <!-- BLOQUE 8 — RRSS -->
-        <div id="rrss"></div>
-        <script>
-            fetch("rrss.html")
-                .then(r => r.text())
-                .then(d => document.getElementById("rrss").innerHTML = d);
-        </script>
-
-        <!-- BLOQUE 9 — POLÍTICAS -->
-        <footer class="footer-legal">
-            <a href="privacidad.html">Política de Privacidad</a> |
-            <a href="cookies.html">Política de Cookies</a> |
-            <a href="aviso-legal.html">Aviso Legal</a>
-            <p>© 2026 CCRD Ferroviario — Todos los derechos reservados</p>
-        </footer>
-
-    </main>
-
-    <!-- JS MENÚ Y SUBMENÚS -->
-    <script>
-        function toggleMenu() {
-            document.getElementById("sidebar").classList.toggle("active");
-        }
-
-        document.querySelectorAll(".submenu-btn").forEach(btn => {
-            btn.addEventListener("click", function () {
-                this.parentElement.classList.toggle("open");
-            });
-        });
-    </script>
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2026 CCRD Ferroviario. Todos los derechos reservados.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
