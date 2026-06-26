@@ -1,175 +1,251 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hazte Socio – CCRD Ferroviario</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>CCRD Ferroviario - Hazte Socio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <!-- MENÚ LATERAL -->
-    <nav class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <img src="img/logo.png" alt="Logo CCRD">
-        </div>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container navbar-container">
+                <a href="index.html" class="logo">
+                    <span class="logo-accent">CCRD</span> FERROVIARIO
+                </a>
 
-        <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="conocenos.html">Conócenos</a></li>
-            <li><a href="noticias.html">Noticias</a></li>
-            <li><a href="junta.html">Junta Directiva</a></li>
-            <li><a href="equipaciones.html">Equipaciones</a></li>
-            <li><a href="secciones.html">Secciones</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
-        </ul>
-    </nav>
+                <ul class="nav-menu">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">CCRD <span class="arrow">▾</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Bienvenida del presidente</a></li>
+                            <li><a href="#">Nuestra historia</a></li>
+                            <li><a href="#">Junta directiva</a></li>
+                            <li><a href="#">Estatutos</a></li>
+                            <li><a href="#">Actas</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Secciones <span class="arrow">▾</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Atletismo</a></li>
+                            <li><a href="#">Tiro al plato</a></li>
+                            <li><a href="#">Ajedrez</a></li>
+                        </ul>
+                    </li>
 
-    <!-- CABECERA -->
-    <header>
-     <header>
-    <div class="topbar">
-
-        <button class="menu-btn" onclick="toggleMenu()">☰</button>
-
-        <div class="brand">
-            <img src="img/logo.png" alt="Logo CCRD">
-            <div class="brand-text">
-                <h1>CCRD FERROVIARIO</h1>
-                <p>Centro Cultural Recreativo y Deportivo Ferroviario</p>
+                    <li><a href="#">Caseta de feria</a></li>
+                    <li><a href="#">Sede Social</a></li>
+                    <li><a href="#">Noticias</a></li>
+                </ul>
             </div>
-        </div>
-
-        <div class="search-box">
-            <input type="text" placeholder="Buscar...">
-            <button>🔍</button>
-        </div>
-
-    </div>
-</header>
-
+        </nav>
     </header>
 
-    <!-- BANNER -->
-    <section class="hero">
-        <h2>Hazte Socio</h2>
-        <p>Únete al CCRD Ferroviario</p>
-    </section>
+    <main class="container">
+        <section class="form-socios-container">
 
-    <!-- FORMULARIO DE SOCIOS -->
-    <main>
-        <section class="form-socios">
+            <div class="form-header">
+                <h2>Solicitud de Ingreso o Cambio de Datos</h2>
+                <p>Cumplimente el siguiente formulario electrónico para tramitar su alta o modificación en el club.</p>
+            </div>
 
-            <h2>Solicitud de Ingreso o Cambio de Datos</h2>
+            <form action="https://api.web3forms.com/submit" method="POST" class="styled-form">
 
-            <form action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="93a69bac-615d-4e3f-999c-4cb1be97ab36">
+                <input type="hidden" name="email" value="ccrdferroviario@hotmail.com">
+                <input type="hidden" name="redirect" value="https://ccrdferroviario.github.io/ccrd-ferroviario/gracias.html">
+                <input type="hidden" name="captcha" value="true">
 
-    <!-- CLAVE DE WEB3FORMS -->
-    <input type="hidden" name="access_key" value="93a69bac-615d-4e3f-999c-4cb1be97ab36">
+                <div class="form-section-block inline-fields">
+                    <div class="form-group">
+                        <label for="numero_socio">Nº Socio (Si ya dispone de él)</label>
+                        <input type="text" id="numero_socio" name="numero_socio" placeholder="Ej: 142">
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha_alta">Fecha de Alta</label>
+                        <input type="date" id="fecha_alta" name="fecha_alta">
+                    </div>
+                </div>
 
-    <!-- DESTINO DEL CORREO -->
-    <input type="hidden" name="email" value="ccrdferroviario@hotmail.com">
+                <div class="form-section-block">
+                    <h3>Datos Personales</h3>
+                    
+                    <div class="form-group">
+                        <label for="nombre">Nombre y Apellidos *</label>
+                        <input type="text" id="nombre" name="nombre" required placeholder="Nombre completo">
+                    </div>
 
-    <!-- REDIRECCIÓN A LA PÁGINA DE GRACIAS -->
-    <input type="hidden" name="redirect" value="https://ccrdferroviario.github.io/ccrd-ferroviario/gracias.html">
+                    <div class="form-group inline-fields">
+                        <div class="form-group-sub">
+                            <label for="dni">DNI / NIE *</label>
+                            <input type="text" id="dni" name="dni" required placeholder="12345678X">
+                        </div>
+                        <div class="form-group-sub">
+                            <label for="fecha_nacimiento">Fecha de nacimiento *</label>
+                            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+                        </div>
+                    </div>
 
-    <!-- CAPTCHA ANTI-SPAM -->
-    <input type="hidden" name="captcha" value="true">
+                    <div class="form-group">
+                        <label for="domicilio">Domicilio *</label>
+                        <input type="text" id="domicilio" name="domicilio" required placeholder="Calle, plaza o avenida, número, piso">
+                    </div>
 
+                    <div class="form-group inline-three-fields">
+                        <div>
+                            <label for="cp">Código Postal *</label>
+                            <input type="text" id="cp" name="cp" required placeholder="41001">
+                        </div>
+                        <div>
+                            <label for="poblacion">Población *</label>
+                            <input type="text" id="poblacion" name="poblacion" required placeholder="Sevilla">
+                        </div>
+                        <div>
+                            <label for="provincia">Provincia *</label>
+                            <input type="text" id="provincia" name="provincia" required placeholder="Sevilla">
+                        </div>
+                    </div>
 
-                <!-- Nº SOCIO Y FECHA ALTA -->
-                <label>Nº Socio</label>
-                <input type="text" name="numero_socio">
+                    <div class="form-group inline-fields">
+                        <div class="form-group-sub">
+                            <label for="telefono">Teléfono Fijo</label>
+                            <input type="tel" id="telefono" name="telefono" placeholder="954XXXXXX">
+                        </div>
+                        <div class="form-group-sub">
+                            <label for="movil">Teléfono Móvil *</label>
+                            <input type="tel" id="movil" name="movil" required placeholder="6XXXXXXXX">
+                        </div>
+                    </div>
 
-                <label>Fecha de Alta</label>
-                <input type="date" name="fecha_alta">
+                    <div class="form-group">
+                        <label for="correo">Correo electrónico *</label>
+                        <input type="email" id="correo" name="correo" required placeholder="ejemplo@correo.com">
+                    </div>
+                </div>
 
-                <h3>Datos Personales</h3>
+                <div class="form-section-block">
+                    <h3>Vinculación con el Club</h3>
 
-                <label>Nombre y Apellidos *</label>
-                <input type="text" name="nombre" required>
+                    <div class="form-group inline-fields">
+                        <div class="form-group-sub">
+                            <label for="vinculacion">Tipo de socio *</label>
+                            <select id="vinculacion" name="vinculacion" required>
+                                <option value="">Seleccione…</option>
+                                <option value="Ferroviario">Ferroviario</option>
+                                <option value="Protector">Protector</option>
+                            </select>
+                        </div>
+                        <div class="form-group-sub">
+                            <label for="socio_propone">Socio que propone (si procede)</label>
+                            <input type="text" id="socio_propone" name="socio_propone" placeholder="Nombre del socio avalista">
+                        </div>
+                    </div>
 
-                <label>DNI *</label>
-                <input type="text" name="dni" required>
+                    <div class="form-group inline-fields">
+                        <div class="form-group-sub">
+                            <label for="fecha_baja">Fecha de baja (Solo modificaciones)</label>
+                            <input type="date" id="fecha_baja" name="fecha_baja">
+                        </div>
+                        <div class="form-group-sub">
+                            <label for="causa_baja">Causa de baja</label>
+                            <textarea id="causa_baja" name="causa_baja" rows="1" placeholder="Motivo de la baja si aplica..."></textarea>
+                        </div>
+                    </div>
+                </div>
 
-                <label>Fecha de nacimiento *</label>
-                <input type="date" name="fecha_nacimiento" required>
+                <div class="form-section-block">
+                    <h3>Autorización Bancaria SEPA</h3>
 
-                <label>Domicilio *</label>
-                <input type="text" name="domicilio" required>
+                    <div class="form-group">
+                        <label for="entidad">Entidad Bancaria *</label>
+                        <input type="text" id="entidad" name="entidad" required placeholder="Nombre de su banco o caja">
+                    </div>
 
-                <label>Código Postal *</label>
-                <input type="text" name="cp" required>
+                    <div class="form-group inline-fields">
+                        <div style="flex: 2;">
+                            <label for="iban">Código IBAN *</label>
+                            <input type="text" id="iban" name="iban" placeholder="ES00 0000 0000 00 0000000000" required>
+                        </div>
+                        <div style="flex: 1;">
+                            <label for="fecha_domiciliacion">Fecha Domiciliación *</label>
+                            <input type="date" id="fecha_domiciliacion" name="fecha_domiciliacion" required>
+                        </div>
+                    </div>
 
-                <label>Población *</label>
-                <input type="text" name="poblacion" required>
+                    <p class="form-legal-text">
+                        ℹ️ <strong>Mandato SEPA:</strong> Mediante la cumplimentación de esta domiciliación, autorizo al CCRD Ferroviario de Sevilla al cobro de la cuota anual del Club a través de la cuenta bancaria facilitada.
+                    </p>
 
-                <label>Provincia *</label>
-                <input type="text" name="provincia" required>
+                    <label class="form-checkbox-label">
+                        <input type="checkbox" name="proteccion_datos" required>
+                        <span>Acepto la Política de Privacidad y el tratamiento automatizado de mis datos personales de acuerdo con la normativa vigente. *</span>
+                    </label>
+                </div>
 
-                <label>Teléfono</label>
-                <input type="text" name="telefono">
-
-                <label>Móvil *</label>
-                <input type="text" name="movil" required>
-
-                <label>Correo electrónico *</label>
-                <input type="email" name="correo" required>
-
-                <h3>Vinculación con el Club</h3>
-
-                <label>Tipo de socio *</label>
-                <select name="vinculacion" required>
-                    <option value="">Seleccione…</option>
-                    <option value="Ferroviario">Ferroviario</option>
-                    <option value="Protector">Protector</option>
-                </select>
-
-                <label>Socio que propone (si procede)</label>
-                <input type="text" name="socio_propone">
-
-                <label>Fecha de baja</label>
-                <input type="date" name="fecha_baja">
-
-                <label>Causa de baja</label>
-                <textarea name="causa_baja"></textarea>
-
-                <h3>Autorización Bancaria</h3>
-
-                <label>Entidad bancaria *</label>
-                <input type="text" name="entidad" required>
-
-                <label>IBAN *</label>
-                <input type="text" name="iban" placeholder="ES00 0000 0000 00 0000000000" required>
-
-                <label>Fecha de domiciliación *</label>
-                <input type="date" name="fecha_domiciliacion" required>
-
-                <p class="legal">
-                    Mediante la firma de esta domiciliación, autorizo al CCRD Ferroviario de Sevilla al cobro de la cuota anual del Club a través de mi cuenta.
-                </p>
-
-                <label class="checkbox">
-                    <input type="checkbox" name="proteccion_datos" required>
-                    Acepto la Política de Privacidad y el tratamiento de mis datos personales *
-                </label>
-
-                <button type="submit" class="btn-enviar">Enviar Solicitud</button>
-
-                <a href="Ficha socios.docx" class="btn-descargar" download>Descargar formulario en Word</a>
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit-form">Enviar Solicitud Electrónica</button>
+                    <span class="actions-divider">o también puede</span>
+                    <a href="Ficha socios.docx" class="btn-download-word" download>
+                        📥 Descargar Formulario Físico (Word)
+                    </a>
+                </div>
 
             </form>
 
         </section>
     </main>
 
-    <script>
-        function toggleMenu() {
-            document.getElementById("sidebar").classList.toggle("active");
-        }
-    </script>
+    <section class="sponsors-section">
+        <div class="container">
+            <h3 class="sponsors-title">Nuestros Colaboradores</h3>
+            <div class="sponsors-grid">
+                <div class="sponsor-logo">PATROCINADOR 1</div>
+                <div class="sponsor-logo">PATROCINADOR 2</div>
+                <div class="sponsor-logo">PATROCINADOR 3</div>
+                <div class="sponsor-logo">PATROCINADOR 4</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container footer-columns">
+            <div class="footer-column">
+                <h3>CCRD Ferroviario</h3>
+                <p class="footer-about">Uniendo cultura, deporte e identidad desde Sevilla. Un espacio dedicado al desarrollo de nuestros atletas y al encuentro de nuestros socios.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <ul class="footer-contact-list">
+                    <li>📍 Calle San Fernando, Sevilla, España</li>
+                    <li>📞 +34 954 XX XX XX</li>
+                    <li>✉️ contacto@ccrdferroviario.com</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Síguenos</h3>
+                <div class="footer-social-links">
+                    <a href="#" target="_blank">Facebook</a>
+                    <a href="#" target="_blank">Instagram</a>
+                    <a href="#" target="_blank">Twitter / X</a>
+                    <a href="#" target="_blank">YouTube</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-container">
+                <p class="copyright">&copy; 2026 CCRD Ferroviario. Todos los derechos reservados.</p>
+                <div class="legal-links">
+                    <a href="#">Aviso Legal</a>
+                    <a href="#">Política de Privacidad</a>
+                    <a href="#">Política de Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
