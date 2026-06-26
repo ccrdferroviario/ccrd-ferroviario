@@ -114,3 +114,38 @@ footer {
     padding: 15px;
     margin-top: 40px;
 }
+.equipaciones-container {
+    padding: 40px;
+    text-align: center;
+}
+
+.titulo-equipaciones {
+    font-size: 36px;
+    color: var(--morado);
+    margin-bottom: 30px;
+}
+
+.equipaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.equipacion-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.1);
+    transition: .3s;
+}
+
+.equipacion-card:hover {
+    transform: translateY(-5px);
+}
+
+.equipacion-img {
+    height: 180px;
+    background: linear-gradient(135deg, var(--morado), var(--verde));
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
