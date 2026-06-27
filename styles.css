@@ -38,7 +38,7 @@ body {
 .navbar {
     background-color: var(--color-texto-claro);
     height: auto !important;
-    padding: 10px 0; /* Un poco más alto ya que no hay barra superior */
+    padding: 10px 0; 
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     position: relative;
     z-index: 1000;
@@ -56,6 +56,16 @@ body {
     color: var(--color-primario);
     text-decoration: none;
     letter-spacing: 1px;
+    display: flex;
+    align-items: center; 
+    gap: 14px;           
+}
+
+.logo-img {
+    height: 65px;        /* Tamaño perfecto e imponente sin romper el menú */
+    width: auto;         
+    object-fit: contain;
+    transition: var(--transition-suave);
 }
 
 .logo-accent {
@@ -236,10 +246,8 @@ body {
 }
 
 /* ==========================================================================
-   ESTILOS NUEVOS: SECCIÓN FOOTER "ACADEMY"
+   FILA DE PATROCINADORES Y FOOTER
    ========================================================================== */
-
-/* Fila de Patrocinadores */
 .sponsors-section {
     background-color: var(--color-gris-sponsors);
     padding: 40px 0;
@@ -266,7 +274,7 @@ body {
 
 .sponsor-logo {
     font-weight: 700;
-    color: #a0aec0; /* Tono gris elegante simulando marcas corporativas monocromáticas */
+    color: #a0aec0; 
     font-size: 1.1rem;
     letter-spacing: 1px;
     padding: 10px 20px;
@@ -274,19 +282,19 @@ body {
 }
 
 .sponsor-logo:hover {
-    color: var(--color-primario); /* Toma color real al pasar mouse */
+    color: var(--color-primario); 
 }
 
 /* Footer Principal (Oscuro Premium) */
 .main-footer {
     background-color: var(--color-oscuro-footer);
     color: #a0aec0;
-    padding: 60px 0 0 0; /* Sin padding abajo para que encaje la barra final */
+    padding: 60px 0 0 0; 
 }
 
 .footer-columns {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr; /* Columna de info más ancha */
+    grid-template-columns: 2fr 1fr 1fr; 
     gap: 50px;
     padding-bottom: 50px;
 }
@@ -299,7 +307,6 @@ body {
     position: relative;
 }
 
-/* Pequeña línea debajo de los títulos del footer */
 .footer-column h3::after {
     content: '';
     position: absolute;
@@ -325,27 +332,45 @@ body {
     margin-bottom: 12px;
 }
 
+/* Redes sociales en horizontal con iconos redondos */
 .footer-social-links {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    gap: 15px;      
+    margin-top: 15px;
 }
 
-.footer-social-links a {
-    color: #a0aec0;
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%; 
+    background-color: rgba(255, 255, 255, 0.1); 
+    color: #ffffff;
+    font-size: 1.3rem;  
+    transition: all 0.3s ease;
     text-decoration: none;
-    font-size: 0.95rem;
-    transition: var(--transition-suave);
 }
 
-.footer-social-links a:hover {
-    color: var(--color-oro);
-    padding-left: 5px;
+.social-icon:hover {
+    transform: translateY(-4px); 
+    color: #ffffff;
+}
+
+.social-icon.fb:hover {
+    background-color: #1877f2;
+    box-shadow: 0 4px 12px rgba(24, 119, 242, 0.4);
+}
+
+.social-icon.ig:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    box-shadow: 0 4px 12px rgba(220, 39, 67, 0.4);
 }
 
 /* Barra de Políticas e Info Legal */
 .footer-bottom {
-    background-color: #050d1a; /* Un tono aún más oscuro */
+    background-color: #050d1a; 
     padding: 25px 0;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -377,381 +402,7 @@ body {
 }
 
 /* ==========================================
-   ADAPTACIÓN MÓVIL (RESPONSIVE)
-   ========================================== */
-@media (max-width: 992px) {
-    .footer-columns {
-        grid-template-columns: 1fr; /* Pasa a una sola columna en tablets/móviles */
-        gap: 35px;
-    }
-    .footer-about { padding-right: 0; }
-}
-
-@media (max-width: 768px) {
-    .navbar-container { flex-direction: column; gap: 15px; }
-    .nav-menu { flex-wrap: wrap; justify-content: center; }
-    .banners-grid { grid-template-columns: 1fr; }
-    
-    .footer-bottom-container {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-    }
-    .legal-links { justify-content: center; }
-}
-/* ==========================================
-   ESTILOS DEL FORMULARIO DE SOCIOS
-   ========================================== */
-.form-socios-container {
-    background-color: var(--color-texto-claro);
-    padding: 40px;
-    margin: 40px auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    max-width: 850px;
-}
-
-.form-header {
-    text-align: center;
-    margin-bottom: 35px;
-    border-bottom: 2px solid var(--color-gris-fondo);
-    padding-bottom: 20px;
-}
-
-.form-header h2 {
-    color: var(--color-primario);
-    font-size: 2rem;
-    margin-bottom: 8px;
-}
-
-.form-header p {
-    color: #7f8c8d;
-    font-size: 0.95rem;
-}
-
-.styled-form h3 {
-    color: var(--color-secundario);
-    font-size: 1.25rem;
-    margin: 30px 0 15px 0;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #e2e8f0;
-}
-
-/* Bloques y grupos de inputs */
-.form-section-block {
-    margin-bottom: 20px;
-}
-
-.form-group {
-    margin-bottom: 15px;
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group label {
-    font-weight: 600;
-    font-size: 0.9rem;
-    margin-bottom: 6px;
-    color: var(--color-texto-oscuro);
-}
-
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="date"],
-.form-group input[type="tel"],
-.form-group select,
-.form-group textarea {
-    padding: 10px 14px;
-    border: 1px solid #cbd5e1;
-    border-radius: 4px;
-    font-family: var(--fuente-principal);
-    font-size: 0.95rem;
-    transition: var(--transition-suave);
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--color-primario);
-    box-shadow: 0 0 0 3px rgba(15, 45, 89, 0.1);
-}
-
-/* Campos en paralelo con CSS Grid / Flexbox heredable */
-.inline-fields {
-    display: flex;
-    gap: 20px;
-}
-
-.inline-fields > div, .form-group-sub {
-    flex: 1;
-}
-
-.inline-three-fields {
-    display: grid;
-    grid-template-columns: 1fr 2fr 2fr;
-    gap: 20px;
-}
-
-/* Textos legales y checkboxes */
-.form-legal-text {
-    background-color: #f1f5f9;
-    padding: 15px;
-    border-left: 4px solid var(--color-oro);
-    font-size: 0.88rem;
-    color: #475569;
-    margin: 15px 0;
-    line-height: 1.5;
-}
-
-.form-checkbox-label {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 0.88rem;
-    color: var(--color-texto-oscuro);
-    margin: 20px 0;
-    cursor: pointer;
-}
-
-.form-checkbox-label input {
-    margin-top: 3px;
-}
-
-/* Sección de acciones y botones */
-.form-actions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    margin-top: 35px;
-    padding-top: 25px;
-    border-top: 2px solid var(--color-gris-fondo);
-}
-
-.btn-submit-form {
-    background-color: var(--color-primario);
-    color: var(--color-texto-claro);
-    border: none;
-    padding: 14px 40px;
-    font-size: 1rem;
-    font-weight: 700;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: var(--transition-suave);
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-}
-
-.btn-submit-form:hover {
-    background-color: #164380;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(15, 45, 89, 0.2);
-}
-
-.actions-divider {
-    font-size: 0.85rem;
-    color: #94a3b8;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.btn-download-word {
-    color: var(--color-secundario);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95rem;
-    padding: 8px 16px;
-    border: 1px dashed var(--color-secundario);
-    border-radius: 4px;
-    transition: var(--transition-suave);
-}
-
-.btn-download-word:hover {
-    background-color: #fff5f5;
-    color: #a82a29;
-}
-
-/* Responsive para el formulario */
-@media (max-width: 768px) {
-    .inline-fields { flex-direction: column; gap: 15px; }
-    .inline-three-fields { grid-template-columns: 1fr; gap: 15px; }
-    .form-socios-container { padding: 20px; margin: 20px 10px; }
-}
-/* ==========================================
-   ESTILOS DE LA PÁGINA DE GRACIAS
-   ========================================== */
-.gracias-container {
-    background-color: var(--color-texto-claro);
-    padding: 50px 40px;
-    margin: 80px auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    max-width: 650px;
-    text-align: center;
-}
-
-.gracias-icon {
-    font-size: 3rem;
-    color: #2ec4b6; /* Verde éxito limpio */
-    background-color: #e6f9f7;
-    width: 80px;
-    height: 80px;
-    line-height: 80px;
-    border-radius: 50%;
-    margin: 0 auto 20px auto;
-    font-weight: bold;
-}
-
-.gracias-container h1 {
-    color: var(--color-primario);
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-}
-
-.gracias-container p {
-    color: #5a6a85;
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 30px;
-}
-
-.gracias-actions {
-    margin-top: 20px;
-}
-/* ==========================================
-   ESTILOS DEL CATÁLOGO DE EQUIPACIONES
-   ========================================== */
-.page-content-padding {
-    padding: 50px 0;
-}
-
-.catalog-header {
-    text-align: center;
-    margin-bottom: 45px;
-}
-
-.titulo-equipaciones {
-    color: var(--color-primario);
-    font-size: 2.2rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    position: relative;
-    display: inline-block;
-}
-
-.catalog-header p {
-    color: #64748b;
-    font-size: 1.05rem;
-}
-
-/* Ajustes de la Cuadrícula Grid */
-.equipaciones-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas en pantallas grandes */
-    gap: 30px;
-}
-
-/* Tarjetas Individuales */
-.equipacion-card {
-    background-color: var(--color-texto-claro);
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-    border: 1px solid #e2e8f0;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Espacio contenedor de la imagen */
-.equipacion-img-container {
-    background-color: #f8fafc;
-    height: 280px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 1px solid #edf2f7;
-    overflow: hidden;
-    position: relative;
-}
-
-/* Imagen temporal o iconos de carga */
-.equipacion-placeholder-img {
-    font-size: 4rem;
-    opacity: 0.7;
-    transition: transform 0.3s ease;
-}
-
-/* Bloque inferior de información */
-.equipacion-info {
-    padding: 20px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex-grow: 1;
-}
-
-.equipacion-info h3 {
-    font-size: 1.1rem;
-    color: var(--color-texto-oscuro);
-    margin-bottom: 15px;
-    font-weight: 600;
-}
-
-/* Botón interno simulado */
-.equipacion-btn {
-    display: inline-block;
-    padding: 8px 16px;
-    background-color: var(--color-gris-fondo);
-    color: var(--color-primario);
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    border-radius: 4px;
-    transition: var(--transition-suave);
-    border: 1px solid #cbd5e1;
-}
-
-/* --- EFECTOS HOVER (ANIMACIONES) --- */
-.equipacion-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 25px rgba(15, 45, 89, 0.1);
-    border-color: rgba(15, 45, 89, 0.15);
-}
-
-.equipacion-card:hover .equipacion-placeholder-img {
-    transform: scale(1.15); /* Crece sutilmente el icono */
-}
-
-.equipacion-card:hover .equipacion-btn {
-    background-color: var(--color-secundario);
-    color: var(--color-texto-claro);
-    border-color: var(--color-secundario);
-}
-
-/* ==========================================
-   RESPONSIVE PARA EL CATÁLOGO
-   ========================================== */
-@media (max-width: 992px) {
-    .equipaciones-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablets */
-        gap: 20px;
-    }
-    .equipacion-img-container { height: 240px; }
-}
-
-@media (max-width: 576px) {
-    .equipaciones-grid {
-        grid-template-columns: 1fr; /* 1 sola columna en móviles */
-    }
-    .titulo-equipaciones { font-size: 1.8rem; }
-}
-/* ==========================================
-   ESTILOS DEL CALENDARIO INTERACTIVO
+   CALENDARIO INTERACTIVO
    ========================================== */
 .calendar-section {
     padding: 60px 0;
@@ -774,7 +425,6 @@ body {
     color: #64748b;
 }
 
-/* Contenedor del calendario */
 .calendar-wrapper {
     max-width: 800px;
     margin: 0 auto;
@@ -785,7 +435,6 @@ body {
     overflow: hidden;
 }
 
-/* Navegación (Flechas y Mes) */
 .calendar-nav {
     display: flex;
     justify-content: space-between;
@@ -816,7 +465,6 @@ body {
     transform: scale(1.2);
 }
 
-/* Días de la semana */
 .calendar-weekdays {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -830,12 +478,11 @@ body {
     border-bottom: 1px solid #e2e8f0;
 }
 
-/* Rejilla de días numéricos */
 .calendar-days-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 1px;
-    background-color: #e2e8f0; /* Color de las líneas divisorias */
+    background-color: #e2e8f0; 
 }
 
 .calendar-day {
@@ -855,13 +502,11 @@ body {
     background-color: #f1f5f9;
 }
 
-/* Días de otros meses */
 .calendar-day.empty {
     background-color: #f8fafc;
     cursor: default;
 }
 
-/* Indicador visual si el día tiene eventos */
 .has-event::after {
     content: '• Evento';
     font-size: 0.75rem;
@@ -875,15 +520,12 @@ body {
     margin-top: 5px;
 }
 
-/* Hoy */
 .calendar-day.today {
     background-color: #eff6ff;
     border: 2px solid var(--color-oro);
 }
 
-/* ==========================================
-   VENTANA EMERGENTE INTERACTIVA (MODAL)
-   ========================================== */
+/* VENTANA EMERGENTE (MODAL) */
 .modal-overlay {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -945,58 +587,356 @@ body {
     color: #475569;
     line-height: 1.6;
 }
+
 /* ==========================================
-   AJUSTES PARA EL LOGO EN EL HEADER
+   FORMULARIO DE SOCIOS
    ========================================== */
-.logo {
-    display: flex;
-    align-items: center; /* Centra verticalmente el logo con el texto */
-    gap: 12px;           /* Deja un espacio elegante entre la imagen y las letras */
+.form-socios-container {
+    background-color: var(--color-texto-claro);
+    padding: 40px;
+    margin: 40px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    max-width: 850px;
 }
 
-.logo-img {
-    height: 100px;        /* Altura pequeña y perfecta para el menú superior */
-    width: auto;         /* Mantiene la proporción original de tu escudo sin deformarlo */
-    object-fit: contain;
+.form-header {
+    text-align: center;
+    margin-bottom: 35px;
+    border-bottom: 2px solid var(--color-gris-fondo);
+    padding-bottom: 20px;
+}
+
+.form-header h2 {
+    color: var(--color-primario);
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.form-header p {
+    color: #7f8c8d;
+    font-size: 0.95rem;
+}
+
+.styled-form h3 {
+    color: var(--color-secundario);
+    font-size: 1.25rem;
+    margin: 30px 0 15px 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.form-section-block {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+    color: var(--color-texto-oscuro);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="date"],
+.form-group input[type="tel"],
+.form-group select,
+.form-group textarea {
+    padding: 10px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    font-family: var(--fuente-principal);
+    font-size: 0.95rem;
     transition: var(--transition-suave);
 }
-/* ==========================================
-   ICONOS DE REDES SOCIALES EN EL FOOTER
-   ========================================== */
-.footer-social-links {
-    display: flex;
-    gap: 15px;      /* Espacio entre los círculos de las redes */
-    margin-top: 15px;
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 3px rgba(15, 45, 89, 0.1);
 }
 
-.social-icon {
+.inline-fields {
     display: flex;
+    gap: 20px;
+}
+
+.inline-fields > div, .form-group-sub {
+    flex: 1;
+}
+
+.inline-three-fields {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+    gap: 20px;
+}
+
+.form-legal-text {
+    background-color: #f1f5f9;
+    padding: 15px;
+    border-left: 4px solid var(--color-oro);
+    font-size: 0.88rem;
+    color: #475569;
+    margin: 15px 0;
+    line-height: 1.5;
+}
+
+.form-checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.88rem;
+    color: var(--color-texto-oscuro);
+    margin: 20px 0;
+    cursor: pointer;
+}
+
+.form-checkbox-label input {
+    margin-top: 3px;
+}
+
+.form-actions {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%; /* Los hace perfectamente redondos */
-    background-color: rgba(255, 255, 255, 0.1); /* Fondo blanco sutil transparente */
-    color: #ffffff;
-    font-size: 1.3rem;  /* Tamaño del icono interno */
-    transition: all 0.3s ease;
+    gap: 15px;
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 2px solid var(--color-gris-fondo);
+}
+
+.btn-submit-form {
+    background-color: var(--color-primario);
+    color: var(--color-texto-claro);
+    border: none;
+    padding: 14px 40px;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition-suave);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.btn-submit-form:hover {
+    background-color: #164380;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(15, 45, 89, 0.2);
+}
+
+.actions-divider {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-download-word {
+    color: var(--color-secundario);
     text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 8px 16px;
+    border: 1px dashed var(--color-secundario);
+    border-radius: 4px;
+    transition: var(--transition-suave);
 }
 
-/* Efectos al pasar el ratón (Hover) */
-.social-icon:hover {
-    transform: translateY(-4px); /* Eleva sutilmente el icono */
-    color: #ffffff;
+.btn-download-word:hover {
+    background-color: #fff5f5;
+    color: #a82a29;
 }
 
-/* Color corporativo de Facebook al pasar el ratón */
-.social-icon.fb:hover {
-    background-color: #1877f2;
-    box-shadow: 0 4px 12px rgba(24, 119, 242, 0.4);
+/* ==========================================
+   PÁGINA DE GRACIAS
+   ========================================== */
+.gracias-container {
+    background-color: var(--color-texto-claro);
+    padding: 50px 40px;
+    margin: 80px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    max-width: 650px;
+    text-align: center;
 }
 
-/* Color corporativo de Instagram (Gradiente elegante) al pasar el ratón */
-.social-icon.ig:hover {
-    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-    box-shadow: 0 4px 12px rgba(220, 39, 67, 0.4);
+.gracias-icon {
+    font-size: 3rem;
+    color: #2ec4b6; 
+    background-color: #e6f9f7;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 20px auto;
+    font-weight: bold;
+}
+
+.gracias-container h1 {
+    color: var(--color-primario);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.gracias-container p {
+    color: #5a6a85;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* ==========================================
+   CATÁLOGO DE EQUIPACIONES
+   ========================================== */
+.page-content-padding {
+    padding: 50px 0;
+}
+
+.catalog-header {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.titulo-equipaciones {
+    color: var(--color-primario);
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    position: relative;
+    display: inline-block;
+}
+
+.catalog-header p {
+    color: #64748b;
+    font-size: 1.05rem;
+}
+
+.equipaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px;
+}
+
+.equipacion-card {
+    background-color: var(--color-texto-claro);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.equipacion-img-container {
+    background-color: #f8fafc;
+    height: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #edf2f7;
+    overflow: hidden;
+    position: relative;
+}
+
+.equipacion-placeholder-img {
+    font-size: 4rem;
+    opacity: 0.7;
+    transition: transform 0.3s ease;
+}
+
+.equipacion-info {
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.equipacion-info h3 {
+    font-size: 1.1rem;
+    color: var(--color-texto-oscuro);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.equipacion-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: var(--color-gris-fondo);
+    color: var(--color-primario);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 4px;
+    transition: var(--transition-suave);
+    border: 1px solid #cbd5e1;
+}
+
+.equipacion-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(15, 45, 89, 0.1);
+    border-color: rgba(15, 45, 89, 0.15);
+}
+
+.equipacion-card:hover .equipacion-placeholder-img {
+    transform: scale(1.15); 
+}
+
+.equipacion-card:hover .equipacion-btn {
+    background-color: var(--color-secundario);
+    color: var(--color-texto-claro);
+    border-color: var(--color-secundario);
+}
+
+/* ==========================================
+   ADAPTACIÓN MÓVIL (RESPONSIVE)
+   ========================================== */
+@media (max-width: 992px) {
+    .footer-columns {
+        grid-template-columns: 1fr; 
+        gap: 35px;
+    }
+    .footer-about { padding-right: 0; }
+    .equipaciones-grid {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 20px;
+    }
+    .equipacion-img-container { height: 240px; }
+}
+
+@media (max-width: 768px) {
+    .navbar-container { flex-direction: column; gap: 15px; }
+    .nav-menu { flex-wrap: wrap; justify-content: center; }
+    .banners-grid { grid-template-columns: 1fr; }
+    .form-socios-container { padding: 20px; margin: 20px 10px; }
+    .inline-fields { flex-direction: column; gap: 15px; }
+    .inline-three-fields { grid-template-columns: 1fr; gap: 15px; }
+    
+    .footer-bottom-container {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    .legal-links { justify-content: center; }
+}
+
+@media (max-width: 576px) {
+    .equipaciones-grid {
+        grid-template-columns: 1fr; 
+    }
+    .titulo-equipaciones { font-size: 1.8rem; }
 }
