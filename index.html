@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CCRD Ferroviario - Inicio</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
@@ -12,7 +13,7 @@
         <nav class="navbar">
             <div class="container navbar-container">
                 <a href="index.html" class="logo">
-                    <img src="img/logo.png" alt=Logo CCRD Ferroviario" class="logo-img">
+                    <img src="img/logo.png" alt="Logo CCRD Ferroviario" class="logo-img">
                     <span class="logo-accent">CCRD</span> FERROVIARIO
                 </a>
 
@@ -81,7 +82,8 @@
 
         </div>
     </section>
-<section class="calendar-section">
+
+    <section class="calendar-section">
         <div class="container">
             <div class="calendar-header-block">
                 <h2>Calendario de Actividades</h2>
@@ -99,8 +101,7 @@
                     <div>Lun</div><div>Mar</div><div>Mié</div><div>Jue</div><div>Vie</div><div>Sáb</div><div>Dom</div>
                 </div>
                 
-                <div id="calendar-days" class="calendar-days-grid">
-                    </div>
+                <div id="calendar-days" class="calendar-days-grid"></div>
             </div>
         </div>
     </section>
@@ -109,10 +110,10 @@
         <div class="modal-content">
             <span class="modal-close-btn">&times;</span>
             <h3 id="modal-date-title">Fecha del evento</h3>
-            <div id="modal-info-text">
-                </div>
+            <div id="modal-info-text"></div>
         </div>
     </div>
+
     <section class="sponsors-section">
         <div class="container">
             <h3 class="sponsors-title">Nuestros Colaboradores</h3>
@@ -141,17 +142,18 @@
                 </ul>
             </div>
 
-           <div class="footer-column">
-    <h3>Síguenos</h3>
-    <div class="footer-social-links">
-        <a href="https://facebook.com/TU_PAGINA_REAL" target="_blank" aria-label="Facebook del Club" class="social-icon fb">
-            <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="https://instagram.com/TU_PERFIL_REAL" target="_blank" aria-label="Instagram del Club" class="social-icon ig">
-            <i class="fab fa-instagram"></i>
-        </a>
-    </div>
-</div>
+            <div class="footer-column">
+                <h3>Síguenos</h3>
+                <div class="footer-social-links">
+                    <a href="https://facebook.com/TU_PAGINA_REAL" target="_blank" aria-label="Facebook del Club" class="social-icon fb">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://instagram.com/TU_PERFIL_REAL" target="_blank" aria-label="Instagram del Club" class="social-icon ig">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
 
         <div class="footer-bottom">
             <div class="container footer-bottom-container">
@@ -164,9 +166,9 @@
             </div>
         </div>
     </footer>
-<script>
-        // Base de datos interna del club (¡Aquí puedes añadir o cambiar la información de los días!)
-        // El formato es 'AÑO-MES-DÍA' (Importante: los meses van del 0 al 11. Enero es 0, Junio es 5, Diciembre es 11)
+
+    <script>
+        // Base de datos interna del club
         const eventosClub = {
             '2026-5-15': '🏃‍♂️ <strong>Atletismo:</strong> Entrenamiento oficial de series en pista larga a las 19:00h.',
             '2026-5-22': '🎯 <strong>Tiro al Plato:</strong> Campeonato local clasificatorio en las instalaciones del club. Comienzo a las 10:00h.',
@@ -182,25 +184,21 @@
             const año = fechaActual.getFullYear();
             const mes = fechaActual.getMonth();
 
-            // Actualizar título del encabezado
             document.getElementById('calendar-month-year').innerText = `${nombresMeses[mes]} ${año}`;
 
             const primerDiaMes = new Date(año, mes, 1).getDay();
-            // Ajustar para que la semana empiece en Lunes (en JS 0 es Domingo, 1 es Lunes...)
             const lunesIndex = primerDiaMes === 0 ? 6 : primerDiaMes - 1;
 
             const diasTotalesMes = new Date(año, mes + 1, 0).getDate();
             const gridDias = document.getElementById('calendar-days');
             gridDias.innerHTML = '';
 
-            // Rellenar huecos del mes anterior
             for (let i = 0; i < lunesIndex; i++) {
                 const divVacio = document.createElement('div');
                 divVacio.classList.add('calendar-day', 'empty');
                 gridDias.appendChild(divVacio);
             }
 
-            // Crear los días del mes actual
             for (let dia = 1; dia <= diasTotalesMes; dia++) {
                 const elementoDia = document.createElement('div');
                 elementoDia.classList.add('calendar-day');
@@ -208,18 +206,15 @@
 
                 const claveFecha = `${año}-${mes}-${dia}`;
 
-                // Comprobar si tiene evento asignado
                 if (eventosClub[claveFecha]) {
                     elementoDia.classList.add('has-event');
                 }
 
-                // Destacar el día de hoy
                 const hoy = new Date();
                 if (dia === hoy.getDate() && mes === hoy.getMonth() && año === hoy.getFullYear()) {
                     elementoDia.classList.add('today');
                 }
 
-                // Evento clic para abrir el cuadro de texto
                 elementoDia.addEventListener('click', () => {
                     abrirModalInformacion(dia, nombresMeses[mes], año, eventosClub[claveFecha]);
                 });
@@ -228,7 +223,6 @@
             }
         }
 
-        // Funciones del Modal emergente
         function abrirModalInformacion(dia, mesTxt, año, info) {
             const modal = document.getElementById('event-modal');
             document.getElementById('modal-date-title').innerText = `${dia} de ${mesTxt} de ${año}`;
@@ -242,7 +236,6 @@
             modal.classList.add('active');
         }
 
-        // Controladores de cierre
         document.querySelector('.modal-close-btn').addEventListener('click', () => {
             document.getElementById('event-modal').classList.remove('active');
         });
@@ -251,7 +244,6 @@
             if (e.target === modal) modal.classList.remove('active');
         });
 
-        // Botones de navegación del calendario
         document.getElementById('prev-month-btn').addEventListener('click', () => {
             fechaActual.setMonth(fechaActual.getMonth() - 1);
             renderizarCalendario();
@@ -262,7 +254,6 @@
             renderizarCalendario();
         });
 
-        // Carga inicial al entrar en la web
         renderizarCalendario();
     </script>
 </body>
