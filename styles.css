@@ -38,7 +38,7 @@ body {
 .navbar {
     background-color: var(--color-texto-claro);
     height: auto !important;
-    padding: 25px 0; /* Un poco más alto ya que no hay barra superior */
+    padding: 10px 0; /* Un poco más alto ya que no hay barra superior */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     position: relative;
     z-index: 1000;
@@ -955,7 +955,7 @@ body {
 }
 
 .logo-img {
-    height: 100px;        /* Altura pequeña y perfecta para el menú superior */
+    height: 90px;        /* Altura pequeña y perfecta para el menú superior */
     width: auto;         /* Mantiene la proporción original de tu escudo sin deformarlo */
     object-fit: contain;
     transition: var(--transition-suave);
