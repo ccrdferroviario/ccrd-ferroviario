@@ -944,3 +944,17 @@ body {
     color: #475569;
     line-height: 1.6;
 }
+/* ==========================================
+   AJUSTES PARA EL LOGO EN EL HEADER
+   ========================================== */
+.logo {
+    display: flex;
+    align-items: center; /* Centra verticalmente el logo con el texto */
+    gap: 12px;           /* Deja un espacio elegante entre la imagen y las letras */
+}
+
+.logo-img {
+    height: 40px;        /* Altura pequeña y perfecta para el menú superior */
+    width: auto;         /* Mantiene la proporción original de tu escudo sin deformarlo */
+    object-fit: contain;
+}
