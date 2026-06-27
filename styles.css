@@ -954,7 +954,7 @@ body {
 }
 
 .logo-img {
-    height: 55px;        /* Altura pequeña y perfecta para el menú superior */
+    height: 70px;        /* Altura pequeña y perfecta para el menú superior */
     width: auto;         /* Mantiene la proporción original de tu escudo sin deformarlo */
     object-fit: contain;
     transition: var(--transition-suave);
