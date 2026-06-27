@@ -960,3 +960,43 @@ body {
     object-fit: contain;
     transition: var(--transition-suave);
 }
+/* ==========================================
+   ICONOS DE REDES SOCIALES EN EL FOOTER
+   ========================================== */
+.footer-social-links {
+    display: flex;
+    gap: 15px;      /* Espacio entre los círculos de las redes */
+    margin-top: 15px;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%; /* Los hace perfectamente redondos */
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo blanco sutil transparente */
+    color: #ffffff;
+    font-size: 1.3rem;  /* Tamaño del icono interno */
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+/* Efectos al pasar el ratón (Hover) */
+.social-icon:hover {
+    transform: translateY(-4px); /* Eleva sutilmente el icono */
+    color: #ffffff;
+}
+
+/* Color corporativo de Facebook al pasar el ratón */
+.social-icon.fb:hover {
+    background-color: #1877f2;
+    box-shadow: 0 4px 12px rgba(24, 119, 242, 0.4);
+}
+
+/* Color corporativo de Instagram (Gradiente elegante) al pasar el ratón */
+.social-icon.ig:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    box-shadow: 0 4px 12px rgba(220, 39, 67, 0.4);
+}
