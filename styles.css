@@ -37,6 +37,7 @@ body {
    ========================================== */
 .navbar {
     background-color: var(--color-texto-claro);
+    height: auto !important;
     padding: 25px 0; /* Un poco más alto ya que no hay barra superior */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     position: relative;
