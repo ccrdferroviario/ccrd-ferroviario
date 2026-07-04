@@ -130,7 +130,7 @@
                 contenedor.innerHTML = ''; 
 
                 // ¡FILTRO INTELIGENTE! Solo se queda con las noticias donde seccion sea 'atletismo'
-                const noticiasAtletismo = data.filter(n => n.seccion === 'atletismo');
+                const noticiasAtletismo = data;
 
                 if (noticiasAtletismo.length === 0) {
                     contenedor.innerHTML = '<p>No hay noticias recientes de atletismo en este momento.</p>';
