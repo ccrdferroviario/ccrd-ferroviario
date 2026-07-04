@@ -6,6 +6,7 @@
     <title>CCRD Ferroviario - Hazte Socio</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="noticias.js"></script>
 </head>
 <body>
 
@@ -125,60 +126,50 @@
         </footer>
 
   <script>
-        fetch('noticias.json')
-            .then(response => response.json())
-            .then(data => {
-                const contenedor = document.getElementById('contenedor-noticias-dinamicas');
-                contenedor.innerHTML = ''; 
+        // Al usar noticias.js, la variable 'misNoticias' ya está disponible directamente de forma segura
+        const contenedor = document.getElementById('contenedor-noticias-dinamicas');
+        contenedor.innerHTML = ''; 
 
-                if (data.length === 0) {
-                    contenedor.innerHTML = '<p>No hay noticias recientes en esta sección en este momento.</p>';
-                    return;
-                }
+        // FILTRAR LAS NOTICIAS: Solo se queda con las que pertenecen a la sección de 'tiro'
+        const noticiasTiro = misNoticias.filter(n => n.seccion === 'tiro');
 
-                data.forEach((noticia, index) => {
-                    // Guardamos el contenido largo de forma segura en una variable limpia
-                    const textoLargo = noticia.contenido || noticia.resumen;
+        if (noticiasTiro.length === 0) {
+            contenedor.innerHTML = '<p>No hay noticias recientes de tiro en este momento.</p>';
+        } else {
+            noticiasTiro.forEach((noticia, index) => {
+                const textoLargo = noticia.contenido || noticia.resumen;
 
-                    const tarjetaHtml = `
-                        <article class="tarjeta-noticia-comp">
-                            <div class="noticia-img-wrap">
-                                <img src="${noticia.imagen}" alt="Imagen de la noticia">
-                            </div>
-                            <div class="noticia-info-wrap">
-                                <span class="noticia-fecha"><i class="fa-regular fa-calendar"></i> ${noticia.fecha}</span>
-                                <h4>${noticia.titulo}</h4>
-                                
-                                <p id="texto-noticia-${index}" class="noticia-resumen-texto">${noticia.resumen}</p>
-                                
-                                <button class="btn-leer-noticia" 
-                                        id="btn-${index}"
-                                        data-resumen="${noticia.resumen}" 
-                                        data-completo="${textoLargo}" 
-                                        onclick="alternarNoticia(${index})">Leer más →</button>
-                            </div>
-                        </article>
-                    `;
-                    contenedor.innerHTML += tarjetaHtml;
-                });
-            })
-            .catch(error => {
-                console.error('Error cargando el JSON:', error);
-                document.getElementById('contenedor-noticias-dinamicas').innerHTML = '<p>Error al cargar las noticias.</p>';
+                const tarjetaHtml = `
+                    <article class="tarjeta-noticia-comp">
+                        <div class="noticia-img-wrap">
+                            <img src="${noticia.imagen}" alt="Foto noticia">
+                        </div>
+                        <div class="noticia-info-wrap">
+                            <span class="noticia-fecha"><i class="fa-regular fa-calendar"></i> ${noticia.fecha}</span>
+                            <h4>${noticia.titulo}</h4>
+                            <p id="texto-noticia-${index}" class="noticia-resumen-texto">${noticia.resumen}</p>
+                            <button class="btn-leer-noticia" 
+                                    id="btn-${index}"
+                                    data-resumen="${noticia.resumen}" 
+                                    data-completo="${textoLargo}" 
+                                    onclick="alternarNoticia(${index})">Leer más →</button>
+                        </div>
+                    </article>
+                `;
+                contenedor.innerHTML += tarjetaHtml;
             });
+        }
 
-        // Función que intercambia los textos de forma real y física en la pantalla
+        // Función que realiza el intercambio físico de textos en la pantalla
         function alternarNoticia(id) {
             const parrafo = document.getElementById(`texto-noticia-${id}`);
             const boton = document.getElementById(`btn-${id}`);
-            
             const textoResumen = boton.getAttribute('data-resumen');
             const textoCompleto = boton.getAttribute('data-completo');
 
-            // Si actualmente está mostrando el resumen corto, cambiamos al largo
             if (parrafo.innerHTML === textoResumen) {
                 parrafo.innerHTML = textoCompleto;
-                parrafo.className = "noticia-completa-texto"; // Cambia a la clase CSS de texto largo
+                parrafo.className = "noticia-completa-texto"; // Aplica los estilos de lectura cómoda
                 boton.innerHTML = "Leer menos ↑";
             } else {
                 parrafo.innerHTML = textoResumen;
