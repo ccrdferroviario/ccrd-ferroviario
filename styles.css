@@ -993,6 +993,17 @@ body {
 .titulo-bloque { font-size: 1.4rem; color: var(--color-primario); border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 20px; }
 .noticias-lista { display: flex; flex-direction: column; gap: 20px; }
 
+.tarjeta-noticia-comp {
+    display: flex !important;
+    flex-direction: row !important; /* Fuerza a que la foto se ponga a la izquierda y el texto a la derecha */
+    align-items: stretch !important;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
 .noticia-img-wrap {
     width: 180px !important;      /* Forzado estricto de ancho */
     height: 120px !important;     /* Le damos un alto fijo también para evitar que la foto vertical se estire hacia abajo */
