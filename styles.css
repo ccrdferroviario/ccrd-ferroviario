@@ -1064,3 +1064,15 @@ body {
     .calendario-tabla-compacta { font-size: 0.8rem; }
     .celda-dia-comp { min-height: 45px; }
 }
+.noticia-completa-texto {
+    color: #334155;
+    font-size: 0.95rem;
+    line-height: 1.6; /* Un poco más de espacio entre líneas para textos largos */
+    margin-bottom: 12px;
+    animation: fadeIn 0.3s ease-in-out; /* Efecto suave al aparecer */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
