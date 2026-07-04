@@ -1,0 +1,14 @@
+[
+    {
+        "titulo": "¡Gran éxito en el Torneo de Verano de Sevilla!",
+        "fecha": "24 de Junio, 2026",
+        "resumen": "Nuestro equipo de la sección de tiro consigue subirse al podio logrando 3 medallas de oro y 2 de plata en una jornada histórica para el club.",
+        "imagen": "tiro.jpeg"
+    },
+    {
+        "titulo": "Próxima jornada de puertas abiertas",
+        "fecha": "15 de Septiembre, 2026",
+        "resumen": "Si quieres probar la disciplina de tiro olímpico y conocer nuestras instalaciones, abrimos inscripciones gratuitas para todas las edades.",
+        "imagen": "tiro.jpeg"
+    }
+]
