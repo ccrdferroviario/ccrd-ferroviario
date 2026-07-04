@@ -47,6 +47,118 @@
                     <li><a href="noticias.html">Noticias</a></li>
                 </ul>
             </div>
+        </nav>
+       <div class="seccion-hero-banner" style="background-image: url('tiro.jpeg');">
+        <div class="banner-overlay">
+            <div class="container">
+                <span class="banner-tag">Sección Oficial</span>
+                <h1>Tiro Deportivo</h1>
+                <p>Concentración, precisión y el mejor ambiente de equipo</p>
+            </div>
+        </div>
+    </div>
+
+    <main class="container page-content-padding">
+        <div class="seccion-grid">
+            
+            <div class="col-principal">
+                <section class="info-introduccion">
+                    <h2>Bienvenidos a la Sección</h2>
+                    <p>Nuestra sección reúne a apasionados de la precisión y la disciplina. Con un ambiente inmejorable de compañerismo, entrenamos tanto para la superación personal como para la alta competición federada en Andalucía.</p>
+                </section>
+
+                <section class="noticias-seccion-contenedor">
+                    <h3 class="titulo-bloque"><i class="fa-solid fa-newspaper"></i> Últimas Noticias</h3>
+                    <div id="contenedor-noticias-dinamicas" class="noticias-lista">
+                        <p class="cargando">Cargando noticias de la sección...</p>
+                    </div>
+                </section>
+            </div>
+
+            <aside class="seccion-sidebar">
+                <div class="sidebar-card">
+                    <div class="sidebar-card-body">
+                        <h4>Horarios de Entrenamiento</h4>
+                        <p><i class="fa-regular fa-calendar-days"></i> Martes y Jueves</p>
+                        <p class="horario-detalle">17:30h a 20:30h</p>
+                        <p><i class="fa-regular fa-calendar-days"></i> Sábados</p>
+                        <p class="horario-detalle">10:00h a 13:00h</p>
+                        <hr>
+                        <a href="socio.html" class="btn-sidebar-action">Inscribirse en la Sección</a>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <section class="calendario-seccion-bloque">
+        <div class="container">
+            <div class="calendario-header-compacto">
+                <h3><i class="fa-regular fa-calendar"></i> Calendario de Actividades</h3>
+                <div class="cal-flechas">
+                    <button class="btn-cal-flecha">◀</button>
+                    <span class="cal-mes-actual">JULIO 2026</span>
+                    <button class="btn-cal-flecha">▶</button>
+                </div>
+            </div>
+
+            <div class="calendario-tabla-compacta">
+                <div class="dia-semana-comp">Lun</div><div class="dia-semana-comp">Mar</div><div class="dia-semana-comp">Mié</div><div class="dia-semana-comp">Jue</div><div class="dia-semana-comp">Vie</div><div class="dia-semana-comp">Sáb</div><div class="dia-semana-comp">Dom</div>
+                
+                <div class="celda-dia-comp apagado">29</div><div class="celda-dia-comp apagado">30</div><div class="celda-dia-comp">1</div><div class="celda-dia-comp">2</div><div class="celda-dia-comp">3</div>
+                <div class="celda-dia-comp evento-verde" data-info="Entrenamiento 10:00h">4</div><div class="celda-dia-comp">5</div>
+                
+                <div class="celda-dia-comp">6</div><div class="celda-dia-comp evento-granate" data-info="Reunión de Sección">7</div><div class="celda-dia-comp">8</div><div class="celda-dia-comp">9</div><div class="celda-dia-comp">10</div>
+                <div class="celda-dia-comp evento-verde" data-info="Entrenamiento 10:00h">11</div><div class="celda-dia-comp">12</div>
+
+                <div class="celda-dia-comp">13</div><div class="celda-dia-comp">14</div><div class="celda-dia-comp">15</div><div class="celda-dia-comp">16</div><div class="celda-dia-comp">17</div>
+                <div class="celda-dia-comp evento-verde" data-info="Torneo Interno">18</div><div class="celda-dia-comp">19</div>
+                
+                <div class="celda-dia-comp">20</div><div class="celda-dia-comp">21</div><div class="celda-dia-comp">22</div><div class="celda-dia-comp">23</div><div class="celda-dia-comp">24</div><div class="celda-dia-comp">25</div><div class="celda-dia-comp">26</div>
+                <div class="celda-dia-comp">27</div><div class="celda-dia-comp">28</div><div class="celda-dia-comp">29</div><div class="celda-dia-comp">30</div><div class="celda-dia-comp">31</div><div class="celda-dia-comp apagado">1</div><div class="celda-dia-comp apagado">2</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        </footer>
+
+    <script>
+        fetch('noticias.json')
+            .then(response => response.json())
+            .then(data => {
+                const contenedor = document.getElementById('contenedor-noticias-dinamicas');
+                contenedor.innerHTML = ''; // Limpiar mensaje de carga
+
+                if(data.length === 0) {
+                    contenedor.innerHTML = '<p>No hay noticias recientes en esta sección.</p>';
+                    return;
+                }
+
+                data.forEach(noticia => {
+                    const tarjetaHtml = `
+                        <article class="tarjeta-noticia-comp">
+                            <div class="noticia-img-wrap">
+                                <img src="${noticia.imagen}" alt="Foto noticia">
+                            </div>
+                            <div class="noticia-info-wrap">
+                                <span class="noticia-fecha"><i class="fa-regular fa-calendar"></i> ${noticia.fecha}</span>
+                                <h4>${noticia.titulo}</h4>
+                                <p>${noticia.resumen}</p>
+                                <a href="#" class="btn-leer-noticia">Leer más →</a>
+                            </div>
+                        </article>
+                    `;
+                    contenedor.innerHTML += tarjetaHtml;
+                });
+            })
+            .catch(error => {
+                console.error('Error cargando el JSON:', error);
+                document.getElementById('contenedor-noticias-dinamicas').innerHTML = '<p>Error al cargar las noticias.</p>';
+            });
+    </script>
+</body>
                <section class="sponsors-section">
         <div class="container">
             <h3 class="sponsors-title"></h3>
