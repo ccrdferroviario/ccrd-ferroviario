@@ -993,28 +993,18 @@ body {
 .titulo-bloque { font-size: 1.4rem; color: var(--color-primario); border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 20px; }
 .noticias-lista { display: flex; flex-direction: column; gap: 20px; }
 
-.tarjeta-noticia-comp {
-    display: grid;
-    grid-template-columns: 180px 1fr;
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-    border: 1px solid #e2e8f0;
-}
-
 .noticia-img-wrap {
-    width: 180px;      /* Ancho fijo para que la imagen no invada el texto */
-    height: 100%;      /* Ocupa todo el alto de la tarjeta */
-    min-height: 150px; /* Evita que se encoja si el texto es muy corto */
-    overflow: hidden;  /* Recorta limpiamente lo que sobresalga de la foto */
+    width: 180px !important;      /* Forzado estricto de ancho */
+    height: 120px !important;     /* Le damos un alto fijo también para evitar que la foto vertical se estire hacia abajo */
+    overflow: hidden !important;  /* Recorta limpiamente lo que sobre */
+    display: block !important;
 }
 
 .noticia-img-wrap img { 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover;       /* Ajusta y recorta la imagen estilo Instagram sin deformarla */
-    object-position: center; /* Se enfoca en el centro de la fotografía */
+    width: 100% !important; 
+    height: 100% !important; 
+    object-fit: cover !important;       /* Fuerza el recorte estilo Instagram sin deformar */
+    object-position: center !important; /* Centrado absoluto */
 }
 
 .noticia-info-wrap { 
@@ -1046,7 +1036,7 @@ body {
 .btn-leer-noticia { 
     background: none;
     border: none;
-    color: var(--color-secundario); /* Tu granate corporativo */
+    color: var(--color-secundario); 
     font-weight: bold; 
     font-size: 0.9rem; 
     cursor: pointer;
