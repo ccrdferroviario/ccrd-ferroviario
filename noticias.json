@@ -1,14 +1,8 @@
 [
     {
-        "titulo": "¡Gran éxito en el Torneo de Verano de Sevilla!",
-        "fecha": "24 de Junio, 2026",
-        "resumen": "Nuestro equipo de la sección de tiro consigue subirse al podio logrando 3 medallas de oro y 2 de plata en una jornada histórica para el club.",
-        "imagen": "tiro.jpeg"
-    },
-    {
-        "titulo": "Próxima jornada de puertas abiertas",
-        "fecha": "15 de Septiembre, 2026",
-        "resumen": "Si quieres probar la disciplina de tiro olímpico y conocer nuestras instalaciones, abrimos inscripciones gratuitas para todas las edades.",
-        "imagen": "tiro.jpeg"
+        "titulo": "¡Gran éxito en la competición interempresas!",
+        "fecha": "13 de Junio, 2026",
+        "resumen": "Nuestro equipo consigue un fantástico segundo puesto en la competición interempresas. Falu, Enrique, José Manuel, Gonzalo, Luis y Dani lópez encabezaron el equipo por detrás de SEVILLANA y ",
+        "imagen": "img/tiro.png"
     }
 ]
