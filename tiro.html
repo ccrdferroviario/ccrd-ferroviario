@@ -124,26 +124,22 @@
     <footer class="main-footer">
         </footer>
 
-   <script>
-        // 1. Cargar y renderizar las noticias desde el archivo JSON independiente
+  <script>
         fetch('noticias.json')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('No se pudo acceder al archivo noticias.json');
-                }
-                return response.json();
-            })
+            .then(response => response.json())
             .then(data => {
                 const contenedor = document.getElementById('contenedor-noticias-dinamicas');
-                contenedor.innerHTML = ''; // Limpiar el mensaje de carga preliminar
+                contenedor.innerHTML = ''; 
 
                 if (data.length === 0) {
                     contenedor.innerHTML = '<p>No hay noticias recientes en esta sección en este momento.</p>';
                     return;
                 }
 
-                // Generar dinámicamente cada tarjeta de noticia con ID único para su control
                 data.forEach((noticia, index) => {
+                    // Guardamos el contenido largo de forma segura en una variable limpia
+                    const textoLargo = noticia.contenido || noticia.resumen;
+
                     const tarjetaHtml = `
                         <article class="tarjeta-noticia-comp">
                             <div class="noticia-img-wrap">
@@ -153,11 +149,13 @@
                                 <span class="noticia-fecha"><i class="fa-regular fa-calendar"></i> ${noticia.fecha}</span>
                                 <h4>${noticia.titulo}</h4>
                                 
-                                <p id="resumen-${index}" class="noticia-resumen-texto">${noticia.resumen}</p>
+                                <p id="texto-noticia-${index}" class="noticia-resumen-texto">${noticia.resumen}</p>
                                 
-                                <p id="contenido-${index}" class="noticia-completa-texto" style="display: none;">${noticia.contenido || noticia.resumen}</p>
-                                
-                                <button class="btn-leer-noticia" onclick="alternarNoticia(event, ${index})">Leer más →</button>
+                                <button class="btn-leer-noticia" 
+                                        id="btn-${index}"
+                                        data-resumen="${noticia.resumen}" 
+                                        data-completo="${textoLargo}" 
+                                        onclick="alternarNoticia(${index})">Leer más →</button>
                             </div>
                         </article>
                     `;
@@ -166,27 +164,26 @@
             })
             .catch(error => {
                 console.error('Error cargando el JSON:', error);
-                document.getElementById('contenedor-noticias-dinamicas').innerHTML = 
-                    '<p>Error al sincronizar las noticias de la sección. Por favor, inténtelo de nuevo más tarde.</p>';
+                document.getElementById('contenedor-noticias-dinamicas').innerHTML = '<p>Error al cargar las noticias.</p>';
             });
 
-        // 2. Función encargada de alternar el estado visual (Contraer / Expandir)
-        function alternarNoticia(event, id) {
-            if (event) event.preventDefault(); // Detener cualquier acción por defecto del navegador
+        // Función que intercambia los textos de forma real y física en la pantalla
+        function alternarNoticia(id) {
+            const parrafo = document.getElementById(`texto-noticia-${id}`);
+            const boton = document.getElementById(`btn-${id}`);
             
-            const resumen = document.getElementById(`resumen-${id}`);
-            const contenido = document.getElementById(`contenido-${id}`);
-            const boton = event.currentTarget || event.target; // Captura de forma segura el elemento botón
+            const textoResumen = boton.getAttribute('data-resumen');
+            const textoCompleto = boton.getAttribute('data-completo');
 
-            // Evaluar el estado actual del contenedor de texto completo
-            if (contenido.style.display === "none" || contenido.style.display === "") {
-                contenido.style.display = "block";  // Mostrar texto completo
-                resumen.style.display = "none";      // Ocultar fragmento corto
-                boton.innerHTML = "Leer menos ↑";   // Mutar etiqueta del botón
+            // Si actualmente está mostrando el resumen corto, cambiamos al largo
+            if (parrafo.innerHTML === textoResumen) {
+                parrafo.innerHTML = textoCompleto;
+                parrafo.className = "noticia-completa-texto"; // Cambia a la clase CSS de texto largo
+                boton.innerHTML = "Leer menos ↑";
             } else {
-                contenido.style.display = "none";   // Ocultar texto completo
-                resumen.style.display = "block";     // Volver a mostrar resumen
-                boton.innerHTML = "Leer más →";     // Restaurar etiqueta original
+                parrafo.innerHTML = textoResumen;
+                parrafo.className = "noticia-resumen-texto";
+                boton.innerHTML = "Leer más →";
             }
         }
     </script>
