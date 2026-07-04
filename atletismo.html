@@ -134,28 +134,28 @@
         if (noticiasAtletismo.length === 0) {
             contenedor.innerHTML = '<p>No hay noticias recientes de atletismo en este momento.</p>';
         } else {
-            noticiasAtletismo.forEach((noticia, index) => {
-                const textoLargo = noticia.contenido || noticia.resumen;
+           noticiasAtletismo.forEach((noticia, index) => {
+    const textoLargo = noticia.contenido || noticia.resumen;
 
-                const tarjetaHtml = `
-                    <article class="tarjeta-noticia-comp">
-                        <div class="noticia-img-wrap">
-                            <img src="${noticia.imagen}" alt="Foto noticia">
-                        </div>
-                        <div class="noticia-info-wrap">
-                            <span class="noticia-fecha"><i class="fa-regular fa-calendar"></i> ${noticia.fecha}</span>
-                            <h4>${noticia.titulo}</h4>
-                            <p id="texto-noticia-${index}" class="noticia-resumen-texto">${noticia.resumen}</p>
-                            <button class="btn-leer-noticia" 
-                                    id="btn-${index}"
-                                    data-resumen="${noticia.resumen}" 
-                                    data-completo="${textoLargo}" 
-                                    onclick="alternarNoticia(${index})">Leer más →</button>
-                        </div>
-                    </article>
-                `;
-                contenedor.innerHTML += tarjetaHtml;
-            });
+    const tarjetaHtml = `
+        <article class="tarjeta-noticia-comp" style="display: flex; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; margin-bottom: 20px;">
+            <div class="noticia-img-wrap" style="width: 180px; min-width: 180px; height: 160px; overflow: hidden;">
+                <img src="${noticia.imagen}" alt="Foto noticia" style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+            </div>
+            <div class="noticia-info-wrap" style="padding: 20px; display: flex; flex-direction: column; justify-content: center; flex: 1;">
+                <span class="noticia-fecha"><i class="fa-regular fa-calendar"></i> ${noticia.fecha}</span>
+                <h4 style="margin: 5px 0 8px 0; font-size: 1.2rem; color: #1e293b;">${noticia.titulo}</h4>
+                <p id="texto-noticia-${index}" class="noticia-resumen-texto" style="margin-bottom: 12px; color: #475569; font-size: 0.95rem; line-height: 1.4;">${noticia.resumen}</p>
+                <button class="btn-leer-noticia" 
+                        id="btn-${index}"
+                        data-resumen="${noticia.resumen}" 
+                        data-completo="${textoLargo}" 
+                        onclick="alternarNoticia(${index})">Leer más →</button>
+            </div>
+        </article>
+    `;
+    contenedor.innerHTML += tarjetaHtml;
+});
         }
 
         function alternarNoticia(id) {
