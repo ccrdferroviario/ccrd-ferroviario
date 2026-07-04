@@ -6,6 +6,7 @@
     <title>CCRD Ferroviario - Hazte Socio</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="noticias.js"></script>
 </head>
 <body>
 
@@ -123,47 +124,39 @@
     </section>
 
     <script>
-        fetch('noticias.json')
-            .then(response => response.json())
-            .then(data => {
-                const contenedor = document.getElementById('contenedor-noticias-dinamicas');
-                contenedor.innerHTML = ''; 
+        // Al usar noticias.js, la variable 'misNoticias' ya está disponible directamente
+        const contenedor = document.getElementById('contenedor-noticias-dinamicas');
+        contenedor.innerHTML = ''; 
 
-                // ¡FILTRO INTELIGENTE! Solo se queda con las noticias donde seccion sea 'atletismo'
-                const noticiasAtletismo = data;
+        // Filtrar las noticias por sección
+        const noticiasAtletismo = misNoticias.filter(n => n.seccion === 'atletismo');
 
-                if (noticiasAtletismo.length === 0) {
-                    contenedor.innerHTML = '<p>No hay noticias recientes de atletismo en este momento.</p>';
-                    return;
-                }
+        if (noticiasAtletismo.length === 0) {
+            contenedor.innerHTML = '<p>No hay noticias recientes de atletismo en este momento.</p>';
+        } else {
+            noticiasAtletismo.forEach((noticia, index) => {
+                const textoLargo = noticia.contenido || noticia.resumen;
 
-                noticiasAtletismo.forEach((noticia, index) => {
-                    const textoLargo = noticia.contenido || noticia.resumen;
-
-                    const tarjetaHtml = `
-                        <article class="tarjeta-noticia-comp">
-                            <div class="noticia-img-wrap">
-                                <img src="${noticia.imagen}" alt="Foto noticia">
-                            </div>
-                            <div class="noticia-info-wrap">
-                                <span class="noticia-fecha"><i class="fa-regular fa-calendar"></i> ${noticia.fecha}</span>
-                                <h4>${noticia.titulo}</h4>
-                                <p id="texto-noticia-${index}" class="noticia-resumen-texto">${noticia.resumen}</p>
-                                <button class="btn-leer-noticia" 
-                                        id="btn-${index}"
-                                        data-resumen="${noticia.resumen}" 
-                                        data-completo="${textoLargo}" 
-                                        onclick="alternarNoticia(${index})">Leer más →</button>
-                            </div>
-                        </article>
-                    `;
-                    contenedor.innerHTML += tarjetaHtml;
-                });
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                document.getElementById('contenedor-noticias-dinamicas').innerHTML = '<p>Error al cargar las noticias.</p>';
+                const tarjetaHtml = `
+                    <article class="tarjeta-noticia-comp">
+                        <div class="noticia-img-wrap">
+                            <img src="${noticia.imagen}" alt="Foto noticia">
+                        </div>
+                        <div class="noticia-info-wrap">
+                            <span class="noticia-fecha"><i class="fa-regular fa-calendar"></i> ${noticia.fecha}</span>
+                            <h4>${noticia.titulo}</h4>
+                            <p id="texto-noticia-${index}" class="noticia-resumen-texto">${noticia.resumen}</p>
+                            <button class="btn-leer-noticia" 
+                                    id="btn-${index}"
+                                    data-resumen="${noticia.resumen}" 
+                                    data-completo="${textoLargo}" 
+                                    onclick="alternarNoticia(${index})">Leer más →</button>
+                        </div>
+                    </article>
+                `;
+                contenedor.innerHTML += tarjetaHtml;
             });
+        }
 
         function alternarNoticia(id) {
             const parrafo = document.getElementById(`texto-noticia-${id}`);
