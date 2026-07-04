@@ -124,40 +124,63 @@
     <footer class="main-footer">
         </footer>
 
-    <script>
-        fetch('noticias.json')
-            .then(response => response.json())
-            .then(data => {
-                const contenedor = document.getElementById('contenedor-noticias-dinamicas');
-                contenedor.innerHTML = ''; // Limpiar mensaje de carga
+   <script>
+    fetch('noticias.json')
+        .then(response => response.json())
+        .then(data => {
+            const contenedor = document.getElementById('contenedor-noticias-dinamicas');
+            contenedor.innerHTML = ''; 
 
-                if(data.length === 0) {
-                    contenedor.innerHTML = '<p>No hay noticias recientes en esta sección.</p>';
-                    return;
-                }
+            if(data.length === 0) {
+                contenedor.innerHTML = '<p>No hay noticias recientes en esta sección.</p>';
+                return;
+            }
 
-                data.forEach(noticia => {
-                    const tarjetaHtml = `
-                        <article class="tarjeta-noticia-comp">
-                            <div class="noticia-img-wrap">
-                                <img src="${noticia.imagen}" alt="Foto noticia">
-                            </div>
-                            <div class="noticia-info-wrap">
-                                <span class="noticia-fecha"><i class="fa-regular fa-calendar"></i> ${noticia.fecha}</span>
-                                <h4>${noticia.titulo}</h4>
-                                <p>${noticia.resumen}</p>
-                                <a href="#" class="btn-leer-noticia">Leer más →</a>
-                            </div>
-                        </article>
-                    `;
-                    contenedor.innerHTML += tarjetaHtml;
-                });
-            })
-            .catch(error => {
-                console.error('Error cargando el JSON:', error);
-                document.getElementById('contenedor-noticias-dinamicas').innerHTML = '<p>Error al cargar las noticias.</p>';
+            data.forEach((noticia, index) => {
+                const tarjetaHtml = `
+                    <article class="tarjeta-noticia-comp">
+                        <div class="noticia-img-wrap">
+                            <img src="${noticia.imagen}" alt="Foto noticia">
+                        </div>
+                        <div class="noticia-info-wrap">
+                            <span class="noticia-fecha"><i class="fa-regular fa-calendar"></i> ${noticia.fecha}</span>
+                            <h4>${noticia.titulo}</h4>
+                            
+                            <p id="resumen-${index}" class="noticia-resumen-texto">${noticia.resumen}</p>
+                            
+                            <p id="contenido-${index}" class="noticia-completa-texto" style="display: none;">${noticia.contenido || noticia.resumen}</p>
+                            
+                            <a href="#" class="btn-leer-noticia" onclick="alternarNoticia(event, ${index})">Leer más →</a>
+                        </div>
+                    </article>
+                `;
+                contenedor.innerHTML += tarjetaHtml;
             });
-    </script>
+        })
+        .catch(error => {
+            console.error('Error cargando el JSON:', error);
+            document.getElementById('contenedor-noticias-dinamicas').innerHTML = '<p>Error al cargar las noticias.</p>';
+        });
+
+    // Función mágica para expandir y contraer la noticia
+    function alternarNoticia(event, id) {
+        event.preventDefault(); // Evita que la página salte hacia arriba
+        
+        const resumen = document.getElementById(`resumen-${id}`);
+        const contenido = document.getElementById(`contenido-${id}`);
+        const boton = event.target;
+
+        if (contenido.style.display === "none") {
+            contenido.style.display = "block";
+            resumen.style.display = "none";
+            boton.innerHTML = "Leer menos ↑";
+        } else {
+            contenido.style.display = "none";
+            resumen.style.display = "block";
+            boton.innerHTML = "Leer más →";
+        }
+    }
+</script>
 </body>
                <section class="sponsors-section">
         <div class="container">
