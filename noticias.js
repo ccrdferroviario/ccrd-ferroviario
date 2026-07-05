@@ -25,10 +25,10 @@ const misNoticias = [
     },
     {
         "seccion": "padel",
-        "titulo": "¡Arranca el I Torneo de Pádel Ferroviario!",
-        "fecha": "4 de Julio, 2026",
-        "resumen": "Abiertas las inscripciones para el torneo apertura en modalidades masculina, femenina y mixta.",
-        "contenido": "Damos el pistoletazo de salida a la sección con nuestro primer torneo interno en formato 'Pozo' para garantizar partidos dinámicos y equilibrados. Habrá trofeos para los ganadores y un aperitivo de convivencia al finalizar los encuentros. ¡Reserva tu plaza antes de que se agoten!",
+        "titulo": "¡Arranca la I Liga de Pádel Ferroviaria!",
+        "fecha": "1 de Noviembre, 2025",
+        "resumen": "Abiertas las inscripciones para la I Liga de Padel Ferroviaria.",
+        "contenido": "Damos el pistoletazo de salida a la sección con nuestro primer torneo. Fecha límite de inscripcion: 20 de Noviembre de 2025. Formato: liga + eliminatorias. Para más información consulte el PDF adjunto.",
         "imagen": "img/padel1.png"
     },
 ];
