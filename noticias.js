@@ -39,7 +39,7 @@ const misNoticias = [
         
         // 📂 NUEVO: Documento adjunto (Opcional)
         "adjunto": {
-            "ruta": "documentos/I_Liga_Padel_v2.pdf",
+            "ruta": "documentos/I_liga_padel.pdf",
             "texto": "Descargar Bases de la Liga (PDF)"
     },
 ];
