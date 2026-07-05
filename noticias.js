@@ -24,4 +24,4 @@ const misNoticias = [
         "imagen": ""
     }
 ];
-];
+
