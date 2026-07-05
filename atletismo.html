@@ -137,15 +137,43 @@
            noticiasAtletismo.forEach((noticia, index) => {
     const textoLargo = noticia.contenido || noticia.resumen;
 
-    const tarjetaHtml = `
-        <article class="tarjeta-noticia-comp" style="display: flex; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; margin-bottom: 20px;">
-            <div class="noticia-img-wrap" style="width: 180px; min-width: 180px; height: 160px; overflow: hidden;">
-                <img src="${noticia.imagen}" alt="Foto noticia" style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+   // 1. Comprobamos si hay documento adjunto
+    let htmlAdjunto = '';
+    if (noticia.adjunto) {
+        htmlAdjunto = `
+            <div class="noticia-adjunto-bloque">
+                <a href="${noticia.adjunto.ruta}" class="btn-adjunto-descarga" download>
+                    <i class="fa-solid fa-file-pdf"></i> ${noticia.adjunto.texto}
+                </a>
             </div>
-            <div class="noticia-info-wrap" style="padding: 20px; display: flex; flex-direction: column; justify-content: center; flex: 1;">
+        `;
+    }
+
+    // 2. Comprobamos si hay galería de fotos
+    let htmlGaleria = '';
+    if (noticia.galeria && noticia.galeria.length > 0) {
+        htmlGaleria = '<div class="noticia-galeria-grid">';
+        noticia.galeria.forEach(foto => {
+            htmlGaleria += `<img src="${foto}" alt="Foto de la galería" class="img-galeria-item" onclick="window.open(this.src)">`;
+        });
+        htmlGaleria += '</div>';
+    }
+
+    // 3. Montamos la tarjeta final inyectando los extras de forma condicional
+    const tarjetaHtml = `
+        <article class="tarjeta-noticia-comp">
+            <div class="noticia-img-wrap">
+                <img src="${noticia.imagen}" alt="Foto principal">
+            </div>
+            <div class="noticia-info-wrap">
                 <span class="noticia-fecha"><i class="fa-regular fa-calendar"></i> ${noticia.fecha}</span>
-                <h4 style="margin: 5px 0 8px 0; font-size: 1.2rem; color: #1e293b;">${noticia.titulo}</h4>
-                <p id="texto-noticia-${index}" class="noticia-resumen-texto" style="margin-bottom: 12px; color: #475569; font-size: 0.95rem; line-height: 1.4;">${noticia.resumen}</p>
+                <h4>${noticia.titulo}</h4>
+                <p id="texto-noticia-${index}" class="noticia-resumen-texto">${noticia.resumen}</p>
+                
+                ${htmlAdjunto}
+                
+                ${htmlGaleria}
+
                 <button class="btn-leer-noticia" 
                         id="btn-${index}"
                         data-resumen="${noticia.resumen}" 
@@ -158,22 +186,38 @@
 });
         }
 
-        function alternarNoticia(id) {
-            const parrafo = document.getElementById(`texto-noticia-${id}`);
-            const boton = document.getElementById(`btn-${id}`);
-            const textoResumen = boton.getAttribute('data-resumen');
-            const textoCompleto = boton.getAttribute('data-completo');
+       function alternarNoticia(id) {
+    const parrafo = document.getElementById(`texto-noticia-${id}`);
+    const boton = document.getElementById(`btn-${id}`);
+    
+    // Buscamos los bloques extras de esta noticia concreta
+    const tarjeta = boton.closest('.tarjeta-noticia-comp');
+    const bloqueAdjunto = tarjeta.querySelector('.noticia-adjunto-bloque');
+    const bloqueGaleria = tarjeta.querySelector('.noticia-galeria-grid');
 
-            if (parrafo.innerHTML === textoResumen) {
-                parrafo.innerHTML = textoCompleto;
-                parrafo.className = "noticia-completa-texto";
-                boton.innerHTML = "Leer menos ↑";
-            } else {
-                parrafo.innerHTML = textoResumen;
-                parrafo.className = "noticia-resumen-texto";
-                boton.innerHTML = "Leer más →";
-            }
-        }
+    const textoResumen = boton.getAttribute('data-resumen');
+    const textoCompleto = boton.getAttribute('data-completo');
+
+    if (parrafo.innerHTML === textoResumen) {
+        // Expandir
+        parrafo.innerHTML = textoCompleto;
+        parrafo.className = "noticia-completa-texto";
+        boton.innerHTML = "Leer menos ↑";
+        
+        // Mostramos los extras si existen
+        if (bloqueAdjunto) bloqueAdjunto.style.display = 'block';
+        if (bloqueGaleria) bloqueGaleria.style.display = 'grid';
+    } else {
+        // Colapsar
+        parrafo.innerHTML = textoResumen;
+        parrafo.className = "noticia-resumen-texto";
+        boton.innerHTML = "Leer más →";
+        
+        // Ocultamos los extras si existen
+        if (bloqueAdjunto) bloqueAdjunto.style.display = 'none';
+        if (bloqueGaleria) bloqueGaleria.style.display = 'none';
+    }
+}
     </script>
    </div>
 
