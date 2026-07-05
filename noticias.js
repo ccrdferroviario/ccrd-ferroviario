@@ -21,7 +21,7 @@ const misNoticias = [
         "fecha": "1 de Junio, 2026",
         "resumen": "Inauguramos la nueva sección de ajedrez con muchas novedades.",
         "contenido": "Inauguramos una nueva sección de ajedrez con muchas novedades y proyectos. ¡Anímate a entrenar tu mente y a disfrutar de la estrategia en el mejor ambiente!",
-        "imagen": ""
+        "imagen": "img/ajedrez1.png"
     }
 ];
 
