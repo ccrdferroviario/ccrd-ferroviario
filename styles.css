@@ -1182,3 +1182,8 @@ body {
 .img-galeria-item:hover {
     transform: scale(1.05);
 }
+/* Al cargar la página, los extras están escondidos */
+.noticia-adjunto-bloque,
+.noticia-galeria-grid {
+    display: none;
+}
