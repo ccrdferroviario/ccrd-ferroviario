@@ -121,41 +121,53 @@
         </div>
     </section>
 
-    <script>
-        const contenedor = document.getElementById('contenedor-noticias-dinamicas');
-        contenedor.innerHTML = ''; 
+   <script>
+        // Esperamos a que la página y noticias.js estén totalmente cargados
+        window.addEventListener('DOMContentLoaded', () => {
+            const contenedor = document.getElementById('contenedor-noticias-dinamicas');
+            
+            // Verificación de seguridad por si acaso
+            if (!contenedor) return;
+            
+            contenedor.innerHTML = ''; 
 
-        // Filtrar las noticias por la etiqueta 'ajedrez'
-        const noticiasAjedrez = misNoticias.filter(n => n.seccion === 'ajedrez');
+            // Comprobamos si la variable global existe
+            if (typeof misNoticias === 'undefined') {
+                contenedor.innerHTML = '<p>Error: No se ha podido acceder a la base de datos de noticias.</p>';
+                return;
+            }
 
-        if (noticiasAjedrez.length === 0) {
-            contenedor.innerHTML = '<p>No hay noticias recientes de la sección de ajedrez en este momento.</p>';
-        } else {
-            noticiasAjedrez.forEach((noticia, index) => {
-                const textoLargo = noticia.contenido || noticia.resumen;
+            // Filtrar las noticias por la sección exacta: 'ajedrez'
+            const noticiasAjedrez = misNoticias.filter(n => n.seccion === 'ajedrez');
 
-                const tarjetaHtml = `
-                    <article class="tarjeta-noticia-comp">
-                        <div class="noticia-img-wrap">
-                            <img src="${noticia.imagen}" alt="Foto noticia ajedrez">
-                        </div>
-                        <div class="noticia-info-wrap">
-                            <span class="noticia-fecha"><i class="fa-regular fa-calendar"></i> ${noticia.fecha}</span>
-                            <h4>${noticia.titulo}</h4>
-                            <p id="texto-noticia-${index}" class="noticia-resumen-texto">${noticia.resumen}</p>
-                            <button class="btn-leer-noticia" 
-                                    id="btn-${index}"
-                                    data-resumen="${noticia.resumen}" 
-                                    data-completo="${textoLargo}" 
-                                    onclick="alternarNoticia(${index})">Leer más →</button>
-                        </div>
-                    </article>
-                `;
-                contenedor.innerHTML += tarjetaHtml;
-            });
-        }
+            if (noticiasAjedrez.length === 0) {
+                contenedor.innerHTML = '<p>No hay noticias recientes de la sección de ajedrez en este momento.</p>';
+            } else {
+                noticiasAjedrez.forEach((noticia, index) => {
+                    const textoLargo = noticia.contenido || noticia.resumen;
 
-        // Función de expansión de noticias (Reutilizable)
+                    const tarjetaHtml = `
+                        <article class="tarjeta-noticia-comp">
+                            <div class="noticia-img-wrap">
+                                <img src="${noticia.imagen}" alt="Foto noticia ajedrez">
+                            </div>
+                            <div class="noticia-info-wrap">
+                                <span class="noticia-fecha"><i class="fa-regular fa-calendar"></i> ${noticia.fecha}</span>
+                                <h4>${noticia.titulo}</h4>
+                                <p id="texto-noticia-${index}" class="noticia-resumen-texto">${noticia.resumen}</p>
+                                <button class="btn-leer-noticia" 
+                                        id="btn-${index}"
+                                        data-resumen="${noticia.resumen}" 
+                                        data-completo="${textoLargo}" 
+                                        onclick="alternarNoticia(${index})">Leer más →</button>
+                            </div>
+                        </article>
+                    `;
+                    contenedor.innerHTML += tarjetaHtml;
+                });
+            }
+        });
+
         function alternarNoticia(id) {
             const parrafo = document.getElementById(`texto-noticia-${id}`);
             const boton = document.getElementById(`btn-${id}`);
