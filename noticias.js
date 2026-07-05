@@ -22,6 +22,14 @@ const misNoticias = [
         "resumen": "Inauguramos la nueva sección de ajedrez con muchas novedades.",
         "contenido": "Inauguramos una nueva sección de ajedrez con muchas novedades y proyectos. ¡Anímate a entrenar tu mente y a disfrutar de la estrategia en el mejor ambiente!",
         "imagen": "img/ajedrez1.png"
-    }
+    },
+    {
+        "seccion": "padel",
+        "titulo": "¡Arranca el I Torneo de Pádel Ferroviario!",
+        "fecha": "4 de Julio, 2026",
+        "resumen": "Abiertas las inscripciones para el torneo apertura en modalidades masculina, femenina y mixta.",
+        "contenido": "Damos el pistoletazo de salida a la sección con nuestro primer torneo interno en formato 'Pozo' para garantizar partidos dinámicos y equilibrados. Habrá trofeos para los ganadores y un aperitivo de convivencia al finalizar los encuentros. ¡Reserva tu plaza antes de que se agoten!",
+        "imagen": "img/padel1.png"
+    },
 ];
 
