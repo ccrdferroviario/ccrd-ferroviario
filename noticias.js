@@ -30,6 +30,17 @@ const misNoticias = [
         "resumen": "Abiertas las inscripciones para la I Liga de Padel Ferroviaria.",
         "contenido": "Damos el pistoletazo de salida a la sección con nuestro primer torneo. Fecha límite de inscripcion: 20 de Noviembre de 2025. Formato: liga + eliminatorias. Para más información consulte el PDF adjunto.",
         "imagen": "img/padel1.png"
+        // 📸 NUEVO: Galería de fotos (Opcional)
+        "galeria": [
+            "img/padel_galeria1.png",
+            "img/padel_galeria2.png",
+            "img/padel_galeria3.png"
+        ],
+        
+        // 📂 NUEVO: Documento adjunto (Opcional)
+        "adjunto": {
+            "ruta": "documentos/I_Liga_Padel_v2.pdf",
+            "texto": "Descargar Bases de la Liga (PDF)"
     },
 ];
 
