@@ -196,21 +196,38 @@
             }
         });
 
-        function alternarNoticia(id) {
-            const parrafo = document.getElementById(`texto-noticia-${id}`);
-            const boton = document.getElementById(`btn-${id}`);
-            const textoResumen = boton.getAttribute('data-resumen');
-            const textoCompleto = boton.getAttribute('data-completo');
+       function alternarNoticia(id) {
+    const parrafo = document.getElementById(`texto-noticia-${id}`);
+    const boton = document.getElementById(`btn-${id}`);
+    
+    // Buscamos los bloques extras de esta noticia concreta
+    const tarjeta = boton.closest('.tarjeta-noticia-comp');
+    const bloqueAdjunto = tarjeta.querySelector('.noticia-adjunto-bloque');
+    const bloqueGaleria = tarjeta.querySelector('.noticia-galeria-grid');
 
-            if (parrafo.innerHTML === textoResumen) {
-                parrafo.innerHTML = textoCompleto;
-                parrafo.className = "noticia-completa-texto";
-                boton.innerHTML = "Leer menos ↑";
-            } else {
-                parrafo.innerHTML = textoResumen;
-                parrafo.className = "noticia-resumen-texto";
-                boton.innerHTML = "Leer más →";
-            }
+    const textoResumen = boton.getAttribute('data-resumen');
+    const textoCompleto = boton.getAttribute('data-completo');
+
+    if (parrafo.innerHTML === textoResumen) {
+        // Expandir
+        parrafo.innerHTML = textoCompleto;
+        parrafo.className = "noticia-completa-texto";
+        boton.innerHTML = "Leer menos ↑";
+        
+        // Mostramos los extras si existen
+        if (bloqueAdjunto) bloqueAdjunto.style.display = 'block';
+        if (bloqueGaleria) bloqueGaleria.style.display = 'grid';
+    } else {
+        // Colapsar
+        parrafo.innerHTML = textoResumen;
+        parrafo.className = "noticia-resumen-texto";
+        boton.innerHTML = "Leer más →";
+        
+        // Ocultamos los extras si existen
+        if (bloqueAdjunto) bloqueAdjunto.style.display = 'none';
+        if (bloqueGaleria) bloqueGaleria.style.display = 'none';
+    }
+}
         }
     </script>
 </body>
