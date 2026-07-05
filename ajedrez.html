@@ -47,6 +47,133 @@
                     <li><a href="noticias.html">Noticias</a></li>
                 </ul>
             </div>
+            <div class="seccion-hero-banner" style="background-image: url('img/ajedrez_banner.png');">
+        <div class="banner-overlay">
+            <div class="container">
+                <span class="banner-tag">Sección Oficial</span>
+                <h1>Sección de Ajedrez</h1>
+                <p>Estrategia, concentración y mente fría en cada movimiento.</p>
+            </div>
+        </div>
+    </div>
+
+    <main class="container page-content-padding">
+        <div class="seccion-grid">
+            
+            <div class="col-principal">
+                <section class="info-introduccion">
+                    <h2>Mente y Estrategia Ferroviaria</h2>
+                    <p>La sección de ajedrez del CCRD Ferroviario es un espacio para jugadores de todos los niveles, desde principiantes que quieren aprender las bases hasta jugadores experimentados que buscan competir en torneos federados. Fomentamos la concentración, el pensamiento crítico y el fair play en un ambiente amigable y relajado.</p>
+                </section>
+
+                <section class="noticias-seccion-contenedor">
+                    <h3 class="titulo-bloque"><i class="fa-solid fa-newspaper"></i> Últimas Noticias de Ajedrez</h3>
+                    <div id="contenedor-noticias-dinamicas" class="noticias-lista">
+                        <p class="cargando">Cargando noticias de ajedrez...</p>
+                    </div>
+                </section>
+            </div>
+
+            <aside class="seccion-sidebar">
+                <div class="sidebar-card">
+                    <div class="sidebar-card-body">
+                        <h4>Horarios y Club</h4>
+                        <p><i class="fa-regular fa-calendar-days"></i> Martes y Jueves</p>
+                        <p class="horario-detalle">17:00h a 19:00h (Clases / Partidas)</p>
+                        <p><i class="fa-regular fa-calendar-days"></i> Sábados</p>
+                        <p class="horario-detalle">10:00h (Competiciones / Torneos)</p>
+                        <hr>
+                        <a href="socio.html" class="btn-sidebar-action">Apuntarse al Club</a>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <section class="calendario-seccion-bloque">
+        <div class="container">
+            <div class="calendario-header-compacto">
+                <h3><i class="fa-regular fa-calendar"></i> Calendario de Torneos y Eventos</h3>
+                <div class="cal-flechas">
+                    <button class="btn-cal-flecha">◀</button>
+                    <span class="cal-mes-actual">JULIO 2026</span>
+                    <button class="btn-cal-flecha">▶</button>
+                </div>
+            </div>
+
+            <div class="calendario-tabla-compacta">
+                <div class="dia-semana-comp">Lun</div><div class="dia-semana-comp">Mar</div><div class="dia-semana-comp">Mié</div><div class="dia-semana-comp">Jue</div><div class="dia-semana-comp">Vie</div><div class="dia-semana-comp">Sáb</div><div class="dia-semana-comp">Dom</div>
+                
+                <div class="celda-dia-comp apagado">29</div><div class="celda-dia-comp apagado">30</div>
+                <div class="celda-dia-comp">1</div><div class="celda-dia-comp evento-verde" data-info="Clase Iniciación">2</div><div class="celda-dia-comp">3</div>
+                <div class="celda-dia-comp evento-granate" data-info="Torneo Rápido">4</div><div class="celda-dia-comp">5</div>
+                
+                <div class="celda-dia-comp">6</div><div class="celda-dia-comp evento-verde" data-info="Clase Intermedia">7</div>
+                <div class="celda-dia-comp">8</div><div class="celda-dia-comp evento-verde" data-info="Clase Táctica">9</div><div class="celda-dia-comp">10</div>
+                <div class="celda-dia-comp">11</div><div class="celda-dia-comp">12</div>
+
+                <div class="celda-dia-comp">13</div><div class="celda-dia-comp evento-verde" data-info="Análisis Partidas">14</div><div class="celda-dia-comp">15</div><div class="celda-dia-comp">16</div><div class="celda-dia-comp">17</div><div class="celda-dia-comp">18</div><div class="celda-dia-comp">19</div>
+                <div class="celda-dia-comp">20</div><div class="celda-dia-comp">21</div><div class="celda-dia-comp">22</div><div class="celda-dia-comp">23</div><div class="celda-dia-comp">24</div><div class="celda-dia-comp">25</div><div class="celda-dia-comp">26</div>
+                <div class="celda-dia-comp">27</div><div class="celda-dia-comp">28</div><div class="celda-dia-comp">29</div><div class="celda-dia-comp">30</div><div class="celda-dia-comp">31</div><div class="celda-dia-comp apagado">1</div><div class="celda-dia-comp apagado">2</div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const contenedor = document.getElementById('contenedor-noticias-dinamicas');
+        contenedor.innerHTML = ''; 
+
+        // Filtrar las noticias por la etiqueta 'ajedrez'
+        const noticiasAjedrez = misNoticias.filter(n => n.seccion === 'ajedrez');
+
+        if (noticiasAjedrez.length === 0) {
+            contenedor.innerHTML = '<p>No hay noticias recientes de la sección de ajedrez en este momento.</p>';
+        } else {
+            noticiasAjedrez.forEach((noticia, index) => {
+                const textoLargo = noticia.contenido || noticia.resumen;
+
+                const tarjetaHtml = `
+                    <article class="tarjeta-noticia-comp">
+                        <div class="noticia-img-wrap">
+                            <img src="${noticia.imagen}" alt="Foto noticia ajedrez">
+                        </div>
+                        <div class="noticia-info-wrap">
+                            <span class="noticia-fecha"><i class="fa-regular fa-calendar"></i> ${noticia.fecha}</span>
+                            <h4>${noticia.titulo}</h4>
+                            <p id="texto-noticia-${index}" class="noticia-resumen-texto">${noticia.resumen}</p>
+                            <button class="btn-leer-noticia" 
+                                    id="btn-${index}"
+                                    data-resumen="${noticia.resumen}" 
+                                    data-completo="${textoLargo}" 
+                                    onclick="alternarNoticia(${index})">Leer más →</button>
+                        </div>
+                    </article>
+                `;
+                contenedor.innerHTML += tarjetaHtml;
+            });
+        }
+
+        // Función de expansión de noticias (Reutilizable)
+        function alternarNoticia(id) {
+            const parrafo = document.getElementById(`texto-noticia-${id}`);
+            const boton = document.getElementById(`btn-${id}`);
+            const textoResumen = boton.getAttribute('data-resumen');
+            const textoCompleto = boton.getAttribute('data-completo');
+
+            if (parrafo.innerHTML === textoResumen) {
+                parrafo.innerHTML = textoCompleto;
+                parrafo.className = "noticia-completa-texto";
+                boton.innerHTML = "Leer menos ↑";
+            } else {
+                parrafo.innerHTML = textoResumen;
+                parrafo.className = "noticia-resumen-texto";
+                boton.innerHTML = "Leer más →";
+            }
+        }
+    </script>
+</body>
+</html>
              <section class="sponsors-section">
         <div class="container">
             <h3 class="sponsors-title"></h3>
