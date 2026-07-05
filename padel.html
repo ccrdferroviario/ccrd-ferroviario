@@ -47,6 +47,138 @@
                     <li><a href="noticias.html">Noticias</a></li>
                 </ul>
             </div>
+            <div class="seccion-hero-banner" style="background-image: url('img/padel_banner.png');">
+        <div class="banner-overlay">
+            <div class="container">
+                <span class="banner-tag">Sección Oficial</span>
+                <h1>Sección de Pádel</h1>
+                <p>Reflejos, dinamismo y puro espíritu de equipo en la pista.</p>
+            </div>
+        </div>
+    </div>
+
+    <main class="container page-content-padding">
+        <div class="seccion-grid">
+            
+            <div class="col-principal">
+                <section class="info-introduccion">
+                    <h2>Pulsaciones altas y buen ambiente</h2>
+                    <p>La sección de pádel del CCRD Ferroviario nace para dar respuesta a la gran afición de nuestros socios por este deporte tan dinámico. Organizamos rankings internos, quedadas los fines de semana y entrenamientos adaptados a todos los niveles. Un lugar ideal para soltar adrenalina, mejorar la técnica y disfrutar del tercer tiempo.</p>
+                </section>
+
+                <section class="noticias-seccion-contenedor">
+                    <h3 class="titulo-bloque"><i class="fa-solid fa-newspaper"></i> Últimas Noticias de Pádel</h3>
+                    <div id="contenedor-noticias-dinamicas" class="noticias-lista">
+                        <p class="cargando">Cargando noticias de pádel...</p>
+                    </div>
+                </section>
+            </div>
+
+            <aside class="seccion-sidebar">
+                <div class="sidebar-card">
+                    <div class="sidebar-card-body">
+                        <h4>Horarios y Pistas</h4>
+                        <p><i class="fa-regular fa-calendar-days"></i> Lunes a Viernes</p>
+                        <p class="horario-detalle">18:00h a 22:00h (Rankings / Partidas)</p>
+                        <p><i class="fa-regular fa-calendar-days"></i> Sábados y Domingos</p>
+                        <p class="horario-detalle">09:00h a 14:00h (Torneos Express)</p>
+                        <hr>
+                        <a href="socio.html" class="btn-sidebar-action">Apuntarse al Club</a>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <section class="calendario-seccion-bloque">
+        <div class="container">
+            <div class="calendario-header-compacto">
+                <h3><i class="fa-regular fa-calendar"></i> Calendario de Eventos y Partidos</h3>
+                <div class="cal-flechas">
+                    <button class="btn-cal-flecha">◀</button>
+                    <span class="cal-mes-actual">JULIO 2026</span>
+                    <button class="btn-cal-flecha">▶</button>
+                </div>
+            </div>
+
+            <div class="calendario-tabla-compacta">
+                <div class="dia-semana-comp">Lun</div><div class="dia-semana-comp">Mar</div><div class="dia-semana-comp">Mié</div><div class="dia-semana-comp">Jue</div><div class="dia-semana-comp">Vie</div><div class="dia-semana-comp">Sáb</div><div class="dia-semana-comp">Dom</div>
+                
+                <div class="celda-dia-comp apagado">29</div><div class="celda-dia-comp apagado">30</div>
+                <div class="celda-dia-comp">1</div><div class="celda-dia-comp">2</div><div class="celda-dia-comp">3</div>
+                <div class="celda-dia-comp evento-granate" data-info="Pozo de Bienvenida">4</div><div class="celda-dia-comp">5</div>
+                
+                <div class="celda-dia-comp">6</div><div class="celda-dia-comp">7</div><div class="celda-dia-comp">8</div>
+                <div class="celda-dia-comp evento-verde" data-info="Entrenamiento Técnico">9</div><div class="celda-dia-comp">10</div>
+                <div class="celda-dia-comp">11</div><div class="celda-dia-comp">12</div>
+
+                <div class="celda-dia-comp">13</div><div class="celda-dia-comp">14</div><div class="celda-dia-comp">15</div><div class="celda-dia-comp">16</div><div class="celda-dia-comp">17</div><div class="celda-dia-comp">18</div><div class="celda-dia-comp">19</div>
+                <div class="celda-dia-comp">20</div><div class="celda-dia-comp">21</div><div class="celda-dia-comp">22</div><div class="celda-dia-comp">23</div><div class="celda-dia-comp">24</div><div class="celda-dia-comp">25</div><div class="celda-dia-comp">26</div>
+                <div class="celda-dia-comp">27</div><div class="celda-dia-comp">28</div><div class="celda-dia-comp">29</div><div class="celda-dia-comp">30</div><div class="celda-dia-comp">31</div><div class="celda-dia-comp apagado">1</div><div class="celda-dia-comp apagado">2</div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const contenedor = document.getElementById('contenedor-noticias-dinamicas');
+            if (!contenedor) return;
+            contenedor.innerHTML = ''; 
+
+            if (typeof misNoticias === 'undefined') {
+                contenedor.innerHTML = '<p>Error: No se ha podido acceder a la base de datos de noticias.</p>';
+                return;
+            }
+
+            // Filtramos por 'padel'
+            const noticiasPadel = misNoticias.filter(n => n.seccion === 'padel');
+
+            if (noticiasPadel.length === 0) {
+                contenedor.innerHTML = '<p>No hay noticias recientes de la sección de pádel en este momento.</p>';
+            } else {
+                noticiasPadel.forEach((noticia, index) => {
+                    const textoLargo = noticia.contenido || noticia.resumen;
+
+                    const tarjetaHtml = `
+                        <article class="tarjeta-noticia-comp">
+                            <div class="noticia-img-wrap">
+                                <img src="${noticia.imagen}" alt="Foto noticia padel">
+                            </div>
+                            <div class="noticia-info-wrap">
+                                <span class="noticia-fecha"><i class="fa-regular fa-calendar"></i> ${noticia.fecha}</span>
+                                <h4>${noticia.titulo}</h4>
+                                <p id="texto-noticia-${index}" class="noticia-resumen-texto">${noticia.resumen}</p>
+                                <button class="btn-leer-noticia" 
+                                        id="btn-${index}"
+                                        data-resumen="${noticia.resumen}" 
+                                        data-completo="${textoLargo}" 
+                                        onclick="alternarNoticia(${index})">Leer más →</button>
+                            </div>
+                        </article>
+                    `;
+                    contenedor.innerHTML += tarjetaHtml;
+                });
+            }
+        });
+
+        function alternarNoticia(id) {
+            const parrafo = document.getElementById(`texto-noticia-${id}`);
+            const boton = document.getElementById(`btn-${id}`);
+            const textoResumen = boton.getAttribute('data-resumen');
+            const textoCompleto = boton.getAttribute('data-completo');
+
+            if (parrafo.innerHTML === textoResumen) {
+                parrafo.innerHTML = textoCompleto;
+                parrafo.className = "noticia-completa-texto";
+                boton.innerHTML = "Leer menos ↑";
+            } else {
+                parrafo.innerHTML = textoResumen;
+                parrafo.className = "noticia-resumen-texto";
+                boton.innerHTML = "Leer más →";
+            }
+        }
+    </script>
                <section class="sponsors-section">
         <div class="container">
             <h3 class="sponsors-title"></h3>
