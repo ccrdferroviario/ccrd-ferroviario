@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CCRD Ferroviario - Hazte Socio</title>
+    <title>Actualidad y Noticias - CCRD Ferroviario de Sevilla</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="noticias.js?v=1.5"></script>
 </head>
 <body>
 
@@ -32,7 +33,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle">Secciones <span class="arrow">▾</span></a>
                         <ul class="dropdown-menu">
-                                <li><a href="atletismo.html">Atletismo</a></li>
+                            <li><a href="atletismo.html">Atletismo</a></li>
                             <li><a href="tiro.html">Tiro al plato</a></li>
                             <li><a href="ajedrez.html">Ajedrez</a></li>
                             <li><a href="ciclismo.html">Ciclismo y triatlón</a></li>
@@ -47,26 +48,152 @@
                     <li><a href="noticias.html">Noticias</a></li>
                 </ul>
             </div>
-               <section class="sponsors-section">
-        <div class="container">
-            <h3 class="sponsors-title"></h3>
-            <div class="sponsors-grid">
-                <div class="sponsor-logo">PATROCINADOR 1</div>
-                <div class="sponsor-logo">PATROCINADOR 2</div>
-                <div class="sponsor-logo">PATROCINADOR 3</div>
-                <div class="sponsor-logo">PATROCINADOR 4</div>
+        </nav>
+    </header>
+
+    <div class="seccion-hero-banner" style="background-image: url('img/noticias_banner.png');">
+        <div class="banner-overlay">
+            <div class="container">
+                <span class="banner-tag">Actualidad</span>
+                <h1>Tablón de Noticias</h1>
+                <p>Todo lo que ocurre en nuestro club y sus secciones deportivas y culturales.</p>
             </div>
         </div>
-    </section>
+    </div>
 
-    <footer class="main-footer">
-        <div class="container footer-columns">
+    <main class="container page-content-padding">
+        <div class="seccion-grid">
             
+            <div class="col-principal">
+                <section class="noticias-seccion-contenedor">
+                    <h3 class="titulo-bloque"><i class="fa-solid fa-newspaper"></i> Crónicas y Avisos Recientes</h3>
+                    
+                    <div id="contenedor-noticias-general" class="noticias-lista">
+                        <p class="cargando">Cargando el tablón de anuncios...</p>
+                    </div>
+                </section>
+            </div>
+
+            <aside class="seccion-sidebar">
+                <div class="sidebar-card">
+                    <div class="sidebar-card-body">
+                        <h4>Atención al Socio</h4>
+                        <p>¿Tienes alguna duda sobre las licencias federativas o las cuotas del club?</p>
+                        <hr>
+                        <a href="local.html" class="btn-sidebar-action" style="margin-bottom: 10px;">Visitar la Sede</a>
+                        <a href="mailto:ccrdferroviario@hotmail.com" class="btn-sidebar-action" style="background:#333;">Escribir un Correo</a>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const contenedor = document.getElementById('contenedor-noticias-general');
+            if (!contenedor) return;
+            contenedor.innerHTML = ''; 
+
+            if (typeof misNoticias === 'undefined') {
+                contenedor.innerHTML = '<p>Error: No se ha podido acceder a la base de datos de noticias.</p>';
+                return;
+            }
+
+            if (misNoticias.length === 0) {
+                contenedor.innerHTML = '<p>No hay noticias publicadas en este momento.</p>';
+            } else {
+                // Pintamos TODAS las noticias del array sin discriminar sección
+                misNoticias.forEach((noticia, index) => {
+                    const textoLargo = noticia.contenido || noticia.resumen;
+
+                    // Mapeamos el nombre técnico a algo elegante para la etiqueta visual
+                    let nombreSeccion = noticia.seccion.toUpperCase();
+                    if(nombreSeccion === 'CLUB') nombreSeccion = 'AVISO OFICIAL';
+                    if(nombreSeccion === 'CHAFER') nombreSeccion = 'MODELISMO';
+
+                    let htmlAdjunto = '';
+                    if (noticia.adjunto) {
+                        htmlAdjunto = `
+                            <div class="noticia-adjunto-bloque">
+                                <a href="${noticia.adjunto.ruta}" class="btn-adjunto-descarga" download>
+                                    <i class="fa-solid fa-file-pdf"></i> ${noticia.adjunto.texto}
+                                </a>
+                            </div>
+                        `;
+                    }
+
+                    let htmlGaleria = '';
+                    if (noticia.galeria && noticia.galeria.length > 0) {
+                        htmlGaleria = '<div class="noticia-galeria-grid">';
+                        noticia.galeria.forEach(foto => {
+                            htmlGaleria += `<img src="${foto}" alt="Foto de la galería" class="img-galeria-item" onclick="window.open(this.src)">`;
+                        });
+                        htmlGaleria += '</div>';
+                    }
+
+                    const tarjetaHtml = `
+                        <article class="tarjeta-noticia-comp">
+                            <div class="noticia-img-wrap">
+                                <img src="${noticia.imagen}" alt="Foto principal">
+                            </div>
+                            <div class="noticia-info-wrap">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                    <span class="noticia-fecha"><i class="fa-regular fa-calendar"></i> ${noticia.fecha}</span>
+                                    <span class="banner-tag" style="padding: 2px 8px; font-size: 0.75rem; margin: 0; background: var(--marron-ferroviario, #8B5A2B);">${nombreSeccion}</span>
+                                </div>
+                                <h4>${noticia.titulo}</h4>
+                                <p id="texto-noticia-${index}" class="noticia-resumen-texto">${noticia.resumen}</p>
+                                
+                                ${htmlAdjunto}
+                                ${htmlGaleria}
+
+                                <button class="btn-leer-noticia" 
+                                        id="btn-${index}"
+                                        data-resumen="${noticia.resumen}" 
+                                        data-completo="${textoLargo}" 
+                                        onclick="alternarNoticia(${index})">Leer más →</button>
+                            </div>
+                        </article>
+                    `;
+                    contenedor.innerHTML += tarjetaHtml;
+                });
+            }
+        });
+
+        function alternarNoticia(id) {
+            const parrafo = document.getElementById(`texto-noticia-${id}`);
+            const boton = document.getElementById(`btn-${id}`);
+            
+            const tarjeta = boton.closest('.tarjeta-noticia-comp');
+            const bloqueAdjunto = tarjeta.querySelector('.noticia-adjunto-bloque');
+            const bloqueGaleria = tarjeta.querySelector('.noticia-galeria-grid');
+
+            const textoResumen = boton.getAttribute('data-resumen');
+            const textoCompleto = boton.getAttribute('data-completo');
+
+            if (parrafo.innerHTML === textoResumen) {
+                parrafo.innerHTML = textoCompleto;
+                parrafo.className = "noticia-completa-texto";
+                boton.innerHTML = "Leer menos ↑";
+                if (bloqueAdjunto) bloqueAdjunto.style.display = 'block';
+                if (bloqueGaleria) bloqueGaleria.style.display = 'grid';
+            } else {
+                parrafo.innerHTML = textoResumen;
+                parrafo.className = "noticia-resumen-texto";
+                boton.innerHTML = "Leer más →";
+                if (bloqueAdjunto) bloqueAdjunto.style.display = 'none';
+                if (bloqueGaleria) bloqueGaleria.style.display = 'none';
+            }
+        }
+    </script>
+
+    <footer class="main-footer" style="margin-top: 50px;">
+        <div class="container footer-columns">
             <div class="footer-column">
                 <h3>CCRD Ferroviario</h3>
                 <p class="footer-about">Uniendo cultura, deporte e identidad desde Sevilla. Un espacio dedicado al desarrollo de nuestros atletas y al encuentro de nuestros socios.</p>
             </div>
-
             <div class="footer-column">
                 <h3>Contacto</h3>
                 <ul class="footer-contact-list">
@@ -74,20 +201,14 @@
                     <li>✉️ ccrdferroviario@hotmail.com</li>
                 </ul>
             </div>
-
             <div class="footer-column">
                 <h3>Síguenos</h3>
                 <div class="footer-social-links">
-                    <a href="https://www.facebook.com/ccrdferroviario/" target="_blank" aria-label="Facebook del Club" class="social-icon fb">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://www.instagram.com/ccrdferroviario1986/" target="_blank" aria-label="Instagram del Club" class="social-icon ig">
-                        <i class="fab fa-instagram"></i>
-                    </a>
+                    <a href="https://www.facebook.com/ccrdferroviario/" target="_blank" class="social-icon fb"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/ccrdferroviario1986/" target="_blank" class="social-icon ig"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>
-
         <div class="footer-bottom">
             <div class="container footer-bottom-container">
                 <p class="copyright">&copy; 2026 CCRD Ferroviario. Todos los derechos reservados.</p>
@@ -99,5 +220,5 @@
             </div>
         </div>
     </footer>
-        </nav>
-    </header>
+</body>
+</html>
