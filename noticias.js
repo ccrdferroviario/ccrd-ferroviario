@@ -41,7 +41,13 @@ const misNoticias = [
         "adjunto": {
             "ruta": "documentos/I_liga_padel.pdf",
             "texto": "Descargar Bases de la Liga (PDF)"
+    },
+{
+        "seccion": "senderismo",
+        "titulo": "¡Próxima Ruta Nocturna de Verano programada!",
+        "fecha": "5 de Julio, 2026",
+        "resumen": "Abiertas las plazas para la ruta nocturna estival con observación astronómica.",
+        "contenido": "Aprovechando las temperaturas más suaves del atardecer, realizaremos nuestra clásica ruta nocturna de senderismo por la Sierra Norte. Un recorrido circular de dificultad baja ideal para disfrutar del paisaje bajo las estrellas. Contaremos con un guía especializado que realizará una pequeña parada interpretativa de constelaciones a mitad del camino.",
+        "imagen": "img/senderismo1.png"
     }
-        }
 ];
-
