@@ -1187,3 +1187,155 @@ body {
 .noticia-galeria-grid {
     display: none;
 }
+/* ==========================================================================
+   SECCIÓN JUNTA DIRECTIVA INTERACTIVA (EFECTO ROTACIÓN 3D)
+   ========================================================================== */
+
+.junta-presentacion {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+}
+
+.junta-presentacion h2 {
+    color: var(--azul-ferroviario, #1a365d);
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+/* Rejilla adaptativa para los miembros */
+.junta-grid-contenedor {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 320px));
+    gap: 40px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Contenedor de la perspectiva 3D */
+.tarjeta-directivo-wrap {
+    background-color: transparent;
+    width: 100%;
+    height: 420px; /* Altura de la tarjeta */
+    perspective: 1000px; /* Crea el efecto de profundidad 3D */
+}
+
+/* Estructura interna que girará */
+.tarjeta-directivo-interna {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* ACTIVACIÓN AL PASAR EL RATÓN O TOCAR EN MÓVIL */
+.tarjeta-directivo-wrap:hover .tarjeta-directivo-interna {
+    transform: rotateY(180deg);
+}
+
+/* Propiedades comunes de ambas caras */
+.directivo-frontal, .directivo-trasera {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Oculta la cara contraria al girar */
+    backface-visibility: hidden;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* CARA FRONTAL (Foto + Nombre) */
+.directivo-frontal {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+
+.directivo-foto-marco {
+    width: 100%;
+    height: 320px; /* Espacio para la foto */
+    background-color: #f4f4f4;
+    overflow: hidden;
+}
+
+.directivo-foto-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.directivo-info-pie {
+    padding: 15px;
+    background: #ffffff;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #eee;
+}
+
+.directivo-info-pie h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.15rem;
+    color: #333;
+}
+
+.directivo-cargo-tag {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--marron-ferroviario, #8B5A2B);
+    text-transform: uppercase;
+}
+
+/* CARA TRASERA (Cuadro informativo del CV / Profesión) */
+.directivo-trasera {
+    background-color: #2c3e50; /* Color oscuro profesional para contrastar */
+    color: #ffffff;
+    transform: rotateY(180deg); /* Empieza dada la vuelta */
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+.directivo-trasera h4 {
+    margin: 0 0 15px 0;
+    font-size: 1.2rem;
+    color: #f1c40f; /* Un tono dorado/amarillo para resaltar el título */
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 8px;
+}
+
+.directivo-cv-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.directivo-cv-lista li {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    color: #ecf0f1;
+}
+
+.directivo-cv-lista li strong {
+    color: #ffffff;
+}
+
+.directivo-contacto-badge {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    text-align: center;
+    word-break: break-all;
+}
