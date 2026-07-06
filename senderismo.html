@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CCRD Ferroviario - Hazte Socio</title>
+    <title>Senderismo - CCRD Ferroviario de Sevilla</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="noticias.js?v=1.3"></script>
 </head>
 <body>
 
@@ -32,7 +33,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle">Secciones <span class="arrow">▾</span></a>
                         <ul class="dropdown-menu">
-                                 <li><a href="atletismo.html">Atletismo</a></li>
+                            <li><a href="atletismo.html">Atletismo</a></li>
                             <li><a href="tiro.html">Tiro al plato</a></li>
                             <li><a href="ajedrez.html">Ajedrez</a></li>
                             <li><a href="ciclismo.html">Ciclismo y triatlón</a></li>
@@ -47,9 +48,177 @@
                     <li><a href="noticias.html">Noticias</a></li>
                 </ul>
             </div>
-               <section class="sponsors-section">
+        </nav>
+    </header>
+
+    <div class="seccion-hero-banner" style="background-image: url('img/senderismo_banner.png');">
+        <div class="banner-overlay">
+            <div class="container">
+                <span class="banner-tag">Sección Oficial</span>
+                <h1>Sección de Senderismo</h1>
+                <p>Descubriendo la naturaleza a cada paso y compartiendo camino en grupo.</p>
+            </div>
+        </div>
+    </div>
+
+    <main class="container page-content-padding">
+        <div class="seccion-grid">
+            
+            <div class="col-principal">
+                <section class="info-introduccion">
+                    <h2>Naturaleza, Salud y Compañerismo</h2>
+                    <p>La sección de senderismo del CCRD Ferroviario organiza rutas periódicas destinadas a descubrir los parajes naturales más bellos de Andalucía, prestando especial atención a las sierras de Sevilla, Huelva y Cádiz. Diseñamos itinerarios de diferentes niveles de dificultad (baja, media y alta) para que tanto las familias como los senderistas más experimentados encuentren su ruta ideal. Fomentamos el respeto al medio ambiente, el ejercicio al aire libre y, sobre todo, las jornadas de convivencia entre socios.</p>
+                </section>
+
+                <section class="noticias-seccion-contenedor">
+                    <h3 class="titulo-bloque"><i class="fa-solid fa-newspaper"></i> Últimas Noticias de Senderismo</h3>
+                    <div id="contenedor-noticias-dinamicas" class="noticias-lista">
+                        <p class="cargando">Cargando noticias de senderismo...</p>
+                    </div>
+                </section>
+            </div>
+
+            <aside class="seccion-sidebar">
+                <div class="sidebar-card">
+                    <div class="sidebar-card-body">
+                        <h4>Próxima Salida</h4>
+                        <p><i class="fa-regular fa-calendar-days"></i> Fines de semana programados</p>
+                        <p class="horario-detalle">07:30h (Salida en autobús o coches compartidos desde la sede)</p>
+                        <p><i class="fa-solid fa-mountain-sun"></i> Niveles</p>
+                        <p class="horario-detalle">Indicados individualmente en la ficha de cada ruta</p>
+                        <hr>
+                        <a href="socio.html" class="btn-sidebar-action">Unirse a las Rutas</a>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <section class="calendario-seccion-bloque">
         <div class="container">
-            <h3 class="sponsors-title"></h3>
+            <div class="calendario-header-compacto">
+                <h3><i class="fa-regular fa-calendar"></i> Calendario de Rutas y Convivencias</h3>
+                <div class="cal-flechas">
+                    <button class="btn-cal-flecha">◀</button>
+                    <span class="cal-mes-actual">JULIO 2026</span>
+                    <button class="btn-cal-flecha">▶</button>
+                </div>
+            </div>
+
+            <div class="calendario-tabla-compacta">
+                <div class="dia-semana-comp">Lun</div><div class="dia-semana-comp">Mar</div><div class="dia-semana-comp">Mié</div><div class="dia-semana-comp">Jue</div><div class="dia-semana-comp">Vie</div><div class="dia-semana-comp">Sáb</div><div class="dia-semana-comp">Dom</div>
+                
+                <div class="celda-dia-comp apagado">29</div><div class="celda-dia-comp apagado">30</div>
+                <div class="celda-dia-comp">1</div><div class="celda-dia-comp">2</div><div class="celda-dia-comp">3</div>
+                <div class="celda-dia-comp">4</div><div class="celda-dia-comp evento-verde" data-info="Ruta Nocturna Estival">5</div>
+                
+                <div class="celda-dia-comp">6</div><div class="celda-dia-comp">7</div><div class="celda-dia-comp">8</div><div class="celda-dia-comp">9</div><div class="celda-dia-comp">10</div>
+                <div class="celda-dia-comp">11</div><div class="celda-dia-comp">12</div>
+
+                <div class="celda-dia-comp">13</div><div class="celda-dia-comp">14</div><div class="celda-dia-comp">15</div><div class="celda-dia-comp">16</div><div class="celda-dia-comp">17</div>
+                <div class="celda-dia-comp evento-granate" data-info="Asamblea Rutas Otoño">18</div><div class="celda-dia-comp">19</div>
+                <div class="celda-dia-comp">20</div><div class="celda-dia-comp">21</div><div class="celda-dia-comp">22</div><div class="celda-dia-comp">23</div><div class="celda-dia-comp">24</div><div class="celda-dia-comp">25</div><div class="celda-dia-comp">26</div>
+                <div class="celda-dia-comp">27</div><div class="celda-dia-comp">28</div><div class="celda-dia-comp">29</div><div class="celda-dia-comp">30</div><div class="celda-dia-comp">31</div><div class="celda-dia-comp apagado">1</div><div class="celda-dia-comp apagado">2</div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const contenedor = document.getElementById('contenedor-noticias-dinamicas');
+            if (!contenedor) return;
+            contenedor.innerHTML = ''; 
+
+            if (typeof misNoticias === 'undefined') {
+                contenedor.innerHTML = '<p>Error: No se ha podido acceder a la base de datos de noticias.</p>';
+                return;
+            }
+
+            // Filtramos exactamente por el identificador 'senderismo'
+            const noticiasSenderismo = misNoticias.filter(n => n.seccion === 'senderismo');
+
+            if (noticiasSenderismo.length === 0) {
+                contenedor.innerHTML = '<p>No hay noticias recientes de senderismo en este momento.</p>';
+            } else {
+                noticiasSenderismo.forEach((noticia, index) => {
+                    const textoLargo = noticia.contenido || noticia.resumen;
+
+                    let htmlAdjunto = '';
+                    if (noticia.adjunto) {
+                        htmlAdjunto = `
+                            <div class="noticia-adjunto-bloque">
+                                <a href="${noticia.adjunto.ruta}" class="btn-adjunto-descarga" download>
+                                    <i class="fa-solid fa-file-pdf"></i> ${noticia.adjunto.texto}
+                                </a>
+                            </div>
+                        `;
+                    }
+
+                    let htmlGaleria = '';
+                    if (noticia.galeria && noticia.galeria.length > 0) {
+                        htmlGaleria = '<div class="noticia-galeria-grid">';
+                        noticia.galeria.forEach(foto => {
+                            htmlGaleria += `<img src="${foto}" alt="Foto de la galería" class="img-galeria-item" onclick="window.open(this.src)">`;
+                        });
+                        htmlGaleria += '</div>';
+                    }
+
+                    const tarjetaHtml = `
+                        <article class="tarjeta-noticia-comp">
+                            <div class="noticia-img-wrap">
+                                <img src="${noticia.imagen}" alt="Foto principal">
+                            </div>
+                            <div class="noticia-info-wrap">
+                                <span class="noticia-fecha"><i class="fa-regular fa-calendar"></i> ${noticia.fecha}</span>
+                                <h4>${noticia.titulo}</h4>
+                                <p id="texto-noticia-${index}" class="noticia-resumen-texto">${noticia.resumen}</p>
+                                
+                                ${htmlAdjunto}
+                                ${htmlGaleria}
+
+                                <button class="btn-leer-noticia" 
+                                        id="btn-${index}"
+                                        data-resumen="${noticia.resumen}" 
+                                        data-completo="${textoLargo}" 
+                                        onclick="alternarNoticia(${index})">Leer más →</button>
+                            </div>
+                        </article>
+                    `;
+                    contenedor.innerHTML += tarjetaHtml;
+                });
+            }
+        });
+
+        function alternarNoticia(id) {
+            const parrafo = document.getElementById(`texto-noticia-${id}`);
+            const boton = document.getElementById(`btn-${id}`);
+            
+            const tarjeta = boton.closest('.tarjeta-noticia-comp');
+            const bloqueAdjunto = tarjeta.querySelector('.noticia-adjunto-bloque');
+            const bloqueGaleria = tarjeta.querySelector('.noticia-galeria-grid');
+
+            const textoResumen = boton.getAttribute('data-resumen');
+            const textoCompleto = boton.getAttribute('data-completo');
+
+            if (parrafo.innerHTML === textoResumen) {
+                parrafo.innerHTML = textoCompleto;
+                parrafo.className = "noticia-completa-texto";
+                boton.innerHTML = "Leer menos ↑";
+                if (bloqueAdjunto) bloqueAdjunto.style.display = 'block';
+                if (bloqueGaleria) bloqueGaleria.style.display = 'grid';
+            } else {
+                parrafo.innerHTML = textoResumen;
+                parrafo.className = "noticia-resumen-texto";
+                boton.innerHTML = "Leer más →";
+                if (bloqueAdjunto) bloqueAdjunto.style.display = 'none';
+                if (bloqueGaleria) bloqueGaleria.style.display = 'none';
+            }
+        }
+    </script>
+
+    <section class="sponsors-section">
+        <div class="container">
             <div class="sponsors-grid">
                 <div class="sponsor-logo">PATROCINADOR 1</div>
                 <div class="sponsor-logo">PATROCINADOR 2</div>
@@ -61,12 +230,10 @@
 
     <footer class="main-footer">
         <div class="container footer-columns">
-            
             <div class="footer-column">
                 <h3>CCRD Ferroviario</h3>
                 <p class="footer-about">Uniendo cultura, deporte e identidad desde Sevilla. Un espacio dedicado al desarrollo de nuestros atletas y al encuentro de nuestros socios.</p>
             </div>
-
             <div class="footer-column">
                 <h3>Contacto</h3>
                 <ul class="footer-contact-list">
@@ -74,20 +241,14 @@
                     <li>✉️ ccrdferroviario@hotmail.com</li>
                 </ul>
             </div>
-
             <div class="footer-column">
                 <h3>Síguenos</h3>
                 <div class="footer-social-links">
-                    <a href="https://www.facebook.com/ccrdferroviario/" target="_blank" aria-label="Facebook del Club" class="social-icon fb">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://www.instagram.com/ccrdferroviario1986/" target="_blank" aria-label="Instagram del Club" class="social-icon ig">
-                        <i class="fab fa-instagram"></i>
-                    </a>
+                    <a href="https://www.facebook.com/ccrdferroviario/" target="_blank" class="social-icon fb"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/ccrdferroviario1986/" target="_blank" class="social-icon ig"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>
-
         <div class="footer-bottom">
             <div class="container footer-bottom-container">
                 <p class="copyright">&copy; 2026 CCRD Ferroviario. Todos los derechos reservados.</p>
@@ -99,5 +260,5 @@
             </div>
         </div>
     </footer>
-        </nav>
-    </header>
+</body>
+</html>
