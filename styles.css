@@ -1339,3 +1339,138 @@ body {
     text-align: center;
     word-break: break-all;
 }
+/* ==========================================================================
+   SECCIÓN EQUIPACIONES - AJUSTE DE IMÁGENES Y MODAL DETALLES
+   ========================================================================== */
+
+/* Contenedor gris de la imagen: Evita que la foto se vea gigante */
+.equipacion-img-container {
+    width: 100%;
+    height: 240px; /* Altura máxima fija para equilibrar la tarjeta */
+    background-color: #f8f9fa; /* Fondo gris suave limpio */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-bottom: 1px solid #eeeeee;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+/* La imagen física de la prenda */
+.equipacion-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Contiene la prenda entera dentro del cuadro sin deformarla ni recortarla */
+    transition: transform 0.3s ease;
+}
+
+/* Efecto visual sutil al pasar el ratón sobre la tarjeta */
+.equipacion-card:hover .equipacion-img {
+    transform: scale(1.05); /* Zoom elegante en la ropa */
+}
+
+/* Formateo del botón "Ver detalles" */
+.equipacion-btn {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 20px;
+    background-color: var(--marron-ferroviario, #8B5A2B);
+    color: #ffffff !important;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+}
+
+.equipacion-btn:hover {
+    background-color: var(--azul-ferroviario, #1a365d);
+    transform: translateY(-1px);
+}
+
+/* --- VENTANA MODAL (CUADRO DE INFORMACIÓN FLOTANTE) --- */
+
+/* Fondo oscurecido que cubre toda la pantalla */
+.modal-equipacion {
+    display: none; /* Se activa mediante JavaScript cambiando a 'flex' */
+    position: fixed;
+    z-index: 99999; /* Por encima de cualquier navbar o contenido */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65); /* Fondo oscuro translúcido */
+    backdrop-filter: blur(4px); /* Efecto desenfoque moderno */
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+/* Caja blanca central del cuadro de diálogo */
+.modal-contenido {
+    background-color: #ffffff;
+    padding: 35px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 480px; /* Tamaño ideal responsivo */
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: entradaSuaveModal 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-sizing: border-box;
+}
+
+/* Animación de caída fluida al abrirse */
+@keyframes entradaSuaveModal {
+    from { 
+        transform: translateY(-20px); 
+        opacity: 0; 
+    }
+    to { 
+        transform: translateY(0); 
+        opacity: 1; 
+    }
+}
+
+/* Botón de Aspa (X) para cerrar */
+.cerrar-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.8rem;
+    color: #999;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+
+.cerrar-modal:hover {
+    color: #333333;
+}
+
+/* Lista interna de detalles del producto */
+.modal-detalles-lista {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    border-top: 1px dashed #eee;
+    border-bottom: 1px dashed #eee;
+    padding: 15px 0;
+}
+
+.modal-detalles-lista li {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.modal-detalles-lista li:last-child {
+    margin-bottom: 0;
+}
+
+.modal-detalles-lista strong {
+    color: #111;
+}
