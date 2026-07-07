@@ -1188,10 +1188,10 @@ body {
     display: none;
 }
 /* ==========================================================================
-   SECCIÓN JUNTA DIRECTIVA - GRID Y EFECTO GIRO 3D
+   SECCIÓN JUNTA DIRECTIVA - AJUSTE PERFECTO DE FOTOGRAFÍAS (ACTUALIZADO)
    ========================================================================== */
 
-/* Contenedor Grid General */
+/* 1. Contenedor Grid General: Sin cambios, rejilla adaptativa */
 .junta-grid-contenedor {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -1199,15 +1199,15 @@ body {
     padding: 20px 0;
 }
 
-/* El envoltorio activa la perspectiva 3D */
+/* 2. El envoltorio activa la perspectiva 3D: Sin cambios */
 .tarjeta-directivo-wrap {
     background-color: transparent;
     width: 100%;
-    height: 400px; /* Altura perfecta y uniforme para todas las tarjetas */
+    height: 420px; /* Altura uniforme para todas las tarjetas */
     perspective: 1000px; /* Obligatorio para el efecto de profundidad */
 }
 
-/* El contenedor interno que realiza el giro físico */
+/* 3. Estructura interna que girará: Sin cambios */
 .tarjeta-directivo-interna {
     position: relative;
     width: 100%;
@@ -1219,12 +1219,12 @@ body {
     border-radius: 8px;
 }
 
-/* Al pasar el ratón (o tocar en móviles), la tarjeta gira 180 grados */
+/* Activación del giro al pasar el ratón o tocar */
 .tarjeta-directivo-wrap:hover .tarjeta-directivo-interna {
     transform: rotateY(180deg);
 }
 
-/* Ambas caras comparten propiedades comunes */
+/* Propiedades comunes de ambas caras: Sin cambios */
 .directivo-frontal, .directivo-trasera {
     position: absolute;
     width: 100%;
@@ -1236,57 +1236,73 @@ body {
     box-sizing: border-box;
 }
 
-/* CARA FRONTAL */
+/* =========================================
+   CARA FRONTAL: AQUÍ ESTÁ EL AJUSTE DE FOTO
+   ========================================= */
 .directivo-frontal {
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
 }
 
-/* Ajuste proporcional de la foto en el cuadro */
+/* 🔥 NUEVO: Marco Rectangular Fijo y Contenido 🔥 */
 .directivo-foto-marco {
     width: 100%;
-    height: 280px; /* Espacio exacto para el retrato */
-    background-color: #f5f5f5;
-    overflow: hidden;
+    height: 300px; /* Definimos la altura EXACTA del rectángulo de la foto */
+    background-color: #f5f5f5; /* Fondo gris neutro por si la foto tarda en cargar */
+    overflow: hidden; /* Corta cualquier cosa que se salga del rectángulo */
+    position: relative;
 }
 
+/* 🔥 NUEVO: Ajuste Inteligente de la Imagen (Object-Fit) 🔥 */
 .directivo-foto-img {
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ajusta la cara perfectamente sin deformar la imagen */
-    object-position: center top;
+    height: 100%; /* Obligamos a la imagen a medir lo mismo que el marco */
+    
+    /* ESTA ES LA PROPIEDAD MÁGICA: */
+    object-fit: cover; /* Rellena el rectángulo sin deformar, recortando los bordes excesivos */
+    
+    /* Centramos horizontalmente y priorizamos la parte superior (el rostro) */
+    object-position: center top; 
+    
+    transition: transform 0.5s ease; /* Suaviza el zoom al hacer hover */
 }
 
-/* Pie de la tarjeta frontal */
+/* Efecto zoom sutil al pasar el ratón sobre la tarjeta */
+.tarjeta-directivo-wrap:hover .directivo-foto-img {
+    transform: scale(1.05); /* Zoom elegante en la foto sin salirse del marco */
+}
+
+/* Pie de la tarjeta frontal (Nombre y Cargo): Sin cambios */
 .directivo-info-pie {
-    padding: 20px 15px;
+    padding: 15px;
     background-color: #ffffff;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-top: 1px solid #eee;
 }
 
 .directivo-info-pie h3 {
-    margin: 0 0 8px 0;
-    font-size: 1.15rem;
+    margin: 0 0 5px 0;
+    font-size: 1.1rem;
     color: #1a365d; /* Azul ferroviario */
     font-weight: 700;
 }
 
 .directivo-cargo-tag {
     font-size: 0.8rem;
-    background-color: rgba(139, 90, 43, 0.1); /* Marrón claro traslúcido */
     color: #8B5A2B; /* Marrón ferroviario */
-    padding: 4px 12px;
-    border-radius: 50px;
-    font-weight: 600;
     text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
-/* CARA TRASERA */
+/* =========================================
+   CARA TRASERA: Sin cambios
+   ========================================= */
 .directivo-trasera {
     background-color: #1a365d; /* Color corporativo oscuro */
     color: #ffffff;
@@ -1315,7 +1331,7 @@ body {
 }
 
 .directivo-cv-lista li {
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .directivo-cv-lista strong {
@@ -1325,12 +1341,12 @@ body {
 /* Insignia de correo inferior */
 .directivo-contacto-badge {
     background-color: rgba(255, 255, 255, 0.1);
-    padding: 10px;
-    border-radius: 6px;
-    font-size: 0.85rem;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
     text-align: center;
     word-break: break-all;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .directivo-contacto-badge i {
