@@ -59,7 +59,7 @@ const misNoticias = [
         "contenido": "Se convoca Asamblea ordinaria anual de socios el próximo 14 de Enero de 2026 a las 19:00 en primera convocatoria y a las 19:30 en segunda. El orden del día puede consultarse en el PDF adjunto.",
         "imagen": "img/asamblea.png"
         "adjunto": {
-            "ruta": "documentos/Convocatoria_Asamblea_16_01_2026.pdf",
+            "ruta": "documentos/Convocatoria_Asamblea_14_01_2026.pdf",
             "texto": "Descargar Convocatoria de Asamblea (PDF)"
              }
     }
