@@ -54,10 +54,18 @@ const misNoticias = [
         "fecha": "01/01/2026",
         "resumen": "Convocatoria de asamblea de socios el próximo 14/01/26",
         "contenido": "Se convoca Asamblea ordinaria anual de socios el próximo 14 de Enero de 2026 a las 19:00 en primera convocatoria y a las 19:30 en segunda. El orden del día puede consultarse en el PDF adjunto.",
-        "imagen": "img/asamblea.png", // Corregido: Añadida coma obligatoria aquí
+        "imagen": "img/asamblea.png",
         "adjunto": {
             "ruta": "documentos/Convocatoria_Asamblea_14_01_2026.pdf",
             "texto": "Descargar Convocatoria de Asamblea (PDF)"
-        } // Corregido: Cierre de estructura limpio
-    }
-];
+        }
+    },
+    {
+        "seccion": "ciclismo",
+        "titulo": "XXIX Triatlón de Sevilla",
+        "fecha": "7 de Junio, 2026",
+        "resumen": "La sección de triatlón participa en el Triatlón de Sevilla.",
+        "contenido": "Dos miembros de la sección de ciclismo y triatlón han participado esta mañana en el XXIX Triatlón de Sevilla en la categoría sprint. Celia Saez, en su primera participación en categoría sprint paró el crono en 1H35m56 con un excelente segmento de natación. Por otra parte, Alberto Ruiz hizo lo propio con una notable marca de 1h16m57.",
+        "imagen": "img/triatlon.png"
+    },
+        ];
