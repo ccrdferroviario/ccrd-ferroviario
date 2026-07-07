@@ -53,10 +53,14 @@ const misNoticias = [
     },
     {
         "seccion": "club",
-        "titulo": "",
-        "fecha": "",
-        "resumen": "Asamblea de",
-        "contenido": "Aprovechando las temperaturas más suaves del atardecer, realizaremos nuestra clásica ruta nocturna de senderismo por la Sierra Norte. Un recorrido circular de dificultad baja ideal para disfrutar del paisaje bajo las estrellas. Contaremos con un guía especializado que realizará una pequeña parada interpretativa de constelaciones a mitad del camino.",
-        "imagen": "img/senderismo1.png"
+        "titulo": "Convocatoria de Asamblea ordinaria anual",
+        "fecha": "01/01/2026",
+        "resumen": "Convocatoria de asamblea de socios el próximo 14/01/26",
+        "contenido": "Se convoca Asamblea ordinaria anual de socios el próximo 14 de Enero de 2026 a las 19:00 en primera convocatoria y a las 19:30 en segunda. El orden del día puede consultarse en el PDF adjunto.",
+        "imagen": "img/asamblea.png"
+        "adjunto": {
+            "ruta": "documentos/Asamblea 16/01/2026.pdf",
+            "texto": "Descargar Convocatoria de Asamblea (PDF)"
+             }
     }
 ];
