@@ -61,7 +61,7 @@ const misNoticias = [
         }
     },
     {
-        "seccion": "ciclismo y triatlon",
+        "seccion": "ciclismo",
         "titulo": "XXIX Triatlón de Sevilla",
         "fecha": "7 de Junio, 2026",
         "resumen": "La sección de triatlón participa en el Triatlón de Sevilla.",
