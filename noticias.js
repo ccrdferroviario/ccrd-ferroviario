@@ -30,20 +30,17 @@ const misNoticias = [
         "resumen": "Abiertas las inscripciones para la I Liga de Padel Ferroviaria.",
         "contenido": "Damos el pistoletazo de salida a la sección con nuestro primer torneo. Fecha límite de inscripcion: 20 de Noviembre de 2025. Formato: liga + eliminatorias. Para más información consulte el PDF adjunto.",
         "imagen": "img/padel1.png",
-        // 📸 NUEVO: Galería de fotos (Opcional)
         "galeria": [
             "img/padel_galeria1.png",
             "img/padel_galeria2.png",
             "img/padel_galeria3.png"
         ],
-        
-        // 📂 NUEVO: Documento adjunto (Opcional)
         "adjunto": {
             "ruta": "documentos/I_liga_padel.pdf",
             "texto": "Descargar Bases de la Liga (PDF)"
-             }
+        }
     },
-{
+    {
         "seccion": "senderismo",
         "titulo": "¡Próxima Ruta Nocturna de Verano programada!",
         "fecha": "5 de Julio, 2026",
@@ -57,10 +54,10 @@ const misNoticias = [
         "fecha": "01/01/2026",
         "resumen": "Convocatoria de asamblea de socios el próximo 14/01/26",
         "contenido": "Se convoca Asamblea ordinaria anual de socios el próximo 14 de Enero de 2026 a las 19:00 en primera convocatoria y a las 19:30 en segunda. El orden del día puede consultarse en el PDF adjunto.",
-        "imagen": "img/asamblea.png"
+        "imagen": "img/asamblea.png", // Corregido: Añadida coma obligatoria aquí
         "adjunto": {
             "ruta": "documentos/Convocatoria_Asamblea_14_01_2026.pdf",
             "texto": "Descargar Convocatoria de Asamblea (PDF)"
-             }
+        } // Corregido: Cierre de estructura limpio
     }
 ];
