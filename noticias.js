@@ -41,6 +41,7 @@ const misNoticias = [
         "adjunto": {
             "ruta": "documentos/I_liga_padel.pdf",
             "texto": "Descargar Bases de la Liga (PDF)"
+             }
     },
 {
         "seccion": "senderismo",
