@@ -61,11 +61,20 @@ const misNoticias = [
         }
     },
     {
-        "seccion": "ciclismo",
+        "seccion": "ciclismo y triatlon",
         "titulo": "XXIX Triatlón de Sevilla",
         "fecha": "7 de Junio, 2026",
         "resumen": "La sección de triatlón participa en el Triatlón de Sevilla.",
         "contenido": "Dos miembros de la sección de ciclismo y triatlón han participado esta mañana en el XXIX Triatlón de Sevilla en la categoría sprint. Celia Saez, en su primera participación en categoría sprint paró el crono en 1H35m56 con un excelente segmento de natación. Por otra parte, Alberto Ruiz hizo lo propio con una notable marca de 1h16m57.",
         "imagen": "img/triatlon.png"
+    },
+     {
+        "seccion": "atletismo",
+        "titulo": "Gran participación ferroviaria en la carrera IMD Cerro-Amate",
+        "fecha": "12 de Abril, 2026",
+        "resumen": "Gran participación de la sección de atletismo en la carrera del IMD Cerro-Amate.",
+        "contenido": "",
+        "imagen": "img/triatlon.png"
+            }
     },
         ];
