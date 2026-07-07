@@ -73,8 +73,33 @@ const misNoticias = [
         "titulo": "Gran participación ferroviaria en la carrera IMD Cerro-Amate",
         "fecha": "12 de Abril, 2026",
         "resumen": "Gran participación de la sección de atletismo en la carrera del IMD Cerro-Amate.",
-        "contenido": "",
-        "imagen": "img/triatlon.png"
+        "contenido": "Hasta 11 corredores ferroviarios se han dado cita esta mañana en la Carrera del IMD Cerro Amate perteneciente al circuito Divina Seguros 2026. Adorna (42m40), Jorge Castilla (48m23), Antonio Nuñez (51m02), Federero (51m06), Antonio Dominguez (51m07), Paco gutierrez (51m38), Enrique Najas (56m26), Sanchez Bermejo (57m48), Palos (57m48), Juan Carlos (1h00m05) y Rafa Roldan (1h04m01) han volado por las calles de Sevilla en un circuito novedoso.",
+        "imagen": "img/circuito.png"
+         "galeria": [
+            "img/circuito1.png",
+        ],
+            }
+    },
+     {
+        "seccion": "atletismo",
+        "titulo": "El CCRD Ferroviario en la Maraton de Roma",
+        "fecha": "22 de Marzo, 2026",
+        "resumen": "Nuestro compañero Ivan Román finisher del maratón de Roma.",
+        "contenido": "Nuestro compañero de la sección de atletismo Ivan Román completa el mítico circuito de la capital italiana en3h50m26.",
+        "imagen": "img/roma.png"
+            },
+     {
+        "seccion": "atletismo",
+        "titulo": "Varios ferroviarios en la clásica 101km de Ronda",
+        "fecha": "09 de Mayo, 2026",
+        "resumen": "Varios ferroviarios completan los 101km de Ronda.",
+        "contenido": "Nuestros compañeros de la sección de atletismo Antonio Nuñez, Antonio Dominguez e Ivan Román completan los míticos 101 km de Ronda en categoría marcha.",
+        "imagen": "img/ronda0.png"
+            "galeria": [
+            "img/ronda1.png",
+            "img/ronda2.png",
+            "img/ronda3.png",
+        ],
             }
     },
         ];
