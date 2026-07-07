@@ -138,9 +138,9 @@
                                 <img src="${noticia.imagen}" alt="Foto principal">
                             </div>
                             <div class="noticia-info-wrap">
-                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                                    <span class="noticia-fecha"><i class="fa-regular fa-calendar"></i> ${noticia.fecha}</span>
-                                    <span class="banner-tag" style="padding: 2px 8px; font-size: 0.75rem; margin: 0; background: var(--marron-ferroviario, #8B5A2B);">${nombreSeccion}</span>
+                                <div style="display: flex; align-items: center; width: 100%; margin-bottom: 8px;">
+                                <span class="noticia-fecha"><i class="fa-regular fa-calendar"></i> ${noticia.fecha}</span>
+                                <span class="banner-tag" style="padding: 2px 8px; font-size: 0.75rem; margin: 0 0 0 auto; background: var(--marron-ferroviario, #8B5A2B); display: inline-block;">${nombreSeccion}</span>
                                 </div>
                                 <h4>${noticia.titulo}</h4>
                                 <p id="texto-noticia-${index}" class="noticia-resumen-texto">${noticia.resumen}</p>
