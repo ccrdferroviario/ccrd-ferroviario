@@ -171,7 +171,47 @@
             </div>
         </div>
     </section>
+<div id="miModalEquipacion" class="modal-equipacion">
+        <div class="modal-contenido">
+            <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
+            <h3 id="modal-titulo" style="color: var(--azul-ferroviario, #1a365d); margin-top: 0; font-size: 1.4rem;">Producto</h3>
+            <p id="modal-descripcion" style="color: #555; line-height: 1.6; font-size: 0.95rem; margin-top: 15px;"></p>
+            
+            <ul class="modal-detalles-lista">
+                <li><strong>Tallas disponibles:</strong> <span id="modal-tallas"></span></li>
+                <li><strong>Precio socio:</strong> <span id="modal-precio" style="color: var(--marron-ferroviario, #8B5A2B); font-weight: bold;"></span></li>
+            </ul>
+            
+            <p style="font-size: 0.85rem; color: #777; background: #f9f9f9; padding: 12px; border-left: 4px solid var(--marron-ferroviario, #8B5A2B); margin-top: 20px; border-radius: 0 4px 4px 0;">
+                <i class="fa-solid fa-circle-info" style="color: var(--marron-ferroviario, #8B5A2B);"></i> Puedes solicitar tu equipación contactando directamente con el delegado de tu sección o acudiendo presencialmente los martes a nuestra Sede Social.
+            </p>
+        </div>
+    </div>
 
+    <script>
+        const modal = document.getElementById('miModalEquipacion');
+
+        function abrirInformacion(titulo, descripcion, tallas, precio) {
+            document.getElementById('modal-titulo').innerText = titulo;
+            document.getElementById('modal-descripcion').innerText = descripcion;
+            document.getElementById('modal-tallas').innerText = tallas;
+            document.getElementById('modal-precio').innerText = precio;
+            
+            // Cambia el display a flex para centrarlo gracias al CSS
+            modal.style.display = 'flex';
+        }
+
+        function cerrarModal() {
+            modal.style.display = 'none';
+        }
+
+        // Si el usuario pulsa en la zona oscura exterior del recuadro, también se cierra
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                cerrarModal();
+            }
+        }
+    </script>
     <footer class="main-footer">
         <div class="container footer-columns">
             <div class="footer-column">
