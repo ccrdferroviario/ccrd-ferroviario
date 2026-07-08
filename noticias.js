@@ -8,20 +8,20 @@ const misNoticias = [
         "imagen": "img/tiro.png"
     },
     {
-        "seccion": "atletismo",
-        "titulo": "¡Alta participación en el Maratón de Sevilla!",
-        "fecha": "15 de Febrero, 2026",
-        "resumen": "Hasta 11 corredores se han dado cita en la gran distancia del atletismo.", 
-        "contenido": "Hasta 11 corredores se han dado cita en la gran distancia del atletismo. Morgaz, Dorado (3h16m29s), Cecilio (3h24m11s), Adorna (3h31m50s), Castilla (3h36m49s), Iván (3h40m58s), Ignacio (3h42m56s), Antonio Dominguez (3h46m15s), Jairo (4h05m07s), Antonio Rafael (4h24m27s) y Moises (5h12m39s) han completado los 42,195km en un magnífico recorrido por las calles de Sevilla. Mención especial a nuestros queridos Morgaz, que ha competido de manera brillante acercándose a las 2h30 (2h36m42s), y a Moises y Jairo por completar su primera maratón",
-        "imagen": "img/maraton1.png"
-    },
-    {
         "seccion": "ajedrez",
         "titulo": "¡Vuelve el Ajedrez al CCRD Ferroviario!",
         "fecha": "1 of Junio, 2026",
         "resumen": "Inauguramos la nueva sección de ajedrez con muchas novedades.",
         "contenido": "Inauguramos una nueva sección de ajedrez con muchas novedades y proyectos. ¡Anímate a entrenar tu mente y a disfrutar de la estrategia en el mejor ambiente!",
         "imagen": "img/ajedrez1.png"
+    },
+        {
+        "seccion": "senderismo",
+        "titulo": "¡Próxima Ruta Nocturna de Verano programada!",
+        "fecha": "5 de Julio, 2026",
+        "resumen": "Abiertas las plazas para la ruta nocturna estival con observación astronómica.",
+        "contenido": "Aprovechando las temperaturas más suaves del atardecer, realizaremos nuestra clásica ruta nocturna de senderismo por la Sierra Norte. Un recorrido circular de dificultad baja ideal para disfrutar del paisaje bajo las estrellas. Contaremos con un guía especializado que realizará una pequeña parada interpretativa de constelaciones a mitad del camino.",
+        "imagen": "img/senderismo1.png"
     },
     {
         "seccion": "padel",
@@ -39,14 +39,6 @@ const misNoticias = [
             "ruta": "documentos/I_liga_padel.pdf",
             "texto": "Descargar Bases de la Liga (PDF)"
         }
-    },
-    {
-        "seccion": "senderismo",
-        "titulo": "¡Próxima Ruta Nocturna de Verano programada!",
-        "fecha": "5 de Julio, 2026",
-        "resumen": "Abiertas las plazas para la ruta nocturna estival con observación astronómica.",
-        "contenido": "Aprovechando las temperaturas más suaves del atardecer, realizaremos nuestra clásica ruta nocturna de senderismo por la Sierra Norte. Un recorrido circular de dificultad baja ideal para disfrutar del paisaje bajo las estrellas. Contaremos con un guía especializado que realizará una pequeña parada interpretativa de constelaciones a mitad del camino.",
-        "imagen": "img/senderismo1.png"
     },
     {
         "seccion": "club",
@@ -70,25 +62,6 @@ const misNoticias = [
     },
     {
         "seccion": "atletismo",
-        "titulo": "Gran participación ferroviaria en la carrera IMD Cerro-Amate",
-        "fecha": "12 de Abril, 2026",
-        "resumen": "Gran participación de la sección de atletismo en la carrera del IMD Cerro-Amate.",
-        "contenido": "Hasta 11 corredores ferroviarios se han dado cita esta mañana en la Carrera del IMD Cerro Amate perteneciente al circuito Divina Seguros 2026. Adorna (42m40), Jorge Castilla (48m23), Antonio Nuñez (51m02), Federero (51m06), Antonio Dominguez (51m07), Paco gutierrez (51m38), Enrique Najas (56m26), Sanchez Bermejo (57m48), Palos (57m48), Juan Carlos (1h00m05) y Rafa Roldan (1h04m01) han volado por las calles de Sevilla en un circuito novedoso.",
-        "imagen": "img/circuito.png",
-        "galeria": [
-            "img/circuito1.png"
-        ]
-    },
-    {
-        "seccion": "atletismo",
-        "titulo": "El CCRD Ferroviario en la Maraton de Roma",
-        "fecha": "22 de Marzo, 2026",
-        "resumen": "Nuestro compañero Ivan Román finisher del maratón de Roma.",
-        "contenido": "Nuestro compañero de la sección de atletismo Ivan Román completa el mítico circuito de la capital italiana en 3h50m26.",
-        "imagen": "img/roma.png"
-    },
-    {
-        "seccion": "atletismo",
         "titulo": "Varios ferroviarios en la clásica 101km de Ronda",
         "fecha": "09 de Mayo, 2026",
         "resumen": "Varios ferroviarios completan los 101km de Ronda.",
@@ -99,5 +72,32 @@ const misNoticias = [
             "img/ronda2.png",
             "img/ronda3.png"
         ]
-    }
+    },
+     {
+        "seccion": "atletismo",
+        "titulo": "Gran participación ferroviaria en la carrera IMD Cerro-Amate",
+        "fecha": "12 de Abril, 2026",
+        "resumen": "Gran participación de la sección de atletismo en la carrera del IMD Cerro-Amate.",
+        "contenido": "Hasta 11 corredores ferroviarios se han dado cita esta mañana en la Carrera del IMD Cerro Amate perteneciente al circuito Divina Seguros 2026. Adorna (42m40), Jorge Castilla (48m23), Antonio Nuñez (51m02), Federero (51m06), Antonio Dominguez (51m07), Paco gutierrez (51m38), Enrique Najas (56m26), Sanchez Bermejo (57m48), Palos (57m48), Juan Carlos (1h00m05) y Rafa Roldan (1h04m01) han volado por las calles de Sevilla en un circuito novedoso.",
+        "imagen": "img/circuito.png",
+        "galeria": [
+            "img/circuito1.png"
+        ]
+    },
+     {
+        "seccion": "atletismo",
+        "titulo": "El CCRD Ferroviario en la Maraton de Roma",
+        "fecha": "22 de Marzo, 2026",
+        "resumen": "Nuestro compañero Ivan Román finisher del maratón de Roma.",
+        "contenido": "Nuestro compañero de la sección de atletismo Ivan Román completa el mítico circuito de la capital italiana en 3h50m26.",
+        "imagen": "img/roma.png"
+    },
+     {
+        "seccion": "atletismo",
+        "titulo": "¡Alta participación en el Maratón de Sevilla!",
+        "fecha": "15 de Febrero, 2026",
+        "resumen": "Hasta 11 corredores se han dado cita en la gran distancia del atletismo.", 
+        "contenido": "Hasta 11 corredores se han dado cita en la gran distancia del atletismo. Morgaz, Dorado (3h16m29s), Cecilio (3h24m11s), Adorna (3h31m50s), Castilla (3h36m49s), Iván (3h40m58s), Ignacio (3h42m56s), Antonio Dominguez (3h46m15s), Jairo (4h05m07s), Antonio Rafael (4h24m27s) y Moises (5h12m39s) han completado los 42,195km en un magnífico recorrido por las calles de Sevilla. Mención especial a nuestros queridos Morgaz, que ha competido de manera brillante acercándose a las 2h30 (2h36m42s), y a Moises y Jairo por completar su primera maratón",
+        "imagen": "img/maraton1.png"
+    },
 ];
