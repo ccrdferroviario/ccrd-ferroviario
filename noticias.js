@@ -34,7 +34,7 @@ const misNoticias = [
             "img/padel2.png",
             "img/padel3.png",
             "img/padel4.png",
-            "img/padel5.png",
+            "img/padel5.png"
         ],
     },
     {
