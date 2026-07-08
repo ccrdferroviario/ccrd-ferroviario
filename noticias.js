@@ -23,6 +23,20 @@ const misNoticias = [
         "contenido": "Aprovechando las temperaturas más suaves del atardecer, realizaremos nuestra clásica ruta nocturna de senderismo por la Sierra Norte. Un recorrido circular de dificultad baja ideal para disfrutar del paisaje bajo las estrellas. Contaremos con un guía especializado que realizará una pequeña parada interpretativa de constelaciones a mitad del camino.",
         "imagen": "img/senderismo1.png"
     },
+     {
+        "seccion": "padel",
+        "titulo": "¡Final de la I Liga de Pádel Ferroviaria!",
+        "fecha": "15 de Mayo, 2026",
+        "resumen": "Final de la I Liga de Pádel Ferroviaria y entrega de trofeos.",
+        "contenido": "Esta mañana la pareja Casaus-González se ha impuesto en la final de la I Liga de Padel Ferroviaria a la pareja Sempere-Sempere por 6-3,6-4". Asimismo, el tercer puesto ha sido para Gómez-Cordero que ha derrotado a Ruiz-Valencia en el partido por el tercer y cuarto puesto. Tras la final se ha realizado una comida en el Centro Isbylia con la posterior entrega de trofeos.", 
+        "imagen": "img/padel1.png",
+        "galeria": [
+            "img/padel2.png",
+            "img/padel3.png",
+            "img/padel4.png",
+            "img/padel5.png",
+        ],
+    },
     {
         "seccion": "padel",
         "titulo": "¡Arranca la I Liga de Pádel Ferroviaria!",
@@ -30,11 +44,6 @@ const misNoticias = [
         "resumen": "Abiertas las inscripciones para la I Liga de Padel Ferroviaria.",
         "contenido": "Damos el pistoletazo de salida a la sección con nuestro primer torneo. Fecha límite de inscripcion: 20 de Noviembre de 2025. Formato: liga + eliminatorias. Para más información consulte el PDF adjunto.",
         "imagen": "img/padel1.png",
-        "galeria": [
-            "img/padel_galeria1.png",
-            "img/padel_galeria2.png",
-            "img/padel_galeria3.png"
-        ],
         "adjunto": {
             "ruta": "documentos/I_liga_padel.pdf",
             "texto": "Descargar Bases de la Liga (PDF)"
