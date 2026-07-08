@@ -28,7 +28,7 @@ const misNoticias = [
         "titulo": "¡Final de la I Liga de Pádel Ferroviaria!",
         "fecha": "15 de Mayo, 2026",
         "resumen": "Final de la I Liga de Pádel Ferroviaria y entrega de trofeos.",
-        "contenido": "Esta mañana la pareja Casaus-González se ha impuesto en la final de la I Liga de Padel Ferroviaria a la pareja Sempere-Sempere por 6-3,6-4". Asimismo, el tercer puesto ha sido para Gómez-Cordero que ha derrotado a Ruiz-Valencia en el partido por el tercer y cuarto puesto. Tras la final se ha realizado una comida en el Centro Isbylia con la posterior entrega de trofeos.", 
+        "contenido": "Esta mañana la pareja Casaus-González se ha impuesto en la final de la I Liga de Padel Ferroviaria a la pareja Sempere-Sempere por 6-3,6-4. Asimismo, el tercer puesto ha sido para Gómez-Cordero que ha derrotado a Ruiz-Valencia en el partido por el tercer y cuarto puesto. Tras la final se ha realizado una comida en el Centro Isbylia con la posterior entrega de trofeos.", 
         "imagen": "img/padel1.png",
         "galeria": [
             "img/padel2.png",
