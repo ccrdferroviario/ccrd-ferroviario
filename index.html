@@ -194,7 +194,7 @@
         </div>
     </footer>
 
-    <!-- Cargamos noticias.js de fondo únicamente para almacenar la base de datos de noticias JSON -->
+   <!-- Cargamos noticias.js de fondo únicamente para almacenar la base de datos de noticias JSON -->
     <script src="noticias.js" defer></script>
 
     <!-- Script único interactivo: Controla carrusel superior y calendario inferior -->
@@ -237,94 +237,98 @@
 
             ======
 
-    <script>
-        // Base de datos interna del club
-        const eventosClub = {
-            '2026-5-15': '🏃‍♂️ <strong>Atletismo:</strong> Entrenamiento oficial de series en pista larga a las 19:00h.',
-            '2026-5-22': '🎯 <strong>Tiro al Plato:</strong> Campeonato local clasificatorio en las instalaciones del club. Comienzo a las 10:00h.',
-            '2026-5-28': '♟️ <strong>Ajedrez:</strong> Torneo de primavera por categorías en la Sede Social. Inscripciones abiertas.',
-            '2026-6-5': '📅 <strong>Reunión de Junta:</strong> Asamblea general extraordinaria para socios en el salón principal.'
-        };
+            /* ==========================================================
+               2. LÓGICA INTERACTIVA DEL CALENDARIO
+               ========================================================== */
+            const eventosClub = {
+                '2026-4-15': '🏃‍♂️ <strong>Atletismo:</strong> Entrenamiento oficial de series en pista larga a las 19:00h.',
+                '2026-4-22': '🎯 <strong>Tiro al Plato:</strong> Campeonato local clasificatorio en las instalaciones del club. Comienzo a las 10:00h.',
+                '2026-4-28': '♟️ <strong>Ajedrez:</strong> Torneo de primavera por categorías en la Sede Social. Inscripciones abiertas.',
+                '2026-5-5': '📅 <strong>Reunión de Junta:</strong> Asamblea general extraordinaria para socios en el salón principal.'
+            };
 
-        let fechaActual = new Date();
+            let fechaActual = new Date();
+            const nombresMeses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 
-        const nombresMeses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+            function renderizarCalendario() {
+                const año = fechaActual.getFullYear();
+                const mes = fechaActual.getMonth();
 
-        function renderizarCalendario() {
-            const año = fechaActual.getFullYear();
-            const mes = fechaActual.getMonth();
+                document.getElementById('calendar-month-year').innerText = `${nombresMeses[mes]} ${año}`;
 
-            document.getElementById('calendar-month-year').innerText = `${nombresMeses[mes]} ${año}`;
+                const primerDiaMes = new Date(año, mes, 1).getDay();
+                const lunesIndex = primerDiaMes === 0 ? 6 : primerDiaMes - 1;
 
-            const primerDiaMes = new Date(año, mes, 1).getDay();
-            const lunesIndex = primerDiaMes === 0 ? 6 : primerDiaMes - 1;
+                const diasTotalesMes = new Date(año, mes + 1, 0).getDate();
+                const gridDias = document.getElementById('calendar-days');
+                gridDias.innerHTML = '';
 
-            const diasTotalesMes = new Date(año, mes + 1, 0).getDate();
-            const gridDias = document.getElementById('calendar-days');
-            gridDias.innerHTML = '';
-
-            for (let i = 0; i < lunesIndex; i++) {
-                const divVacio = document.createElement('div');
-                divVacio.classList.add('calendar-day', 'empty');
-                gridDias.appendChild(divVacio);
-            }
-
-            for (let dia = 1; dia <= diasTotalesMes; dia++) {
-                const elementoDia = document.createElement('div');
-                elementoDia.classList.add('calendar-day');
-                elementoDia.innerText = dia;
-
-                const claveFecha = `${año}-${mes}-${dia}`;
-
-                if (eventosClub[claveFecha]) {
-                    elementoDia.classList.add('has-event');
+                for (let i = 0; i < lunesIndex; i++) {
+                    const divVacio = document.createElement('div');
+                    divVacio.classList.add('calendar-day', 'empty');
+                    gridDias.appendChild(divVacio);
                 }
 
-                const hoy = new Date();
-                if (dia === hoy.getDate() && mes === hoy.getMonth() && año === hoy.getFullYear()) {
-                    elementoDia.classList.add('today');
+                for (let dia = 1; dia <= diasTotalesMes; dia++) {
+                    const elementoDia = document.createElement('div');
+                    elementoDia.classList.add('calendar-day');
+                    elementoDia.innerText = dia;
+
+                    const claveFecha = `${año}-${mes}-${dia}`;
+
+                    if (eventosClub[claveFecha]) {
+                        elementoDia.classList.add('has-event');
+                    }
+
+                    const hoy = new Date();
+                    if (dia === hoy.getDate() && mes === hoy.getMonth() && año === hoy.getFullYear()) {
+                        elementoDia.classList.add('today');
+                    }
+
+                    elementoDia.addEventListener('click', () => {
+                        abrirModalInformacion(dia, nombresMeses[mes], año, eventosClub[claveFecha]);
+                    });
+
+                    gridDias.appendChild(elementoDia);
                 }
-
-                elementoDia.addEventListener('click', () => {
-                    abrirModalInformacion(dia, nombresMeses[mes], año, eventosClub[claveFecha]);
-                });
-
-                gridDias.appendChild(elementoDia);
             }
-        }
 
-        function abrirModalInformacion(dia, mesTxt, año, info) {
-            const modal = document.getElementById('event-modal');
-            document.getElementById('modal-date-title').innerText = `${dia} de ${mesTxt} de ${año}`;
-            
-            if (info) {
-                document.getElementById('modal-info-text').innerHTML = info;
-            } else {
-                document.getElementById('modal-info-text').innerHTML = 'ℹ️ No hay eventos programados o modificaciones para este día. Las secciones deportivas mantienen sus horarios habituales.';
+            function abrirModalInformacion(dia, mesTxt, año, info) {
+                const modal = document.getElementById('event-modal');
+                document.getElementById('modal-date-title').innerText = `${dia} de ${mesTxt} de ${año}`;
+                
+                if (info) {
+                    document.getElementById('modal-info-text').innerHTML = info;
+                } else {
+                    document.getElementById('modal-info-text').innerHTML = 'ℹ️ No hay eventos programados o modificaciones para este día. Las secciones deportivas mantienen sus horarios habituales.';
+                }
+                
+                modal.classList.add('active');
             }
+
+            document.querySelector('.modal-close-btn').addEventListener('click', () => {
+                document.getElementById('event-modal').classList.remove('active');
+            });
             
-            modal.classList.add('active');
-        }
+            window.addEventListener('click', (e) => {
+                const modal = document.getElementById('event-modal');
+                if (e.target === modal) modal.classList.remove('active');
+            });
 
-        document.querySelector('.modal-close-btn').addEventListener('click', () => {
-            document.getElementById('event-modal').classList.remove('active');
-        });
-        window.addEventListener('click', (e) => {
-            const modal = document.getElementById('event-modal');
-            if (e.target === modal) modal.classList.remove('active');
-        });
+            document.getElementById('prev-month-btn').addEventListener('click', () => {
+                fechaActual.setMonth(fechaActual.getMonth() - 1);
+                renderizarCalendario();
+            });
 
-        document.getElementById('prev-month-btn').addEventListener('click', () => {
-            fechaActual.setMonth(fechaActual.getMonth() - 1);
+            document.getElementById('next-month-btn').addEventListener('click', () => {
+                fechaActual.setMonth(fechaActual.getMonth() + 1);
+                renderizarCalendario();
+            });
+
+            // Inicialización de ambos componentes al cargar la vista
+            mostrarSlides(slideIndex);
             renderizarCalendario();
         });
-
-        document.getElementById('next-month-btn').addEventListener('click', () => {
-            fechaActual.setMonth(fechaActual.getMonth() + 1);
-            renderizarCalendario();
-        });
-
-        renderizarCalendario();
     </script>
 </body>
 </html>
