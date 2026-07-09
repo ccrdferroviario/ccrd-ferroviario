@@ -1,5 +1,13 @@
 const misNoticias = [
-    {
+        {
+        "seccion": "senderismo",
+        "titulo": "¡Próxima Ruta Nocturna de Verano programada!",
+        "fecha": "5 de Julio, 2026",
+        "resumen": "Abiertas las plazas para la ruta nocturna estival con observación astronómica.",
+        "contenido": "Aprovechando las temperaturas más suaves del atardecer, realizaremos nuestra clásica ruta nocturna de senderismo por la Sierra Norte. Un recorrido circular de dificultad baja ideal para disfrutar del paisaje bajo las estrellas. Contaremos con un guía especializado que realizará una pequeña parada interpretativa de constelaciones a mitad del camino.",
+        "imagen": "img/senderismo1.png"
+    },
+     {
         "seccion": "tiro",
         "titulo": "¡Gran éxito en la competición interempresas!",
         "fecha": "13 de Junio, 2026",
@@ -8,20 +16,20 @@ const misNoticias = [
         "imagen": "img/tiro.png"
     },
     {
+        "seccion": "ciclismo",
+        "titulo": "XXIX Triatlón de Sevilla",
+        "fecha": "7 de Junio, 2026",
+        "resumen": "La sección de ciclismo y triatlón participa en el Triatlón de Sevilla.",
+        "contenido": "Dos miembros de la sección de ciclismo y triatlón han participado esta mañana en el XXIX Triatlón de Sevilla en la categoría sprint. Celia Saez, en su primera participación en categoría sprint paró el crono en 1H35m56 con un excelente segmento de natación. Por otra parte, Alberto Ruiz hizo lo propio con una notable marca de 1h16m57.",
+        "imagen": "img/triatlon.png"
+    },
+       {
         "seccion": "ajedrez",
         "titulo": "¡Vuelve el Ajedrez al CCRD Ferroviario!",
         "fecha": "1 of Junio, 2026",
         "resumen": "Inauguramos la nueva sección de ajedrez con muchas novedades.",
         "contenido": "Inauguramos una nueva sección de ajedrez con muchas novedades y proyectos. ¡Anímate a entrenar tu mente y a disfrutar de la estrategia en el mejor ambiente!",
         "imagen": "img/ajedrez1.png"
-    },
-        {
-        "seccion": "senderismo",
-        "titulo": "¡Próxima Ruta Nocturna de Verano programada!",
-        "fecha": "5 de Julio, 2026",
-        "resumen": "Abiertas las plazas para la ruta nocturna estival con observación astronómica.",
-        "contenido": "Aprovechando las temperaturas más suaves del atardecer, realizaremos nuestra clásica ruta nocturna de senderismo por la Sierra Norte. Un recorrido circular de dificultad baja ideal para disfrutar del paisaje bajo las estrellas. Contaremos con un guía especializado que realizará una pequeña parada interpretativa de constelaciones a mitad del camino.",
-        "imagen": "img/senderismo1.png"
     },
      {
         "seccion": "padel",
@@ -36,38 +44,6 @@ const misNoticias = [
             "img/padel4.png",
             "img/padel5.png"
         ],
-    },
-    {
-        "seccion": "padel",
-        "titulo": "¡Arranca la I Liga de Pádel Ferroviaria!",
-        "fecha": "1 de Noviembre, 2025",
-        "resumen": "Abiertas las inscripciones para la I Liga de Padel Ferroviaria.",
-        "contenido": "Damos el pistoletazo de salida a la sección con nuestro primer torneo. Fecha límite de inscripcion: 20 de Noviembre de 2025. Formato: liga + eliminatorias. Para más información consulte el PDF adjunto.",
-        "imagen": "img/padel1.png",
-        "adjunto": {
-            "ruta": "documentos/I_liga_padel.pdf",
-            "texto": "Descargar Bases de la Liga (PDF)"
-        }
-    },
-    {
-        "seccion": "club",
-        "titulo": "Convocatoria de Asamblea ordinaria anual",
-        "fecha": "01/01/2026",
-        "resumen": "Convocatoria de asamblea de socios el próximo 14/01/26",
-        "contenido": "Se convoca Asamblea ordinaria anual de socios el próximo 14 de Enero de 2026 a las 19:00 en primera convocatoria y a las 19:30 en segunda. El orden del día puede consultarse en el PDF adjunto.",
-        "imagen": "img/asamblea.png",
-        "adjunto": {
-            "ruta": "documentos/Convocatoria_Asamblea_14_01_2026.pdf",
-            "texto": "Descargar Convocatoria de Asamblea (PDF)"
-        }
-    },
-    {
-        "seccion": "ciclismo",
-        "titulo": "XXIX Triatlón de Sevilla",
-        "fecha": "7 de Junio, 2026",
-        "resumen": "La sección de ciclismo y triatlón participa en el Triatlón de Sevilla.",
-        "contenido": "Dos miembros de la sección de ciclismo y triatlón han participado esta mañana en el XXIX Triatlón de Sevilla en la categoría sprint. Celia Saez, en su primera participación en categoría sprint paró el crono en 1H35m56 con un excelente segmento de natación. Por otra parte, Alberto Ruiz hizo lo propio con una notable marca de 1h16m57.",
-        "imagen": "img/triatlon.png"
     },
     {
         "seccion": "atletismo",
@@ -108,5 +84,29 @@ const misNoticias = [
         "resumen": "Hasta 11 corredores se han dado cita en la gran distancia del atletismo.", 
         "contenido": "Hasta 11 corredores se han dado cita en la gran distancia del atletismo. Morgaz, Dorado (3h16m29s), Cecilio (3h24m11s), Adorna (3h31m50s), Castilla (3h36m49s), Iván (3h40m58s), Ignacio (3h42m56s), Antonio Dominguez (3h46m15s), Jairo (4h05m07s), Antonio Rafael (4h24m27s) y Moises (5h12m39s) han completado los 42,195km en un magnífico recorrido por las calles de Sevilla. Mención especial a nuestros queridos Morgaz, que ha competido de manera brillante acercándose a las 2h30 (2h36m42s), y a Moises y Jairo por completar su primera maratón",
         "imagen": "img/maraton1.png"
+    },
+      {
+        "seccion": "club",
+        "titulo": "Convocatoria de Asamblea ordinaria anual",
+        "fecha": "01/01/2026",
+        "resumen": "Convocatoria de asamblea de socios el próximo 14/01/26",
+        "contenido": "Se convoca Asamblea ordinaria anual de socios el próximo 14 de Enero de 2026 a las 19:00 en primera convocatoria y a las 19:30 en segunda. El orden del día puede consultarse en el PDF adjunto.",
+        "imagen": "img/asamblea.png",
+        "adjunto": {
+            "ruta": "documentos/Convocatoria_Asamblea_14_01_2026.pdf",
+            "texto": "Descargar Convocatoria de Asamblea (PDF)"
+        }
+    },
+      {
+        "seccion": "padel",
+        "titulo": "¡Arranca la I Liga de Pádel Ferroviaria!",
+        "fecha": "1 de Noviembre, 2025",
+        "resumen": "Abiertas las inscripciones para la I Liga de Padel Ferroviaria.",
+        "contenido": "Damos el pistoletazo de salida a la sección con nuestro primer torneo. Fecha límite de inscripcion: 20 de Noviembre de 2025. Formato: liga + eliminatorias. Para más información consulte el PDF adjunto.",
+        "imagen": "img/padel1.png",
+        "adjunto": {
+            "ruta": "documentos/I_liga_padel.pdf",
+            "texto": "Descargar Bases de la Liga (PDF)"
+        }
     },
 ];
