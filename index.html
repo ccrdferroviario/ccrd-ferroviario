@@ -55,22 +55,22 @@
         <!-- Imagen 1 -->
         <div class="slider-slide active">
             <img src="img/main1.png" alt="Actividades Club Ferroviario">
-            <div class="slider-caption">Temporada de Atletismo 2026</div>
+            <div class="slider-caption"></div>
         </div>
         <!-- Imagen 2 -->
         <div class="slider-slide">
             <img src="img/main2.png" alt="Instalaciones Padel">
-            <div class="slider-caption">Nuevas ligas de Pádel y Torneos</div>
+            <div class="slider-caption"></div>
         </div>
         <!-- Imagen 3 -->
         <div class="slider-slide">
             <img src="img/main3.png" alt="Rutas Senderismo">
-            <div class="slider-caption">Rutas de Senderismo en la Naturaleza</div>
+            <div class="slider-caption"></div>
         </div>
          <!-- Imagen 4 -->
         <div class="slider-slide">
             <img src="img/main4.png" alt="Rutas Senderismo">
-            <div class="slider-caption">Rutas de Senderismo en la Naturaleza</div>
+            <div class="slider-caption"></div>
         </div>
        <!-- Botones de control manual (Atributos onclick eliminados para evitar fallos de carga global) -->
             <button class="slider-btn prev" id="btn-carrusel-prev">&#10094;</button>
@@ -193,6 +193,49 @@
             </div>
         </div>
     </footer>
+
+    <!-- Cargamos noticias.js de fondo únicamente para almacenar la base de datos de noticias JSON -->
+    <script src="noticias.js" defer></script>
+
+    <!-- Script único interactivo: Controla carrusel superior y calendario inferior -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            /* ==========================================================
+               1. LÓGICA DEL CARRUSEL DE IMÁGENES SUPERIOR
+               ========================================================== */
+            let slideIndex = 1;
+            let autoSliderTimer;
+
+            function mostrarSlides(index) {
+                const slides = document.querySelectorAll(".slider-slide");
+                if (slides.length === 0) return;
+
+                if (index > slides.length) { slideIndex = 1; }
+                if (index < 1) { slideIndex = slides.length; }
+
+                slides.forEach(slide => slide.classList.remove("active"));
+                slides[slideIndex - 1].classList.add("active");
+
+                // Configura el bucle automático constante (4 segundos)
+                clearTimeout(autoSliderTimer);
+                autoSliderTimer = setTimeout(() => {
+                    slideIndex++;
+                    mostrarSlides(slideIndex);
+                }, 4000);
+            }
+
+            function cambiarSlideManual(direccion) {
+                clearTimeout(autoSliderTimer);
+                slideIndex += direccion;
+                mostrarSlides(slideIndex);
+            }
+
+            // Escuchadores de eventos nativos para las flechas
+            document.getElementById('btn-carrusel-prev').addEventListener('click', () => cambiarSlideManual(-1));
+            document.getElementById('btn-carrusel-next').addEventListener('click', () => cambiarSlideManual(1));
+
+            ======
 
     <script>
         // Base de datos interna del club
