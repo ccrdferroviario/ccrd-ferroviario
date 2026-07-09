@@ -110,3 +110,52 @@ const misNoticias = [
         }
     },
 ];
+let slideIndex = 0;
+let autoSliderTimer;
+
+function mostrarSlides() {
+    const slides = document.querySelectorAll(".slider-slide");
+    if (slides.length === 0) return;
+
+    // Quitamos la clase activa de todas las fotos
+    slides.forEach(slide => slide.classList.remove("active"));
+    
+    slideIndex++;
+    if (slideIndex > slides.length) { slideIndex = 1; }
+    
+    // Activamos la foto correspondiente
+    slides[slideIndex - 1].classList.add("active");
+    
+    // Reiniciamos el temporizador automático (cada 4 segundos)
+    clearTimeout(autoSliderTimer);
+    autoSliderTimer = setTimeout(mostrarSlides, 4000); 
+}
+
+// Función para cuando el usuario pulsa las flechas manuales
+function cambiarSlide(direccion) {
+    const slides = document.querySelectorAll(".slider-slide");
+    if (slides.length === 0) return;
+
+    clearTimeout(autoSliderTimer); // Pausa el auto-pase para no volverse loco al clicar
+    
+    // Calculamos el nuevo índice
+    slideIndex += direccion - 1; 
+    
+    if (slideIndex < 0) { slideIndex = slides.length - 1; }
+    if (slideIndex >= slides.length) { slideIndex = 0; }
+    
+    slides.forEach(slide => slide.classList.remove("active"));
+    slides[slideIndex].classList.add("active");
+    
+    // Volvemos a enganchar el pase automático tras la interacción del usuario
+    slideIndex++; 
+    autoSliderTimer = setTimeout(mostrarSlides, 5000);
+}
+
+// Arrancamos el carrusel cuando la página esté lista
+document.addEventListener("DOMContentLoaded", () => {
+    const slides = document.querySelectorAll(".slider-slide");
+    if (slides.length > 0) {
+        mostrarSlides();
+    }
+});
