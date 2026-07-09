@@ -1,5 +1,5 @@
 const misNoticias = [
-        {
+    {
         "seccion": "senderismo",
         "titulo": "¡Próxima Ruta Nocturna de Verano programada!",
         "fecha": "5 de Julio, 2026",
@@ -7,7 +7,7 @@ const misNoticias = [
         "contenido": "Aprovechando las temperaturas más suaves del atardecer, realizaremos nuestra clásica ruta nocturna de senderismo por la Sierra Norte. Un recorrido circular de dificultad baja ideal para disfrutar del paisaje bajo las estrellas. Contaremos con un guía especializado que realizará una pequeña parada interpretativa de constelaciones a mitad del camino.",
         "imagen": "img/senderismo1.png"
     },
-     {
+    {
         "seccion": "tiro",
         "titulo": "¡Gran éxito en la competición interempresas!",
         "fecha": "13 de Junio, 2026",
@@ -23,7 +23,7 @@ const misNoticias = [
         "contenido": "Dos miembros de la sección de ciclismo y triatlón han participado esta mañana en el XXIX Triatlón de Sevilla en la categoría sprint. Celia Saez, en su primera participación en categoría sprint paró el crono en 1H35m56 con un excelente segmento de natación. Por otra parte, Alberto Ruiz hizo lo propio con una notable marca de 1h16m57.",
         "imagen": "img/triatlon.png"
     },
-       {
+    {
         "seccion": "ajedrez",
         "titulo": "¡Vuelve el Ajedrez al CCRD Ferroviario!",
         "fecha": "1 of Junio, 2026",
@@ -31,7 +31,7 @@ const misNoticias = [
         "contenido": "Inauguramos una nueva sección de ajedrez con muchas novedades y proyectos. ¡Anímate a entrenar tu mente y a disfrutar de la estrategia en el mejor ambiente!",
         "imagen": "img/ajedrez1.png"
     },
-     {
+    {
         "seccion": "padel",
         "titulo": "¡Final de la I Liga de Pádel Ferroviaria!",
         "fecha": "15 de Mayo, 2026",
@@ -43,7 +43,7 @@ const misNoticias = [
             "img/padel3.png",
             "img/padel4.png",
             "img/padel5.png"
-        ],
+        ]
     },
     {
         "seccion": "atletismo",
@@ -58,7 +58,7 @@ const misNoticias = [
             "img/ronda3.png"
         ]
     },
-     {
+    {
         "seccion": "atletismo",
         "titulo": "Gran participación ferroviaria en la carrera IMD Cerro-Amate",
         "fecha": "12 de Abril, 2026",
@@ -69,7 +69,7 @@ const misNoticias = [
             "img/circuito1.png"
         ]
     },
-     {
+    {
         "seccion": "atletismo",
         "titulo": "El CCRD Ferroviario en la Maraton de Roma",
         "fecha": "22 de Marzo, 2026",
@@ -77,7 +77,7 @@ const misNoticias = [
         "contenido": "Nuestro compañero de la sección de atletismo Ivan Román completa el mítico circuito de la capital italiana en 3h50m26.",
         "imagen": "img/roma.png"
     },
-     {
+    {
         "seccion": "atletismo",
         "titulo": "¡Alta participación en el Maratón de Sevilla!",
         "fecha": "15 de Febrero, 2026",
@@ -85,7 +85,7 @@ const misNoticias = [
         "contenido": "Hasta 11 corredores se han dado cita en la gran distancia del atletismo. Morgaz, Dorado (3h16m29s), Cecilio (3h24m11s), Adorna (3h31m50s), Castilla (3h36m49s), Iván (3h40m58s), Ignacio (3h42m56s), Antonio Dominguez (3h46m15s), Jairo (4h05m07s), Antonio Rafael (4h24m27s) y Moises (5h12m39s) han completado los 42,195km en un magnífico recorrido por las calles de Sevilla. Mención especial a nuestros queridos Morgaz, que ha competido de manera brillante acercándose a las 2h30 (2h36m42s), y a Moises y Jairo por completar su primera maratón",
         "imagen": "img/maraton1.png"
     },
-      {
+    {
         "seccion": "club",
         "titulo": "Convocatoria de Asamblea ordinaria anual",
         "fecha": "01/01/2026",
@@ -97,7 +97,7 @@ const misNoticias = [
             "texto": "Descargar Convocatoria de Asamblea (PDF)"
         }
     },
-      {
+    {
         "seccion": "padel",
         "titulo": "¡Arranca la I Liga de Pádel Ferroviaria!",
         "fecha": "1 de Noviembre, 2025",
@@ -108,8 +108,9 @@ const misNoticias = [
             "ruta": "documentos/I_liga_padel.pdf",
             "texto": "Descargar Bases de la Liga (PDF)"
         }
-    },
+    }
 ];
+
 let slideIndex = 0;
 let autoSliderTimer;
 
@@ -117,38 +118,35 @@ function mostrarSlides() {
     const slides = document.querySelectorAll(".slider-slide");
     if (slides.length === 0) return;
 
-    // Quitamos la clase activa de todas las fotos
     slides.forEach(slide => slide.classList.remove("active"));
     
     slideIndex++;
     if (slideIndex > slides.length) { slideIndex = 1; }
     
-    // Activamos la foto correspondiente
     slides[slideIndex - 1].classList.add("active");
     
-    // Reiniciamos el temporizador automático (cada 4 segundos)
+    // Configura el pase automático estándar a 4 segundos
     clearTimeout(autoSliderTimer);
     autoSliderTimer = setTimeout(mostrarSlides, 4000); 
 }
 
-// Función para cuando el usuario pulsa las flechas manuales
+// Función optimizada para los clics en las flechas manuales
 function cambiarSlide(direccion) {
     const slides = document.querySelectorAll(".slider-slide");
     if (slides.length === 0) return;
 
-    clearTimeout(autoSliderTimer); // Pausa el auto-pase para no volverse loco al clicar
+    clearTimeout(autoSliderTimer); // Detiene el carrusel momentáneamente
     
-    // Calculamos el nuevo índice
-    slideIndex += direccion - 1; 
+    // Modificación de índice limpia para evitar saltos bruscos
+    slideIndex += direccion; 
     
-    if (slideIndex < 0) { slideIndex = slides.length - 1; }
-    if (slideIndex >= slides.length) { slideIndex = 0; }
+    if (slideIndex > slides.length) { slideIndex = 1; }
+    if (slideIndex < 1) { slideIndex = slides.length; }
     
     slides.forEach(slide => slide.classList.remove("active"));
-    slides[slideIndex].classList.add("active");
+    slides[slideIndex - 1].classList.add("active");
     
-    // Volvemos a enganchar el pase automático tras la interacción del usuario
-    slideIndex++; 
+    // Reengancha el temporizador dejando un margen de 5 segundos tras interactuar
     autoSliderTimer = setTimeout(mostrarSlides, 5000);
 }
 
