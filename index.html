@@ -237,17 +237,28 @@
             }
 
             // Escuchadores de eventos nativos para las flechas
-            document.getElementById('btn-carrusel-prev').addEventListener('click', () => cambiarSlideManual(-1));
-            document.getElementById('btn-carrusel-next').addEventListener('click', () => cambiarSlideManual(1));
+            const btnPrev = document.getElementById('btn-carrusel-prev');
+            const btnNext = document.getElementById('btn-carrusel-next');
 
-            ======
+            if (btnPrev && btnNext) {
+                btnPrev.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    cambiarSlideManual(-1);
+                });
+                btnNext.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    cambiarSlideManual(1);
+                });
+            }
 
             /* ==========================================================
                2. LÓGICA INTERACTIVA DEL CALENDARIO
                ========================================================== */
             const eventosClub = {
-                '2026-1-14': '🏃‍♂️ <strong>Asamblea ordinaria de socios:</strong> Asamblea Ordinaria de socios a las 19:00h en la sede del CCRD.',
-                '2026-4-28': '🎯 <strong>Tiro al Plato:</strong> Reunión de Junta directiva a las 18:30 en la sede del CCRD.',
+                '2026-4-15': '🏃‍♂️ <strong>Atletismo:</strong> Entrenamiento oficial de series en pista larga a las 19:00h.',
+                '2026-4-22': '🎯 <strong>Tiro al Plato:</strong> Campeonato local clasificatorio en las instalaciones del club. Comienzo a las 10:00h.',
+                '2026-4-28': '♟️ <strong>Ajedrez:</strong> Torneo de primavera por categorías en la Sede Social. Inscripciones abiertas.',
+                '2026-5-5': '📅 <strong>Reunión de Junta:</strong> Asamblea general extraordinaria para socios en el salón principal.'
             };
 
             let fechaActual = new Date();
@@ -257,13 +268,17 @@
                 const año = fechaActual.getFullYear();
                 const mes = fechaActual.getMonth();
 
-                document.getElementById('calendar-month-year').innerText = `${nombresMeses[mes]} ${año}`;
+                const textoMesAño = document.getElementById('calendar-month-year');
+                if (!textoMesAño) return;
+                
+                textoMesAño.innerText = `${nombresMeses[mes]} ${año}`;
 
                 const primerDiaMes = new Date(año, mes, 1).getDay();
                 const lunesIndex = primerDiaMes === 0 ? 6 : primerDiaMes - 1;
 
                 const diasTotalesMes = new Date(año, mes + 1, 0).getDate();
                 const gridDias = document.getElementById('calendar-days');
+                if (!gridDias) return;
                 gridDias.innerHTML = '';
 
                 for (let i = 0; i < lunesIndex; i++) {
@@ -306,32 +321,40 @@
                     document.getElementById('modal-info-text').innerHTML = 'ℹ️ No hay eventos programados o modificaciones para este día. Las secciones deportivas mantienen sus horarios habituales.';
                 }
                 
-                modal.classList.add('active');
+                if (modal) modal.classList.add('active');
             }
 
-            document.querySelector('.modal-close-btn').addEventListener('click', () => {
-                document.getElementById('event-modal').classList.remove('active');
-            });
+            const btnCloseModal = document.querySelector('.modal-close-btn');
+            if (btnCloseModal) {
+                btnCloseModal.addEventListener('click', () => {
+                    document.getElementById('event-modal').classList.remove('active');
+                });
+            }
             
             window.addEventListener('click', (e) => {
                 const modal = document.getElementById('event-modal');
                 if (e.target === modal) modal.classList.remove('active');
             });
 
-            document.getElementById('prev-month-btn').addEventListener('click', () => {
-                fechaActual.setMonth(fechaActual.getMonth() - 1);
-                renderizarCalendario();
-            });
+            const btnPrevMonth = document.getElementById('prev-month-btn');
+            const btnNextMonth = document.getElementById('next-month-btn');
 
-            document.getElementById('next-month-btn').addEventListener('click', () => {
-                fechaActual.setMonth(fechaActual.getMonth() + 1);
-                renderizarCalendario();
-            });
+            if (btnPrevMonth) {
+                btnPrevMonth.addEventListener('click', () => {
+                    fechaActual.setMonth(fechaActual.getMonth() - 1);
+                    renderizarCalendario();
+                });
+            }
 
-            // Inicialización de ambos componentes al cargar la vista
+            if (btnNextMonth) {
+                btnNextMonth.addEventListener('click', () => {
+                    fechaActual.setMonth(fechaActual.getMonth() + 1);
+                    renderizarCalendario();
+                });
+            }
+
+            // Inicialización segura de ambos componentes
             mostrarSlides(slideIndex);
             renderizarCalendario();
         });
     </script>
-</body>
-</html>
