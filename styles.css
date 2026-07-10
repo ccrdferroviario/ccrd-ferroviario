@@ -1472,7 +1472,7 @@ body {
 .carrusel-wrapper {
     position: relative;
     width: 100%;
-    height: 450px; /* Altura ideal fija, puedes adaptarla */
+    height: 550px; /* Altura ideal fija, puedes adaptarla */
     overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
