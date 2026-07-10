@@ -1558,3 +1558,7 @@ body {
     cursor: pointer !important;
     z-index: 10; /* Asegura que las flechas queden por encima de las imágenes del banner */
 }
+/* Ajuste milimétrico para la foto de las bicicletas */
+.slider-slide img.foto-ciclistas {
+    object-position: center 2% !important; /* Fuerza al navegador a encuadrar desde el borde superior */
+}
