@@ -1554,3 +1554,7 @@ body {
 .slider-slide img.imagen-cabecera {
     object-position: center top !important;
 }
+.slider-btn {
+    cursor: pointer !important;
+    z-index: 10; /* Asegura que las flechas queden por encima de las imágenes del banner */
+}
