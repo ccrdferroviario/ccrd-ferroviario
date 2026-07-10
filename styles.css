@@ -1549,3 +1549,7 @@ body {
         padding: 12px;
     }
 }
+/* Ajuste para que no se corten las cabezas en el banner */
+.slider-slide img.imagen-cabecera {
+    object-position: center top !important;
+}
