@@ -1500,6 +1500,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover; /* Recorta y ajusta la foto al cuadro sin deformarla */
+    object-position: center 15%; /* Mantiene el enfoque ligeramente hacia arriba */
 }
 
 /* Texto superpuesto inferior */
