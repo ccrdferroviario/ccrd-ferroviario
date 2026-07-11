@@ -95,33 +95,39 @@
         </div>
     </main>
 
-    <section class="calendario-seccion-bloque">
+    </section>
+
+    <section class="calendar-section">
         <div class="container">
-            <div class="calendario-header-compacto">
-                <h3><i class="fa-regular fa-calendar"></i> Calendario de Entrenamientos y Carreras</h3>
-                <div class="cal-flechas">
-                    <button class="btn-cal-flecha">◀</button>
-                    <span class="cal-mes-actual">JULIO 2026</span>
-                    <button class="btn-cal-flecha">▶</button>
-                </div>
+            <div class="calendar-header-block">
+                <h2>Calendario de Actividades</h2>
+                <p>Consulte los próximos eventos, entrenamientos y citas importantes del club.</p>
             </div>
-
-            <div class="calendario-tabla-compacta">
-                <div class="dia-semana-comp">Lun</div><div class="dia-semana-comp">Mar</div><div class="dia-semana-comp">Mié</div><div class="dia-semana-comp">Jue</div><div class="dia-semana-comp">Vie</div><div class="dia-semana-comp">Sáb</div><div class="dia-semana-comp">Dom</div>
+            
+            <div class="calendar-wrapper">
+                <div class="calendar-nav">
+                    <button id="prev-month-btn">◀</button>
+                    <h3 id="calendar-month-year">Junio 2026</h3>
+                    <button id="next-month-btn">▶</button>
+                </div>
                 
-                <div class="celda-dia-comp apagado">29</div><div class="celda-dia-comp apagado">30</div>
-                <div class="celda-dia-comp evento-verde" data-info="Series 19:30h">1</div><div class="celda-dia-comp">2</div><div class="celda-dia-comp">3</div>
-                <div class="celda-dia-comp">4</div><div class="celda-dia-comp">5</div>
+                <div class="calendar-weekdays">
+                    <div>Lun</div><div>Mar</div><div>Mié</div><div>Jue</div><div>Vie</div><div>Sáb</div><div>Dom</div>
+                </div>
                 
-                <div class="celda-dia-comp evento-verde" data-info="Carrera Continua">6</div><div class="celda-dia-comp">7</div>
-                <div class="celda-dia-comp evento-verde" data-info="Series Cortas">8</div><div class="celda-dia-comp">9</div><div class="celda-dia-comp">10</div>
-                <div class="celda-dia-comp evento-granate" data-info="Tirada Larga 9am">11</div><div class="celda-dia-comp">12</div>
-
-                <div class="celda-dia-comp">13</div><div class="celda-dia-comp">14</div><div class="celda-dia-comp">15</div><div class="celda-dia-comp">16</div><div class="celda-dia-comp">17</div><div class="celda-dia-comp">18</div><div class="celda-dia-comp">19</div>
-                <div class="celda-dia-comp">20</div><div class="celda-dia-comp">21</div><div class="celda-dia-comp">22</div><div class="celda-dia-comp">23</div><div class="celda-dia-comp">24</div><div class="celda-dia-comp">25</div><div class="celda-dia-comp">26</div>
-                <div class="celda-dia-comp">27</div><div class="celda-dia-comp">28</div><div class="celda-dia-comp">29</div><div class="celda-dia-comp">30</div><div class="celda-dia-comp">31</div><div class="celda-dia-comp apagado">1</div><div class="celda-dia-comp apagado">2</div>
+                <div id="calendar-days" class="calendar-days-grid"></div>
             </div>
         </div>
+    </section>
+
+    <div id="event-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close-btn">&times;</span>
+            <h3 id="modal-date-title">Fecha del evento</h3>
+            <div id="modal-info-text"></div>
+        </div>
+    </div>
+
     </section>
 
     <script>
@@ -221,6 +227,112 @@
             }
         }
     </script>
+     /* ==========================================================
+               2. LÓGICA INTERACTIVA DEL CALENDARIO
+               ========================================================== */
+            const eventosClub = {
+                '2026-4-28': '🏃‍♂️ <strong>CCRD:</strong> Reunion de Junta Directiva a las 18:30 en la sede social.',
+                '2026-1-15': '🎯 <strong>CCRD:</strong> Asamblea ordinaria de socios a las 19:00 en la sede social.',
+            };
+
+            let fechaActual = new Date();
+            const nombresMeses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+
+            function renderizarCalendario() {
+                const año = fechaActual.getFullYear();
+                const mes = fechaActual.getMonth();
+
+                const textoMesAño = document.getElementById('calendar-month-year');
+                if (!textoMesAño) return;
+                
+                textoMesAño.innerText = `${nombresMeses[mes]} ${año}`;
+
+                const primerDiaMes = new Date(año, mes, 1).getDay();
+                const lunesIndex = primerDiaMes === 0 ? 6 : primerDiaMes - 1;
+
+                const diasTotalesMes = new Date(año, mes + 1, 0).getDate();
+                const gridDias = document.getElementById('calendar-days');
+                if (!gridDias) return;
+                gridDias.innerHTML = '';
+
+                for (let i = 0; i < lunesIndex; i++) {
+                    const divVacio = document.createElement('div');
+                    divVacio.classList.add('calendar-day', 'empty');
+                    gridDias.appendChild(divVacio);
+                }
+
+                for (let dia = 1; dia <= diasTotalesMes; dia++) {
+                    const elementoDia = document.createElement('div');
+                    elementoDia.classList.add('calendar-day');
+                    elementoDia.innerText = dia;
+
+                    const claveFecha = `${año}-${mes}-${dia}`;
+
+                    if (eventosClub[claveFecha]) {
+                        elementoDia.classList.add('has-event');
+                    }
+
+                    const hoy = new Date();
+                    if (dia === hoy.getDate() && mes === hoy.getMonth() && año === hoy.getFullYear()) {
+                        elementoDia.classList.add('today');
+                    }
+
+                    elementoDia.addEventListener('click', () => {
+                        abrirModalInformacion(dia, nombresMeses[mes], año, eventosClub[claveFecha]);
+                    });
+
+                    gridDias.appendChild(elementoDia);
+                }
+            }
+
+            function abrirModalInformacion(dia, mesTxt, año, info) {
+                const modal = document.getElementById('event-modal');
+                document.getElementById('modal-date-title').innerText = `${dia} de ${mesTxt} de ${año}`;
+                
+                if (info) {
+                    document.getElementById('modal-info-text').innerHTML = info;
+                } else {
+                    document.getElementById('modal-info-text').innerHTML = 'ℹ️ No hay eventos programados o modificaciones para este día. Las secciones deportivas mantienen sus horarios habituales.';
+                }
+                
+                if (modal) modal.classList.add('active');
+            }
+
+            const btnCloseModal = document.querySelector('.modal-close-btn');
+            if (btnCloseModal) {
+                btnCloseModal.addEventListener('click', () => {
+                    document.getElementById('event-modal').classList.remove('active');
+                });
+            }
+            
+            window.addEventListener('click', (e) => {
+                const modal = document.getElementById('event-modal');
+                if (e.target === modal) modal.classList.remove('active');
+            });
+
+            const btnPrevMonth = document.getElementById('prev-month-btn');
+            const btnNextMonth = document.getElementById('next-month-btn');
+
+            if (btnPrevMonth) {
+                btnPrevMonth.addEventListener('click', () => {
+                    fechaActual.setMonth(fechaActual.getMonth() - 1);
+                    renderizarCalendario();
+                });
+            }
+
+            if (btnNextMonth) {
+                btnNextMonth.addEventListener('click', () => {
+                    fechaActual.setMonth(fechaActual.getMonth() + 1);
+                    renderizarCalendario();
+                });
+            }
+
+            // Inicialización segura de ambos componentes
+            mostrarSlides(slideIndex);
+            renderizarCalendario();
+        });
+    </script>
+
 
     <section class="sponsors-section">
         <div class="container">
