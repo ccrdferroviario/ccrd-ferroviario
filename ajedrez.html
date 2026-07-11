@@ -120,6 +120,14 @@
             </div>
         </div>
     </section>
+            <!-- Estructura del modal (ventana emergente) para las secciones -->
+<div id="event-modal" class="modal-overlay">
+    <div class="modal-content">
+        <span class="modal-close-btn">&times;</span>
+        <h3 id="modal-date-title">Detalles del Evento</h3>
+        <div id="modal-info-text"></div>
+    </div>
+</div>
 
    <script>
         // Esperamos a que la página y noticias.js estén totalmente cargados
@@ -229,6 +237,62 @@
     }
         }
     </script>
+            <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const modal = document.getElementById('event-modal');
+        const modalTitle = document.getElementById('modal-date-title');
+        const modalText = document.getElementById('modal-info-text');
+        const closeBtn = document.querySelector('.modal-close-btn');
+        const mesActual = document.querySelector('.cal-mes-actual')?.innerText || "Julio 2026";
+
+        // Seleccionamos todas las celdas de días del calendario
+        const celdasDias = document.querySelectorAll('.celda-dia-comp');
+
+        celdasDias.forEach(celda => {
+            // Solo actuamos si la celda no está apagada (meses anterior/posterior)
+            if (!celda.classList.contains('apagado')) {
+                
+                // Añadimos cursor de mano cliqueable en CSS inline para avisar al usuario
+                celda.style.cursor = 'pointer';
+
+                celda.addEventListener('click', () => {
+                    const dia = celda.innerText;
+                    const infoEvento = celda.getAttribute('data-info');
+                    
+                    // Configuramos el título con el número de día y el mes actual del banner
+                    modalTitle.innerText = `Día ${dia} de ${mesActual}`;
+
+                    if (infoEvento) {
+                        // Personalizamos el prefijo según la clase de color que tenga el evento
+                        let icono = "📅";
+                        if (celda.classList.contains('evento-verde')) {
+                            icono = "🟢 <strong>Clase / Entrenamiento:</strong>";
+                        } else if (celda.classList.contains('evento-granate')) {
+                            icono = "🏆 <strong>Torneo / Competición:</strong>";
+                        }
+
+                        modalText.innerHTML = `${icono} ${infoEvento}`;
+                    } else {
+                        // Texto por defecto si se pulsa un día en blanco
+                        modalText.innerHTML = `ℹ️ No hay torneos ni clases especiales programadas para este día de forma oficial. La sección mantiene el uso libre del espacio para socios en su horario habitual.`;
+                    }
+
+                    // Mostramos el modal
+                    modal.classList.add('active');
+                });
+            }
+        });
+
+        // Eventos para cerrar el modal de forma segura
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+        }
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) modal.classList.remove('active');
+        });
+    });
+</script>
 </body>
 </html>
              <section class="sponsors-section">
