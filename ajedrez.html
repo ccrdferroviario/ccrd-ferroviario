@@ -92,34 +92,43 @@
         </div>
     </main>
 
-    <section class="calendario-seccion-bloque">
-        <div class="container">
-            <div class="calendario-header-compacto">
-                <h3><i class="fa-regular fa-calendar"></i> Calendario de Torneos y Eventos</h3>
-                <div class="cal-flechas">
-                    <button class="btn-cal-flecha">◀</button>
-                    <span class="cal-mes-actual">JULIO 2026</span>
-                    <button class="btn-cal-flecha">▶</button>
-                </div>
-            </div>
-
-            <div class="calendario-tabla-compacta">
-                <div class="dia-semana-comp">Lun</div><div class="dia-semana-comp">Mar</div><div class="dia-semana-comp">Mié</div><div class="dia-semana-comp">Jue</div><div class="dia-semana-comp">Vie</div><div class="dia-semana-comp">Sáb</div><div class="dia-semana-comp">Dom</div>
-                
-                <div class="celda-dia-comp apagado">29</div><div class="celda-dia-comp apagado">30</div>
-                <div class="celda-dia-comp">1</div><div class="celda-dia-comp evento-verde" data-info="Clase Iniciación">2</div><div class="celda-dia-comp">3</div>
-                <div class="celda-dia-comp evento-granate" data-info="Torneo Rápido">4</div><div class="celda-dia-comp">5</div>
-                
-                <div class="celda-dia-comp">6</div><div class="celda-dia-comp evento-verde" data-info="Clase Intermedia">7</div>
-                <div class="celda-dia-comp">8</div><div class="celda-dia-comp evento-verde" data-info="Clase Táctica">9</div><div class="celda-dia-comp">10</div>
-                <div class="celda-dia-comp">11</div><div class="celda-dia-comp">12</div>
-
-                <div class="celda-dia-comp">13</div><div class="celda-dia-comp evento-verde" data-info="Análisis Partidas">14</div><div class="celda-dia-comp">15</div><div class="celda-dia-comp">16</div><div class="celda-dia-comp">17</div><div class="celda-dia-comp">18</div><div class="celda-dia-comp">19</div>
-                <div class="celda-dia-comp">20</div><div class="celda-dia-comp">21</div><div class="celda-dia-comp">22</div><div class="celda-dia-comp">23</div><div class="celda-dia-comp">24</div><div class="celda-dia-comp">25</div><div class="celda-dia-comp">26</div>
-                <div class="celda-dia-comp">27</div><div class="celda-dia-comp">28</div><div class="celda-dia-comp">29</div><div class="celda-dia-comp">30</div><div class="celda-dia-comp">31</div><div class="celda-dia-comp apagado">1</div><div class="celda-dia-comp apagado">2</div>
+<section class="calendario-seccion-bloque">
+    <div class="container">
+        <div class="calendario-header-compacto">
+            <h3><i class="fa-regular fa-calendar"></i> Calendario de Torneos y Eventos</h3>
+            <div class="cal-flechas">
+                <button class="btn-cal-flecha" id="btn-prev-mes">◀</button>
+                <span class="cal-mes-actual" id="txt-mes-titulo">JULIO 2026</span>
+                <button class="btn-cal-flecha" id="btn-next-mes">▶</button>
             </div>
         </div>
-    </section>
+
+        <!-- CONTENEDOR DE JUNIO (Oculto por defecto) -->
+        <div class="calendario-tabla-compacta seccion-mes-bloque" id="mes-junio" style="display: none;">
+            <div class="dia-semana-comp">Lun</div><div class="dia-semana-comp">Mar</div><div class="dia-semana-comp">Mié</div><div class="dia-semana-comp">Jue</div><div class="dia-semana-comp">Vie</div><div class="dia-semana-comp">Sáb</div><div class="dia-semana-comp">Dom</div>
+            
+            <div class="celda-dia-comp apagado">25</div><div class="celda-dia-comp apagado">26</div><div class="celda-dia-comp apagado">27</div><div class="celda-dia-comp apagado">28</div><div class="celda-dia-comp apagado">29</div><div class="celda-dia-comp apagado">30</div><div class="celda-dia-comp apagado">31</div>
+            <div class="celda-dia-comp">1</div><div class="celda-dia-comp">2</div><div class="celda-dia-comp">3</div><div class="celda-dia-comp">4</div><div class="celda-dia-comp evento-verde" data-info="Torneo Apertura de Junio">5</div><div class="celda-dia-comp">6</div><div class="celda-dia-comp">7</div>
+            <!-- Resto de tus días de Junio... -->
+        </div>
+
+        <!-- CONTENEDOR DE JULIO (Tu tabla actual, visible por defecto) -->
+        <div class="calendario-tabla-compacta seccion-mes-bloque active" id="mes-julio">
+            <div class="dia-semana-comp">Lun</div><div class="dia-semana-comp">Mar</div><div class="dia-semana-comp">Mié</div><div class="dia-semana-comp">Jue</div><div class="dia-semana-comp">Vie</div><div class="dia-semana-comp">Sáb</div><div class="dia-semana-comp">Dom</div>
+            
+            <div class="celda-dia-comp apagado">29</div><div class="celda-dia-comp apagado">30</div>
+            <div class="celda-dia-comp">1</div><div class="celda-dia-comp evento-verde" data-info="Clase Iniciación">2</div><div class="celda-dia-comp">3</div>
+            <div class="celda-dia-comp evento-granate" data-info="Torneo Rápido">4</div><div class="celda-dia-comp">5</div>
+            <div class="celda-dia-comp">6</div><div class="celda-dia-comp evento-verde" data-info="Clase Intermedia">7</div>
+            <div class="celda-dia-comp">8</div><div class="celda-dia-comp evento-verde" data-info="Clase Táctica">9</div><div class="celda-dia-comp">10</div>
+            <div class="celda-dia-comp">11</div><div class="celda-dia-comp">12</div>
+            <div class="celda-dia-comp">13</div><div class="celda-dia-comp evento-verde" data-info="Análisis Partidas">14</div><div class="celda-dia-comp">15</div><div class="celda-dia-comp">16</div><div class="celda-dia-comp">17</div><div class="celda-dia-comp">18</div><div class="celda-dia-comp">19</div>
+            <div class="celda-dia-comp">20</div><div class="celda-dia-comp">21</div><div class="celda-dia-comp">22</div><div class="celda-dia-comp">23</div><div class="celda-dia-comp">24</div><div class="celda-dia-comp">25</div><div class="celda-dia-comp">26</div>
+            <div class="celda-dia-comp">27</div><div class="celda-dia-comp">28</div><div class="celda-dia-comp">29</div><div class="celda-dia-comp">30</div><div class="celda-dia-comp">31</div><div class="celda-dia-comp apagado">1</div><div class="celda-dia-comp apagado">2</div>
+        </div>
+
+    </div>
+</section>
             <!-- Estructura del modal (ventana emergente) para las secciones -->
 <div id="event-modal" class="modal-overlay">
     <div class="modal-content">
@@ -284,6 +293,90 @@
         });
 
         // Eventos para cerrar el modal de forma segura
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+        }
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) modal.classList.remove('active');
+        });
+    });
+</script>
+            <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // 1. Navegación de Meses Estáticos
+        // Añade aquí los meses en el orden exacto que quieras navegar y sus títulos
+        const secuenciaMeses = [
+            { id: "mes-junio", titulo: "JUNIO 2026" },
+            { id: "mes-julio", titulo: "JULIO 2026" }
+        ];
+        
+        let mesIndiceActual = 1; // Empezamos apuntando a Julio 2026 (posición 1 de la lista)
+
+        const btnPrev = document.getElementById('btn-prev-mes');
+        const btnNext = document.getElementById('btn-next-mes');
+        const txtTitulo = document.getElementById('txt-mes-titulo');
+
+        function cambiarMesTabla(direccion) {
+            // Calculamos el nuevo índice sin salirnos de los límites de la lista
+            mesIndiceActual += direccion;
+            if (mesIndiceActual < 0) mesIndiceActual = 0;
+            if (mesIndiceActual >= secuenciaMeses.length) mesIndiceActual = secuenciaMeses.length - 1;
+
+            const mesInfo = secuenciaMeses[mesIndiceActual];
+
+            // Actualizamos el texto superior
+            if (txtTitulo) txtTitulo.innerText = mesInfo.titulo;
+
+            // Ocultamos todos los bloques de meses y mostramos solo el seleccionado
+            document.querySelectorAll('.seccion-mes-bloque').forEach(bloque => {
+                bloque.style.display = 'none';
+            });
+            const bloqueActivo = document.getElementById(mesInfo.id);
+            if (bloqueActivo) {
+                // Restauramos el tipo de display original que tenga tu hoja de estilos (grid/flex)
+                bloqueActivo.style.display = 'grid'; 
+            }
+        }
+
+        if (btnPrev && btnNext) {
+            btnPrev.addEventListener('click', () => cambiarMesTabla(-1));
+            btnNext.addEventListener('click', () => cambiarMesTabla(1));
+        }
+
+        // 2. Control de Clics en Eventos y Modal
+        const modal = document.getElementById('event-modal');
+        const modalTitle = document.getElementById('modal-date-title');
+        const modalText = document.getElementById('modal-info-text');
+        const closeBtn = document.querySelector('.modal-close-btn');
+
+        // Escuchamos el clic en cualquier celda de la página de forma global
+        document.addEventListener('click', (e) => {
+            const celda = e.target.closest('.celda-dia-comp');
+            
+            if (celda && !celda.classList.contains('apagado')) {
+                const dia = celda.innerText;
+                const infoEvento = celda.getAttribute('data-info');
+                const mesActualTexto = txtTitulo ? txtTitulo.innerText : "Julio 2026";
+                
+                modalTitle.innerText = `Día ${dia} de ${mesActualTexto}`;
+
+                if (infoEvento) {
+                    let icono = "📅";
+                    if (celda.classList.contains('evento-verde')) {
+                        icono = "🟢 <strong>Clase / Entrenamiento:</strong>";
+                    } else if (celda.classList.contains('evento-granate')) {
+                        icono = "🏆 <strong>Torneo / Competición:</strong>";
+                    }
+                    modalText.innerHTML = `${icono} ${infoEvento}`;
+                } else {
+                    modalText.innerHTML = `ℹ️ No hay actividades especiales programadas para este día de forma oficial.`;
+                }
+
+                modal.classList.add('active');
+            }
+        });
+
         if (closeBtn) {
             closeBtn.addEventListener('click', () => modal.classList.remove('active'));
         }
