@@ -85,7 +85,7 @@
                         <p><i class="fa-regular fa-calendar-days"></i> Lunes y Miércoles</p>
                         <p class="horario-detalle">19:30h a 21:00h (Pistas / Parque)</p>
                         <p><i class="fa-regular fa-calendar-days"></i> Sábados</p>
-                        <p class="horario-detalle">09:00h (Tiradas Largas)</p>
+                        <p class="horario-collapse horario-detalle">09:00h (Tiradas Largas)</p>
                         <hr>
                         <a href="socio.html" class="btn-sidebar-action">Unirse al Grupo</a>
                     </div>
@@ -94,8 +94,6 @@
 
         </div>
     </main>
-
-    </section>
 
     <section class="calendar-section">
         <div class="container">
@@ -127,212 +125,6 @@
             <div id="modal-info-text"></div>
         </div>
     </div>
-
-    </section>
-
-    <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            const contenedor = document.getElementById('contenedor-noticias-dinamicas');
-            if (!contenedor) return;
-            contenedor.innerHTML = ''; 
-
-            // Verificación segura de la base de datos
-            if (typeof misNoticias === 'undefined') {
-                contenedor.innerHTML = '<p>Error: No se ha podido acceder a la base de datos de noticias.</p>';
-                return;
-            }
-
-            // Filtrar las noticias por sección
-            const noticiasAtletismo = misNoticias.filter(n => n.seccion === 'atletismo');
-
-            if (noticiasAtletismo.length === 0) {
-                contenedor.innerHTML = '<p>No hay noticias recientes de atletismo en este momento.</p>';
-            } else {
-                noticiasAtletismo.forEach((noticia, index) => {
-                    const textoLargo = noticia.contenido || noticia.resumen;
-
-                    // 1. Comprobamos si hay documento adjunto
-                    let htmlAdjunto = '';
-                    if (noticia.adjunto) {
-                        htmlAdjunto = `
-                            <div class="noticia-adjunto-bloque">
-                                <a href="${noticia.adjunto.ruta}" class="btn-adjunto-descarga" download>
-                                    <i class="fa-solid fa-file-pdf"></i> ${noticia.adjunto.texto}
-                                </a>
-                            </div>
-                        `;
-                    }
-
-                    // 2. Comprobamos si hay galería de fotos
-                    let htmlGaleria = '';
-                    if (noticia.galeria && noticia.galeria.length > 0) {
-                        htmlGaleria = '<div class="noticia-galeria-grid">';
-                        noticia.galeria.forEach(foto => {
-                            htmlGaleria += `<img src="${foto}" alt="Foto de la galería" class="img-galeria-item" onclick="window.open(this.src)">`;
-                        });
-                        htmlGaleria += '</div>';
-                    }
-
-                    // 3. Montamos la tarjeta final inyectando los extras
-                    const tarjetaHtml = `
-                        <article class="tarjeta-noticia-comp">
-                            <div class="noticia-img-wrap">
-                                <img src="${noticia.imagen}" alt="Foto principal">
-                            </div>
-                            <div class="noticia-info-wrap">
-                                <span class="noticia-fecha"><i class="fa-regular fa-calendar"></i> ${noticia.fecha}</span>
-                                <h4>${noticia.titulo}</h4>
-                                <p id="texto-noticia-${index}" class="noticia-resumen-texto">${noticia.resumen}</p>
-                                
-                                ${htmlAdjunto}
-                                
-                                ${htmlGaleria}
-
-                                <button class="btn-leer-noticia" 
-                                        id="btn-${index}"
-                                        data-resumen="${noticia.resumen}" 
-                                        data-completo="${textoLargo}" 
-                                        onclick="alternarNoticia(${index})">Leer más →</button>
-                            </div>
-                        </article>
-                    `;
-                    contenedor.innerHTML += tarjetaHtml;
-                });
-            }
-        });
-
-        function alternarNoticia(id) {
-            const parrafo = document.getElementById(`texto-noticia-${id}`);
-            const boton = document.getElementById(`btn-${id}`);
-            
-            const tarjeta = boton.closest('.tarjeta-noticia-comp');
-            const bloqueAdjunto = tarjeta.querySelector('.noticia-adjunto-bloque');
-            const bloqueGaleria = tarjeta.querySelector('.noticia-galeria-grid');
-
-            const textoResumen = boton.getAttribute('data-resumen');
-            const textoCompleto = boton.getAttribute('data-completo');
-
-            if (parrafo.innerHTML === textoResumen) {
-                parrafo.innerHTML = textoCompleto;
-                parrafo.className = "noticia-completa-texto";
-                boton.innerHTML = "Leer menos ↑";
-                if (bloqueAdjunto) bloqueAdjunto.style.display = 'block';
-                if (bloqueGaleria) bloqueGaleria.style.display = 'grid';
-            } else {
-                parrafo.innerHTML = textoResumen;
-                parrafo.className = "noticia-resumen-texto";
-                boton.innerHTML = "Leer más →";
-                if (bloqueAdjunto) bloqueAdjunto.style.display = 'none';
-                if (bloqueGaleria) bloqueGaleria.style.display = 'none';
-            }
-        }
-    </script>
-     /* ==========================================================
-               2. LÓGICA INTERACTIVA DEL CALENDARIO
-               ========================================================== */
-            const eventosClub = {
-                '2026-4-28': '🏃‍♂️ <strong>CCRD:</strong> Reunion de Junta Directiva a las 18:30 en la sede social.',
-                '2026-1-15': '🎯 <strong>CCRD:</strong> Asamblea ordinaria de socios a las 19:00 en la sede social.',
-            };
-
-            let fechaActual = new Date();
-            const nombresMeses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-
-            function renderizarCalendario() {
-                const año = fechaActual.getFullYear();
-                const mes = fechaActual.getMonth();
-
-                const textoMesAño = document.getElementById('calendar-month-year');
-                if (!textoMesAño) return;
-                
-                textoMesAño.innerText = `${nombresMeses[mes]} ${año}`;
-
-                const primerDiaMes = new Date(año, mes, 1).getDay();
-                const lunesIndex = primerDiaMes === 0 ? 6 : primerDiaMes - 1;
-
-                const diasTotalesMes = new Date(año, mes + 1, 0).getDate();
-                const gridDias = document.getElementById('calendar-days');
-                if (!gridDias) return;
-                gridDias.innerHTML = '';
-
-                for (let i = 0; i < lunesIndex; i++) {
-                    const divVacio = document.createElement('div');
-                    divVacio.classList.add('calendar-day', 'empty');
-                    gridDias.appendChild(divVacio);
-                }
-
-                for (let dia = 1; dia <= diasTotalesMes; dia++) {
-                    const elementoDia = document.createElement('div');
-                    elementoDia.classList.add('calendar-day');
-                    elementoDia.innerText = dia;
-
-                    const claveFecha = `${año}-${mes}-${dia}`;
-
-                    if (eventosClub[claveFecha]) {
-                        elementoDia.classList.add('has-event');
-                    }
-
-                    const hoy = new Date();
-                    if (dia === hoy.getDate() && mes === hoy.getMonth() && año === hoy.getFullYear()) {
-                        elementoDia.classList.add('today');
-                    }
-
-                    elementoDia.addEventListener('click', () => {
-                        abrirModalInformacion(dia, nombresMeses[mes], año, eventosClub[claveFecha]);
-                    });
-
-                    gridDias.appendChild(elementoDia);
-                }
-            }
-
-            function abrirModalInformacion(dia, mesTxt, año, info) {
-                const modal = document.getElementById('event-modal');
-                document.getElementById('modal-date-title').innerText = `${dia} de ${mesTxt} de ${año}`;
-                
-                if (info) {
-                    document.getElementById('modal-info-text').innerHTML = info;
-                } else {
-                    document.getElementById('modal-info-text').innerHTML = 'ℹ️ No hay eventos programados o modificaciones para este día. Las secciones deportivas mantienen sus horarios habituales.';
-                }
-                
-                if (modal) modal.classList.add('active');
-            }
-
-            const btnCloseModal = document.querySelector('.modal-close-btn');
-            if (btnCloseModal) {
-                btnCloseModal.addEventListener('click', () => {
-                    document.getElementById('event-modal').classList.remove('active');
-                });
-            }
-            
-            window.addEventListener('click', (e) => {
-                const modal = document.getElementById('event-modal');
-                if (e.target === modal) modal.classList.remove('active');
-            });
-
-            const btnPrevMonth = document.getElementById('prev-month-btn');
-            const btnNextMonth = document.getElementById('next-month-btn');
-
-            if (btnPrevMonth) {
-                btnPrevMonth.addEventListener('click', () => {
-                    fechaActual.setMonth(fechaActual.getMonth() - 1);
-                    renderizarCalendario();
-                });
-            }
-
-            if (btnNextMonth) {
-                btnNextMonth.addEventListener('click', () => {
-                    fechaActual.setMonth(fechaActual.getMonth() + 1);
-                    renderizarCalendario();
-                });
-            }
-
-            // Inicialización segura de ambos componentes
-            mostrarSlides(slideIndex);
-            renderizarCalendario();
-        });
-    </script>
-
 
     <section class="sponsors-section">
         <div class="container">
@@ -385,5 +177,216 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            // ==========================================================
+            // 1. CONTROL DE NOTICIAS DINÁMICAS
+            // ==========================================================
+            const contenedor = document.getElementById('contenedor-noticias-dinamicas');
+            if (contenedor) {
+                contenedor.innerHTML = ''; 
+
+                if (typeof misNoticias === 'undefined') {
+                    contenedor.innerHTML = '<p>Error: No se ha podido acceder a la base de datos de noticias.</p>';
+                } else {
+                    const noticiasAtletismo = misNoticias.filter(n => n.seccion === 'atletismo');
+
+                    if (noticiasAtletismo.length === 0) {
+                        contenedor.innerHTML = '<p>No hay noticias recientes de atletismo en este momento.</p>';
+                    } else {
+                        noticiasAtletismo.forEach((noticia, index) => {
+                            const textoLargo = noticia.contenido || noticia.resumen;
+
+                            let htmlAdjunto = '';
+                            if (noticia.adjunto) {
+                                htmlAdjunto = `
+                                    <div class="noticia-adjunto-bloque">
+                                        <a href="${noticia.adjunto.ruta}" class="btn-adjunto-descarga" download>
+                                            <i class="fa-solid fa-file-pdf"></i> ${noticia.adjunto.texto}
+                                        </a>
+                                    </div>
+                                `;
+                            }
+
+                            let htmlGaleria = '';
+                            if (noticia.galeria && noticia.galeria.length > 0) {
+                                htmlGaleria = '<div class="noticia-galeria-grid">';
+                                noticia.galeria.forEach(foto => {
+                                    htmlGaleria += `<img src="${foto}" alt="Foto de la galería" class="img-galeria-item" onclick="window.open(this.src)">`;
+                                });
+                                htmlGaleria += '</div>';
+                            }
+
+                            const tarjetaHtml = `
+                                <article class="tarjeta-noticia-comp">
+                                    <div class="noticia-img-wrap">
+                                        <img src="${noticia.imagen}" alt="Foto principal">
+                                    </div>
+                                    <div class="noticia-info-wrap">
+                                        <span class="noticia-fecha"><i class="fa-regular fa-calendar"></i> ${noticia.fecha}</span>
+                                        <h4>${noticia.titulo}</h4>
+                                        <p id="texto-noticia-${index}" class="noticia-resumen-texto">${noticia.resumen}</p>
+                                        
+                                        ${htmlAdjunto}
+                                        ${htmlGaleria}
+
+                                        <button class="btn-leer-noticia" 
+                                                id="btn-${index}"
+                                                data-resumen="${noticia.resumen}" 
+                                                data-completo="${textoLargo}" 
+                                                onclick="alternarNoticia(${index})">Leer más →</button>
+                                    </div>
+                                </article>
+                            `;
+                            contenedor.innerHTML += tarjetaHtml;
+                        });
+                    }
+                }
+            }
+
+            // ==========================================================
+            // 2. LÓGICA INTERACTIVA DEL CALENDARIO DINÁMICO (ATLETISMO)
+            // ==========================================================
+            // Formato de fechas en JS: Enero=0, Febrero=1, ..., Junio=5, Julio=6, etc.
+            const eventosClub = {
+                '2026-5-14': '🏆 <strong>Competición:</strong> Copa de Clubes de Atletismo - Jornada Clasificatoria.',
+                '2026-6-4': '🏃‍♂️ <strong>Evento Especial:</strong> Meeting Nocturno de Atletismo - Pruebas de velocidad.',
+                '2026-6-11': '🟢 <strong>Entrenamiento Especial:</strong> Control oficial de marcas en pista (Series 400m).',
+                '2026-7-15': '🎯 <strong>Reunión Técnica:</strong> Planificación de entrenamientos para la Media Maratón.'
+            };
+
+            let fechaActual = new Date();
+            const nombresMeses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+
+            function renderizarCalendario() {
+                const año = fechaActual.getFullYear();
+                const mes = fechaActual.getMonth();
+
+                const textoMesAño = document.getElementById('calendar-month-year');
+                if (!textoMesAño) return;
+                
+                textoMesAño.innerText = `${nombresMeses[mes]} ${año}`;
+
+                const primerDiaMes = new Date(año, mes, 1).getDay();
+                const lunesIndex = primerDiaMes === 0 ? 6 : primerDiaMes - 1;
+
+                const diasTotalesMes = new Date(año, mes + 1, 0).getDate();
+                const gridDias = document.getElementById('calendar-days');
+                if (!gridDias) return;
+                gridDias.innerHTML = '';
+
+                // Espacios vacíos para cuadrar el inicio de semana
+                for (let i = 0; i < lunesIndex; i++) {
+                    const divVacio = document.createElement('div');
+                    divVacio.classList.add('calendar-day', 'empty');
+                    gridDias.appendChild(divVacio);
+                }
+
+                // Generación de los días reales del mes
+                for (let dia = 1; dia <= diasTotalesMes; dia++) {
+                    const elementoDia = document.createElement('div');
+                    elementoDia.classList.add('calendar-day');
+                    elementoDia.innerText = dia;
+
+                    const claveFecha = `${año}-${mes}-${dia}`;
+
+                    if (eventosClub[claveFecha]) {
+                        elementoDia.classList.add('has-event');
+                    }
+
+                    const hoy = new Date();
+                    if (dia === hoy.getDate() && mes === hoy.getMonth() && año === hoy.getFullYear()) {
+                        elementoDia.classList.add('today');
+                    }
+
+                    elementoDia.addEventListener('click', () => {
+                        abrirModalInformacion(dia, nombresMeses[mes], año, eventosClub[claveFecha]);
+                    });
+
+                    gridDias.appendChild(elementoDia);
+                }
+            }
+
+            function abrirModalInformacion(dia, mesTxt, año, info) {
+                const modal = document.getElementById('event-modal');
+                const modalTitle = document.getElementById('modal-date-title');
+                const modalText = document.getElementById('modal-info-text');
+
+                if (!modal || !modalTitle || !modalText) return;
+
+                modalTitle.innerText = `${dia} de ${mesTxt} de ${año}`;
+                
+                if (info) {
+                    modalText.innerHTML = info;
+                } else {
+                    modalText.innerHTML = 'ℹ️ No hay eventos programados o modificaciones para este día. Las secciones deportivas mantienen sus horarios habituales.';
+                }
+                
+                modal.classList.add('active');
+            }
+
+            // Asignación de cierres del modal interactivo
+            const btnCloseModal = document.querySelector('.modal-close-btn');
+            if (btnCloseModal) {
+                btnCloseModal.addEventListener('click', () => {
+                    document.getElementById('event-modal').classList.remove('active');
+                });
+            }
+            
+            window.addEventListener('click', (e) => {
+                const modal = document.getElementById('event-modal');
+                if (e.target === modal) modal.classList.remove('active');
+            });
+
+            // Flechas de navegación
+            const btnPrevMonth = document.getElementById('prev-month-btn');
+            const btnNextMonth = document.getElementById('next-month-btn');
+
+            if (btnPrevMonth) {
+                btnPrevMonth.addEventListener('click', () => {
+                    fechaActual.setMonth(fechaActual.getMonth() - 1);
+                    renderizarCalendario();
+                });
+            }
+
+            if (btnNextMonth) {
+                btnNextMonth.addEventListener('click', () => {
+                    fechaActual.setMonth(fechaActual.getMonth() + 1);
+                    renderizarCalendario();
+                });
+            }
+
+            // Ejecución inicial del calendario dinámico
+            renderizarCalendario();
+        });
+
+        // Función global requerida para alternar el tamaño de las tarjetas de noticias
+        function alternarNoticia(id) {
+            const parrafo = document.getElementById(`texto-noticia-${id}`);
+            const boton = document.getElementById(`btn-${id}`);
+            
+            const tarjeta = boton.closest('.tarjeta-noticia-comp');
+            const bloqueAdjunto = tarjeta.querySelector('.noticia-adjunto-bloque');
+            const bloqueGaleria = tarjeta.querySelector('.noticia-galeria-grid');
+
+            const textoResumen = boton.getAttribute('data-resumen');
+            const textoCompleto = boton.getAttribute('data-completo');
+
+            if (parrafo.innerHTML === textoResumen) {
+                parrafo.innerHTML = textoCompleto;
+                parrafo.className = "noticia-completa-texto";
+                boton.innerHTML = "Leer menos ↑";
+                if (bloqueAdjunto) bloqueAdjunto.style.display = 'block';
+                if (bloqueGaleria) bloqueGaleria.style.display = 'grid';
+            } else {
+                parrafo.innerHTML = textoResumen;
+                parrafo.className = "noticia-resumen-texto";
+                boton.innerHTML = "Leer más →";
+                if (bloqueAdjunto) bloqueAdjunto.style.display = 'none';
+                if (bloqueGaleria) bloqueGaleria.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
