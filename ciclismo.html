@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ciclismo y Triatlón - CCRD Ferroviario de Sevilla</title>
+    <title>CCRD Ferroviario - Ciclismo y Triatlón</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="noticias.js?v=1.3"></script>
@@ -51,12 +51,12 @@
         </nav>
     </header>
 
-    <div class="seccion-hero-banner" style="background-image: url('img/ciclismo_banner.png');">
+    <div class="seccion-hero-banner" style="background-image: url('img/Ciclismo.png');">
         <div class="banner-overlay">
             <div class="container">
                 <span class="banner-tag">Sección Oficial</span>
-                <h1>Sección de Ciclismo y Triatlón</h1>
-                <p>Rodando en pelotón, devorando kilómetros y superando transiciones.</p>
+                <h1>Ciclismo y Triatlón</h1>
+                <p>Pasión por los pedales, constancia y superación en cada ruta</p>
             </div>
         </div>
     </div>
@@ -66,14 +66,14 @@
             
             <div class="col-principal">
                 <section class="info-introduccion">
-                    <h2>Pasión por los pedales, el asfalto y el agua</h2>
-                    <p>La sección de ciclismo y triatlón del CCRD Ferroviario reúne a amantes de las dos ruedas tanto en su modalidad de carretera como de montaña (BTT), así como a valientes deportistas que combinan la natación, el ciclismo y la carrera a pie. Organizamos rutas grupales todos los fines de semana con niveles adaptados, entrenamientos específicos de transiciones y asistencia conjunta a las marchas y triatlones más destacados del calendario andaluz.</p>
+                    <h2>Rodando en Comunidad</h2>
+                    <p>La sección de ciclismo y triatlón del CCRD Ferroviario agrupa a aficionados y competidores de las dos ruedas en Sevilla. Organizamos grupeta semanal tanto para ciclismo de carretera como rutas BTT, además de planificar entrenamientos específicos de transiciones para nuestros triatletas. Promovemos un estilo de vida saludable, la seguridad vial activa en carretera y la participación en marchas cicloturistas oficiales.</p>
                 </section>
 
                 <section class="noticias-seccion-contenedor">
                     <h3 class="titulo-bloque"><i class="fa-solid fa-newspaper"></i> Últimas Noticias de Ciclismo y Triatlón</h3>
                     <div id="contenedor-noticias-dinamicas" class="noticias-lista">
-                        <p class="cargando">Cargando noticias de la sección...</p>
+                        <p class="cargando">Cargando noticias de ciclismo...</p>
                     </div>
                 </section>
             </div>
@@ -81,13 +81,13 @@
             <aside class="seccion-sidebar">
                 <div class="sidebar-card">
                     <div class="sidebar-card-body">
-                        <h4>Salidas Oficiales</h4>
-                        <p><i class="fa-regular fa-calendar-days"></i> Sábados (Carretera/BTT)</p>
-                        <p class="horario-detalle">08:30h (Ruta programada según nivel)</p>
-                        <p><i class="fa-regular fa-calendar-days"></i> Domingos (Transiciones/Fondo)</p>
-                        <p class="horario-detalle">08:00h (Simulacros Triatlón / Tiradas largas)</p>
+                        <h4>Salidas de la Grupeta</h4>
+                        <p><i class="fa-regular fa-calendar-days"></i> Sábados y Domingos</p>
+                        <p class="horario-detalle">Salidas programadas desde la Sede Social (Horario según estación del año).</p>
+                        <p><i class="fa-solid fa-person-cycling"></i> Modalidades</p>
+                        <p class="horario-collapse horario-detalle">Rutas alternas de Ciclismo de Carretera, BTT (Montaña) y entrenamientos conjuntos de Triatlón.</p>
                         <hr>
-                        <a href="socio.html" class="btn-sidebar-action">Unirse al Pelotón</a>
+                        <a href="socio.html" class="btn-sidebar-action">Unirse a la Sección</a>
                     </div>
                 </div>
             </aside>
@@ -95,100 +95,274 @@
         </div>
     </main>
 
-    <section class="calendario-seccion-bloque">
+    <section class="calendar-section">
         <div class="container">
-            <div class="calendario-header-compacto">
-                <h3><i class="fa-regular fa-calendar"></i> Calendario de Rutas y Competiciones</h3>
-                <div class="cal-flechas">
-                    <button class="btn-cal-flecha">◀</button>
-                    <span class="cal-mes-actual">JULIO 2026</span>
-                    <button class="btn-cal-flecha">▶</button>
-                </div>
+            <div class="calendar-header-block">
+                <h2>Calendario de Rutas y Carreras</h2>
+                <p>Consulte las próximas salidas oficiales de la grupeta, marchas y competiciones de triatlón.</p>
             </div>
-
-            <div class="calendario-tabla-compacta">
-                <div class="dia-semana-comp">Lun</div><div class="dia-semana-comp">Mar</div><div class="dia-semana-comp">Mié</div><div class="dia-semana-comp">Jue</div><div class="dia-semana-comp">Vie</div><div class="dia-semana-comp">Sáb</div><div class="dia-semana-comp">Dom</div>
+            
+            <div class="calendar-wrapper">
+                <div class="calendar-nav">
+                    <button id="prev-month-btn">◀</button>
+                    <h3 id="calendar-month-year">Julio 2026</h3>
+                    <button id="next-month-btn">▶</button>
+                </div>
                 
-                <div class="celda-dia-comp apagado">29</div><div class="celda-dia-comp apagado">30</div>
-                <div class="celda-dia-comp">1</div><div class="celda-dia-comp">2</div><div class="celda-dia-comp">3</div>
-                <div class="celda-dia-comp evento-verde" data-info="Ruta Sierra Norte">4</div><div class="celda-dia-comp">5</div>
+                <div class="calendar-weekdays">
+                    <div>Lun</div><div>Mar</div><div>Mié</div><div>Jue</div><div>Vie</div><div>Sáb</div><div>Dom</div>
+                </div>
                 
-                <div class="celda-dia-comp">6</div><div class="celda-dia-comp">7</div><div class="celda-dia-comp">8</div><div class="celda-dia-comp">9</div><div class="celda-dia-comp">10</div>
-                <div class="celda-dia-comp">11</div><div class="celda-dia-comp evento-granate" data-info="Simulacro Triatlón">12</div>
-
-                <div class="celda-dia-comp">13</div><div class="celda-dia-comp">14</div><div class="celda-dia-comp">15</div><div class="celda-dia-comp">16</div><div class="celda-dia-comp">17</div><div class="celda-dia-comp">18</div><div class="celda-dia-comp">19</div>
-                <div class="celda-dia-comp">20</div><div class="celda-dia-comp">21</div><div class="celda-dia-comp">22</div><div class="celda-dia-comp">23</div><div class="celda-dia-comp">24</div><div class="celda-dia-comp">25</div><div class="celda-dia-comp">26</div>
-                <div class="celda-dia-comp">27</div><div class="celda-dia-comp">28</div><div class="celda-dia-comp">29</div><div class="celda-dia-comp">30</div><div class="celda-dia-comp">31</div><div class="celda-dia-comp apagado">1</div><div class="celda-dia-comp apagado">2</div>
+                <div id="calendar-days" class="calendar-days-grid"></div>
             </div>
         </div>
     </section>
 
+    <div id="event-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close-btn">&times;</span>
+            <h3 id="modal-date-title">Fecha del evento</h3>
+            <div id="modal-info-text"></div>
+        </div>
+    </div>
+
+    <section class="sponsors-section">
+        <div class="container">
+            <h3 class="sponsors-title"></h3>
+            <div class="sponsors-grid">
+                <div class="sponsor-logo">PATROCINADOR 1</div>
+                <div class="sponsor-logo">PATROCINADOR 2</div>
+                <div class="sponsor-logo">PATROCINADOR 3</div>
+                <div class="sponsor-logo">PATROCINADOR 4</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container footer-columns">
+            <div class="footer-column">
+                <h3>CCRD Ferroviario</h3>
+                <p class="footer-about">Uniendo cultura, deporte e identidad desde Sevilla. Un espacio dedicado al desarrollo de nuestros atletas y al encuentro de nuestros socios.</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <ul class="footer-contact-list">
+                    <li>📍 Calle Salvador allende s/n, Sevilla, España</li>
+                    <li>✉️ ccrdferroviario@hotmail.com</li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Síguenos</h3>
+                <div class="footer-social-links">
+                    <a href="https://www.facebook.com/ccrdferroviario/" target="_blank" aria-label="Facebook del Club" class="social-icon fb">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/ccrdferroviario1986/" target="_blank" aria-label="Instagram del Club" class="social-icon ig">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-container">
+                <p class="copyright">&copy; 2026 CCRD Ferroviario. Todos los derechos reservados.</p>
+                <div class="legal-links">
+                    <a href="#">Aviso Legal</a>
+                    <a href="#">Política de Privacidad</a>
+                    <a href="#">Política de Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <script>
         window.addEventListener('DOMContentLoaded', () => {
+            // ==========================================================
+            // 1. CONTROL DE NOTICIAS DINÁMICAS (CICLISMO)
+            // ==========================================================
             const contenedor = document.getElementById('contenedor-noticias-dinamicas');
-            if (!contenedor) return;
-            contenedor.innerHTML = ''; 
+            if (contenedor) {
+                contenedor.innerHTML = ''; 
 
-            if (typeof misNoticias === 'undefined') {
-                contenedor.innerHTML = '<p>Error: No se ha podido acceder a la base de datos de noticias.</p>';
-                return;
+                if (typeof misNoticias === 'undefined') {
+                    contenedor.innerHTML = '<p>Error: No se ha podido acceder a la base de datos de noticias.</p>';
+                } else {
+                    // Filtrar específicamente por la sección de ciclismo
+                    const noticiasCiclismo = misNoticias.filter(n => n.seccion === 'ciclismo');
+
+                    if (noticiasCiclismo.length === 0) {
+                        contenedor.innerHTML = '<p>No hay noticias recientes de ciclismo en este momento.</p>';
+                    } else {
+                        noticiasCiclismo.forEach((noticia, index) => {
+                            const textoLargo = noticia.contenido || noticia.resumen;
+
+                            let htmlAdjunto = '';
+                            if (noticia.adjunto) {
+                                htmlAdjunto = `
+                                    <div class="noticia-adjunto-bloque">
+                                        <a href="${noticia.adjunto.ruta}" class="btn-adjunto-descarga" download>
+                                            <i class="fa-solid fa-file-pdf"></i> ${noticia.adjunto.texto}
+                                        </a>
+                                    </div>
+                                `;
+                            }
+
+                            let htmlGaleria = '';
+                            if (noticia.galeria && noticia.galeria.length > 0) {
+                                htmlGaleria = '<div class="noticia-galeria-grid">';
+                                noticia.galeria.forEach(foto => {
+                                    htmlGaleria += `<img src="${foto}" alt="Foto de la galería" class="img-galeria-item" onclick="window.open(this.src)">`;
+                                });
+                                htmlGaleria += '</div>';
+                            }
+
+                            const tarjetaHtml = `
+                                <article class="tarjeta-noticia-comp">
+                                    <div class="noticia-img-wrap">
+                                        <img src="${noticia.imagen}" alt="Foto principal">
+                                    </div>
+                                    <div class="noticia-info-wrap">
+                                        <span class="noticia-fecha"><i class="fa-regular fa-calendar"></i> ${noticia.fecha}</span>
+                                        <h4>${noticia.titulo}</h4>
+                                        <p id="texto-noticia-${index}" class="noticia-resumen-texto">${noticia.resumen}</p>
+                                        
+                                        ${htmlAdjunto}
+                                        ${htmlGaleria}
+
+                                        <button class="btn-leer-noticia" 
+                                                id="btn-${index}"
+                                                data-resumen="${noticia.resumen}" 
+                                                data-completo="${textoLargo}" 
+                                                onclick="alternarNoticia(${index})">Leer más →</button>
+                                    </div>
+                                </article>
+                            `;
+                            contenedor.innerHTML += tarjetaHtml;
+                        });
+                    }
+                }
             }
 
-            // Filtras exactamente por la sección 'ciclismo'
-            const noticiasCiclismo = misNoticias.filter(n => n.seccion === 'ciclismo');
+            // ==========================================================
+            // 2. LÓGICA INTERACTIVA DEL CALENDARIO DINÁMICO (CICLISMO)
+            // ==========================================================
+            // Formato de fechas en JS: Enero=0, Febrero=1, ..., Julio=6, Agosto=7, etc.
+            const eventosClub = {
+                '2026-6-19': '🚴‍♂️ <strong>Ruta de Carretera:</strong> Salida oficial de la grupeta rumbo a la Sierra Norte (110 km).',
+                '2026-7-02': '🏃‍♂️ <strong>Entrenamiento Triatlón:</strong> Jornada de transiciones específicas de ciclismo a carrera a pie.',
+                '2026-8-09': '⛰️ <strong>Salida BTT:</strong> Ruta de montaña por los senderos técnicos del entorno provincial.',
+                '2026-8-23': '📋 <strong>Reunión de Sección:</strong> Planificación de inscripciones colectivas para los eventos del último trimestre.'
+            };
 
-            if (noticiasCiclismo.length === 0) {
-                contenedor.innerHTML = '<p>No hay noticias recientes de ciclismo o triatlón en este momento.</p>';
-            } else {
-                noticiasCiclismo.forEach((noticia, index) => {
-                    const textoLargo = noticia.contenido || noticia.resumen;
+            let fechaActual = new Date();
+            const nombresMeses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 
-                    let htmlAdjunto = '';
-                    if (noticia.adjunto) {
-                        htmlAdjunto = `
-                            <div class="noticia-adjunto-bloque">
-                                <a href="${noticia.adjunto.ruta}" class="btn-adjunto-descarga" download>
-                                    <i class="fa-solid fa-file-pdf"></i> ${noticia.adjunto.texto}
-                                </a>
-                            </div>
-                        `;
+            function renderizarCalendario() {
+                const año = fechaActual.getFullYear();
+                const mes = fechaActual.getMonth();
+
+                const textoMesAño = document.getElementById('calendar-month-year');
+                if (!textoMesAño) return;
+                
+                textoMesAño.innerText = `${nombresMeses[mes]} ${año}`;
+
+                const primerDiaMes = new Date(año, mes, 1).getDay();
+                const lunesIndex = primerDiaMes === 0 ? 6 : primerDiaMes - 1;
+
+                const diasTotalesMes = new Date(año, mes + 1, 0).getDate();
+                const gridDias = document.getElementById('calendar-days');
+                if (!gridDias) return;
+                gridDias.innerHTML = '';
+
+                // Espacios vacíos para cuadrar el inicio de semana
+                for (let i = 0; i < lunesIndex; i++) {
+                    const divVacio = document.createElement('div');
+                    divVacio.classList.add('calendar-day', 'empty');
+                    gridDias.appendChild(divVacio);
+                }
+
+                // Generación de los días reales del mes
+                for (let dia = 1; dia <= diasTotalesMes; dia++) {
+                    const elementoDia = document.createElement('div');
+                    elementoDia.classList.add('calendar-day');
+                    elementoDia.innerText = dia;
+
+                    const claveFecha = `${año}-${mes}-${dia}`;
+
+                    if (eventosClub[claveFecha]) {
+                        elementoDia.classList.add('has-event');
                     }
 
-                    let htmlGaleria = '';
-                    if (noticia.galeria && noticia.galeria.length > 0) {
-                        htmlGaleria = '<div class="noticia-galeria-grid">';
-                        noticia.galeria.forEach(foto => {
-                            htmlGaleria += `<img src="${foto}" alt="Foto de la galería" class="img-galeria-item" onclick="window.open(this.src)">`;
-                        });
-                        htmlGaleria += '</div>';
+                    const hoy = new Date();
+                    if (dia === hoy.getDate() && mes === hoy.getMonth() && año === hoy.getFullYear()) {
+                        elementoDia.classList.add('today');
                     }
 
-                    const tarjetaHtml = `
-                        <article class="tarjeta-noticia-comp">
-                            <div class="noticia-img-wrap">
-                                <img src="${noticia.imagen}" alt="Foto principal">
-                            </div>
-                            <div class="noticia-info-wrap">
-                                <span class="noticia-fecha"><i class="fa-regular fa-calendar"></i> ${noticia.fecha}</span>
-                                <h4>${noticia.titulo}</h4>
-                                <p id="texto-noticia-${index}" class="noticia-resumen-texto">${noticia.resumen}</p>
-                                
-                                ${htmlAdjunto}
-                                ${htmlGaleria}
+                    elementoDia.addEventListener('click', () => {
+                        abrirModalInformacion(dia, nombresMeses[mes], año, eventosClub[claveFecha]);
+                    });
 
-                                <button class="btn-leer-noticia" 
-                                        id="btn-${index}"
-                                        data-resumen="${noticia.resumen}" 
-                                        data-completo="${textoLargo}" 
-                                        onclick="alternarNoticia(${index})">Leer más →</button>
-                            </div>
-                        </article>
-                    `;
-                    contenedor.innerHTML += tarjetaHtml;
+                    gridDias.appendChild(elementoDia);
+                }
+            }
+
+            function abrirModalInformacion(dia, mesTxt, año, info) {
+                const modal = document.getElementById('event-modal');
+                const modalTitle = document.getElementById('modal-date-title');
+                const modalText = document.getElementById('modal-info-text');
+
+                if (!modal || !modalTitle || !modalText) return;
+
+                modalTitle.innerText = `${dia} de ${mesTxt} de ${año}`;
+                
+                if (info) {
+                    modalText.innerHTML = info;
+                } else {
+                    modalText.innerHTML = 'ℹ️ No hay rutas masivas programadas en el calendario oficial para este día. Las salidas espontáneas se coordinan por los canales internos tradicionales.';
+                }
+                
+                modal.classList.add('active');
+            }
+
+            // Asignación de cierres del modal interactivo
+            const btnCloseModal = document.querySelector('.modal-close-btn');
+            if (btnCloseModal) {
+                btnCloseModal.addEventListener('click', () => {
+                    document.getElementById('event-modal').classList.remove('active');
                 });
             }
+            
+            window.addEventListener('click', (e) => {
+                const modal = document.getElementById('event-modal');
+                if (e.target === modal) modal.classList.remove('active');
+            });
+
+            // Flechas de navegación
+            const btnPrevMonth = document.getElementById('prev-month-btn');
+            const btnNextMonth = document.getElementById('next-month-btn');
+
+            if (btnPrevMonth) {
+                btnPrevMonth.addEventListener('click', () => {
+                    fechaActual.setMonth(fechaActual.getMonth() - 1);
+                    renderizarCalendario();
+                });
+            }
+
+            if (btnNextMonth) {
+                btnNextMonth.addEventListener('click', () => {
+                    fechaActual.setMonth(fechaActual.getMonth() + 1);
+                    renderizarCalendario();
+                });
+            }
+
+            // Ejecución inicial del calendario dinámico
+            renderizarCalendario();
         });
 
+        // Función global requerida para alternar el tamaño de las tarjetas de noticias
         function alternarNoticia(id) {
             const parrafo = document.getElementById(`texto-noticia-${id}`);
             const boton = document.getElementById(`btn-${id}`);
@@ -215,49 +389,5 @@
             }
         }
     </script>
-
-    <section class="sponsors-section">
-        <div class="container">
-            <div class="sponsors-grid">
-                <div class="sponsor-logo">PATROCINADOR 1</div>
-                <div class="sponsor-logo">PATROCINADOR 2</div>
-                <div class="sponsor-logo">PATROCINADOR 3</div>
-                <div class="sponsor-logo">PATROCINADOR 4</div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="main-footer">
-        <div class="container footer-columns">
-            <div class="footer-column">
-                <h3>CCRD Ferroviario</h3>
-                <p class="footer-about">Uniendo cultura, deporte e identidad desde Sevilla. Un espacio dedicado al desarrollo de nuestros atletas y al encuentro de nuestros socios.</p>
-            </div>
-            <div class="footer-column">
-                <h3>Contacto</h3>
-                <ul class="footer-contact-list">
-                    <li>📍 Calle Salvador allende s/n, Sevilla, España</li>
-                    <li>✉️ ccrdferroviario@hotmail.com</li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Síguenos</h3>
-                <div class="footer-social-links">
-                    <a href="https://www.facebook.com/ccrdferroviario/" target="_blank" class="social-icon fb"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/ccrdferroviario1986/" target="_blank" class="social-icon ig"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div class="container footer-bottom-container">
-                <p class="copyright">&copy; 2026 CCRD Ferroviario. Todos los derechos reservados.</p>
-                <div class="legal-links">
-                    <a href="#">Aviso Legal</a>
-                    <a href="#">Política de Privacidad</a>
-                    <a href="#">Política de Cookies</a>
-                </div>
-            </div>
-        </div>
-    </footer>
 </body>
 </html>
