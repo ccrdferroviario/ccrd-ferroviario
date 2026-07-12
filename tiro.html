@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CCRD Ferroviario - Hazte Socio</title>
+    <title>CCRD Ferroviario - Tiro al Plato</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="noticias.js?v=1.2"></script>
+    <script src="noticias.js?v=1.3"></script>
 </head>
 <body>
 
-   <header class="main-header">
+    <header class="main-header">
         <nav class="navbar">
             <div class="container navbar-container">
                 <a href="index.html" class="logo">
@@ -24,7 +24,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="bienvenida.html">Bienvenida del presidente</a></li>
                             <li><a href="historia.html">Nuestra historia</a></li>
-                            <li><a href="junta.htm">Junta directiva</a></li>
+                            <li><a href="junta.html">Junta directiva</a></li>
                             <li><a href="estatutos.html">Estatutos</a></li>
                             <li><a href="actas.html">Actas</a></li>
                         </ul>
@@ -49,12 +49,14 @@
                 </ul>
             </div>
         </nav>
-       <div class="seccion-hero-banner" style="background-image: url('img/tiro.png');">
+    </header>
+
+    <div class="seccion-hero-banner" style="background-image: url('img/Tiro.png');">
         <div class="banner-overlay">
             <div class="container">
                 <span class="banner-tag">Sección Oficial</span>
-                <h1>Tiro al Plato</h1>
-                <p>Concentración, precisión y el mejor ambiente de equipo</p>
+                <h1>Sección de Tiro al Plato</h1>
+                <p>Precisión, reflejos y deportividad en las canchas de tiro de Sevilla</p>
             </div>
         </div>
     </div>
@@ -64,14 +66,14 @@
             
             <div class="col-principal">
                 <section class="info-introduccion">
-                    <h2>Bienvenidos a la Sección</h2>
-                    <p>Nuestra sección reúne a apasionados de la precisión y la disciplina. Con un ambiente inmejorable de compañerismo, entrenamos tanto para la superación personal como para la alta competición federada en Andalucía.</p>
+                    <h2>Disciplina, Concentración y Puntería</h2>
+                    <p>La sección de tiro al plato del CCRD Ferroviario reúne a los apasionados de esta disciplina olímpica en Sevilla. Organizamos tiradas sociales y entrenamientos programados tanto en foso olímpico como en foso universal, promoviendo las buenas prácticas y la seguridad obligatoria en todas las competiciones y tiradas locales.</p>
                 </section>
 
                 <section class="noticias-seccion-contenedor">
-                    <h3 class="titulo-bloque"><i class="fa-solid fa-newspaper"></i> Últimas Noticias</h3>
+                    <h3 class="titulo-bloque"><i class="fa-solid fa-newspaper"></i> Últimas Noticias de Tiro al Plato</h3>
                     <div id="contenedor-noticias-dinamicas" class="noticias-lista">
-                        <p class="cargando">Cargando noticias de la sección...</p>
+                        <p class="cargando">Cargando noticias de tiro al plato...</p>
                     </div>
                 </section>
             </div>
@@ -79,13 +81,13 @@
             <aside class="seccion-sidebar">
                 <div class="sidebar-card">
                     <div class="sidebar-card-body">
-                        <h4>Horarios de Entrenamiento</h4>
-                        <p><i class="fa-regular fa-calendar-days"></i> Martes y Jueves</p>
-                        <p class="horario-detalle">17:30h a 20:30h</p>
-                        <p><i class="fa-regular fa-calendar-days"></i> Sábados</p>
-                        <p class="horario-detalle">10:00h a 13:00h</p>
+                        <h4>Horarios de Campo</h4>
+                        <p><i class="fa-regular fa-calendar-days"></i> Jueves y Viernes</p>
+                        <p class="horario-detalle">17:00h a 20:00h (Entrenamientos Libres)</p>
+                        <p><i class="fa-regular fa-calendar-days"></i> Sábados y Domingos</p>
+                        <p class="horario-collapse horario-detalle">09:30h a 14:00h (Tiradas y Competiciones)</p>
                         <hr>
-                        <a href="socio.html" class="btn-sidebar-action">Inscribirse en la Sección</a>
+                        <a href="socio.html" class="btn-sidebar-action">Unirse a la Sección</a>
                     </div>
                 </div>
             </aside>
@@ -93,137 +95,38 @@
         </div>
     </main>
 
-    <section class="calendario-seccion-bloque">
+    <section class="calendar-section">
         <div class="container">
-            <div class="calendario-header-compacto">
-                <h3><i class="fa-regular fa-calendar"></i> Calendario de Actividades</h3>
-                <div class="cal-flechas">
-                    <button class="btn-cal-flecha">◀</button>
-                    <span class="cal-mes-actual">JULIO 2026</span>
-                    <button class="btn-cal-flecha">▶</button>
-                </div>
+            <div class="calendar-header-block">
+                <h2>Calendario de Actividades</h2>
+                <p>Consulte los próximos trofeos locales, campeonatos oficiales y jornadas técnicas.</p>
             </div>
-
-            <div class="calendario-tabla-compacta">
-                <div class="dia-semana-comp">Lun</div><div class="dia-semana-comp">Mar</div><div class="dia-semana-comp">Mié</div><div class="dia-semana-comp">Jue</div><div class="dia-semana-comp">Vie</div><div class="dia-semana-comp">Sáb</div><div class="dia-semana-comp">Dom</div>
+            
+            <div class="calendar-wrapper">
+                <div class="calendar-nav">
+                    <button id="prev-month-btn">◀</button>
+                    <h3 id="calendar-month-year">Junio 2026</h3>
+                    <button id="next-month-btn">▶</button>
+                </div>
                 
-                <div class="celda-dia-comp apagado">29</div><div class="celda-dia-comp apagado">30</div><div class="celda-dia-comp">1</div><div class="celda-dia-comp">2</div><div class="celda-dia-comp">3</div>
-                <div class="celda-dia-comp evento-verde" data-info="Entrenamiento 10:00h">4</div><div class="celda-dia-comp">5</div>
+                <div class="calendar-weekdays">
+                    <div>Lun</div><div>Mar</div><div>Mié</div><div>Jue</div><div>Vie</div><div>Sáb</div><div>Dom</div>
+                </div>
                 
-                <div class="celda-dia-comp">6</div><div class="celda-dia-comp evento-granate" data-info="Reunión de Sección">7</div><div class="celda-dia-comp">8</div><div class="celda-dia-comp">9</div><div class="celda-dia-comp">10</div>
-                <div class="celda-dia-comp evento-verde" data-info="Entrenamiento 10:00h">11</div><div class="celda-dia-comp">12</div>
-
-                <div class="celda-dia-comp">13</div><div class="celda-dia-comp">14</div><div class="celda-dia-comp">15</div><div class="celda-dia-comp">16</div><div class="celda-dia-comp">17</div>
-                <div class="celda-dia-comp evento-verde" data-info="Torneo Interno">18</div><div class="celda-dia-comp">19</div>
-                
-                <div class="celda-dia-comp">20</div><div class="celda-dia-comp">21</div><div class="celda-dia-comp">22</div><div class="celda-dia-comp">23</div><div class="celda-dia-comp">24</div><div class="celda-dia-comp">25</div><div class="celda-dia-comp">26</div>
-                <div class="celda-dia-comp">27</div><div class="celda-dia-comp">28</div><div class="celda-dia-comp">29</div><div class="celda-dia-comp">30</div><div class="celda-dia-comp">31</div><div class="celda-dia-comp apagado">1</div><div class="celda-dia-comp apagado">2</div>
+                <div id="calendar-days" class="calendar-days-grid"></div>
             </div>
         </div>
     </section>
 
-    <footer class="main-footer">
-        </footer>
+    <div id="event-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close-btn">&times;</span>
+            <h3 id="modal-date-title">Fecha del evento</h3>
+            <div id="modal-info-text"></div>
+        </div>
+    </div>
 
-  <script>
-        // Al usar noticias.js, la variable 'misNoticias' ya está disponible directamente de forma segura
-        const contenedor = document.getElementById('contenedor-noticias-dinamicas');
-        contenedor.innerHTML = ''; 
-
-        // FILTRAR LAS NOTICIAS: Solo se queda con las que pertenecen a la sección de 'tiro'
-        const noticiasTiro = misNoticias.filter(n => n.seccion === 'tiro');
-
-        if (noticiasTiro.length === 0) {
-            contenedor.innerHTML = '<p>No hay noticias recientes de tiro en este momento.</p>';
-        } else {
-            noticiasTiro.forEach((noticia, index) => {
-                const textoLargo = noticia.contenido || noticia.resumen;
-
-               // 1. Comprobamos si hay documento adjunto
-    let htmlAdjunto = '';
-    if (noticia.adjunto) {
-        htmlAdjunto = `
-            <div class="noticia-adjunto-bloque">
-                <a href="${noticia.adjunto.ruta}" class="btn-adjunto-descarga" download>
-                    <i class="fa-solid fa-file-pdf"></i> ${noticia.adjunto.texto}
-                </a>
-            </div>
-        `;
-    }
-
-    // 2. Comprobamos si hay galería de fotos
-    let htmlGaleria = '';
-    if (noticia.galeria && noticia.galeria.length > 0) {
-        htmlGaleria = '<div class="noticia-galeria-grid">';
-        noticia.galeria.forEach(foto => {
-            htmlGaleria += `<img src="${foto}" alt="Foto de la galería" class="img-galeria-item" onclick="window.open(this.src)">`;
-        });
-        htmlGaleria += '</div>';
-    }
-
-    // 3. Montamos la tarjeta final inyectando los extras de forma condicional
-    const tarjetaHtml = `
-        <article class="tarjeta-noticia-comp">
-            <div class="noticia-img-wrap">
-                <img src="${noticia.imagen}" alt="Foto principal">
-            </div>
-            <div class="noticia-info-wrap">
-                <span class="noticia-fecha"><i class="fa-regular fa-calendar"></i> ${noticia.fecha}</span>
-                <h4>${noticia.titulo}</h4>
-                <p id="texto-noticia-${index}" class="noticia-resumen-texto">${noticia.resumen}</p>
-                
-                ${htmlAdjunto}
-                
-                ${htmlGaleria}
-
-                <button class="btn-leer-noticia" 
-                        id="btn-${index}"
-                        data-resumen="${noticia.resumen}" 
-                        data-completo="${textoLargo}" 
-                        onclick="alternarNoticia(${index})">Leer más →</button>
-            </div>
-        </article>
-    `;
-    contenedor.innerHTML += tarjetaHtml;
-});
-        }
-
-        // Función que realiza el intercambio físico de textos en la pantalla
-       function alternarNoticia(id) {
-    const parrafo = document.getElementById(`texto-noticia-${id}`);
-    const boton = document.getElementById(`btn-${id}`);
-    
-    // Buscamos los bloques extras de esta noticia concreta
-    const tarjeta = boton.closest('.tarjeta-noticia-comp');
-    const bloqueAdjunto = tarjeta.querySelector('.noticia-adjunto-bloque');
-    const bloqueGaleria = tarjeta.querySelector('.noticia-galeria-grid');
-
-    const textoResumen = boton.getAttribute('data-resumen');
-    const textoCompleto = boton.getAttribute('data-completo');
-
-    if (parrafo.innerHTML === textoResumen) {
-        // Expandir
-        parrafo.innerHTML = textoCompleto;
-        parrafo.className = "noticia-completa-texto";
-        boton.innerHTML = "Leer menos ↑";
-        
-        // Mostramos los extras si existen
-        if (bloqueAdjunto) bloqueAdjunto.style.display = 'block';
-        if (bloqueGaleria) bloqueGaleria.style.display = 'grid';
-    } else {
-        // Colapsar
-        parrafo.innerHTML = textoResumen;
-        parrafo.className = "noticia-resumen-texto";
-        boton.innerHTML = "Leer más →";
-        
-        // Ocultamos los extras si existen
-        if (bloqueAdjunto) bloqueAdjunto.style.display = 'none';
-        if (bloqueGaleria) bloqueGaleria.style.display = 'none';
-    }
-}
-    </script>
-</body>
-               <section class="sponsors-section">
+    <section class="sponsors-section">
         <div class="container">
             <h3 class="sponsors-title"></h3>
             <div class="sponsors-grid">
@@ -237,7 +140,6 @@
 
     <footer class="main-footer">
         <div class="container footer-columns">
-            
             <div class="footer-column">
                 <h3>CCRD Ferroviario</h3>
                 <p class="footer-about">Uniendo cultura, deporte e identidad desde Sevilla. Un espacio dedicado al desarrollo de nuestros atletas y al encuentro de nuestros socios.</p>
@@ -275,5 +177,217 @@
             </div>
         </div>
     </footer>
-        </nav>
-    </header>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            // ==========================================================
+            // 1. CONTROL DE NOTICIAS DINÁMICAS (TIRO)
+            // ==========================================================
+            const contenedor = document.getElementById('contenedor-noticias-dinamicas');
+            if (contenedor) {
+                contenedor.innerHTML = ''; 
+
+                if (typeof misNoticias === 'undefined') {
+                    contenedor.innerHTML = '<p>Error: No se ha podido acceder a la base de datos de noticias.</p>';
+                } else {
+                    // Filtrar específicamente por la sección de tiro al plato
+                    const noticiasTiro = misNoticias.filter(n => n.seccion === 'tiro');
+
+                    if (noticiasTiro.length === 0) {
+                        contenedor.innerHTML = '<p>No hay noticias recientes de tiro al plato en este momento.</p>';
+                    } else {
+                        noticiasTiro.forEach((noticia, index) => {
+                            const textoLargo = noticia.contenido || noticia.resumen;
+
+                            let htmlAdjunto = '';
+                            if (noticia.adjunto) {
+                                htmlAdjunto = `
+                                    <div class="noticia-adjunto-bloque">
+                                        <a href="${noticia.adjunto.ruta}" class="btn-adjunto-descarga" download>
+                                            <i class="fa-solid fa-file-pdf"></i> ${noticia.adjunto.texto}
+                                        </a>
+                                    </div>
+                                `;
+                            }
+
+                            let htmlGaleria = '';
+                            if (noticia.galeria && noticia.galeria.length > 0) {
+                                htmlGaleria = '<div class="noticia-galeria-grid">';
+                                noticia.galeria.forEach(foto => {
+                                    htmlGaleria += `<img src="${foto}" alt="Foto de la galería" class="img-galeria-item" onclick="window.open(this.src)">`;
+                                });
+                                htmlGaleria += '</div>';
+                            }
+
+                            const tarjetaHtml = `
+                                <article class="tarjeta-noticia-comp">
+                                    <div class="noticia-img-wrap">
+                                        <img src="${noticia.imagen}" alt="Foto principal">
+                                    </div>
+                                    <div class="noticia-info-wrap">
+                                        <span class="noticia-fecha"><i class="fa-regular fa-calendar"></i> ${noticia.fecha}</span>
+                                        <h4>${noticia.titulo}</h4>
+                                        <p id="texto-noticia-${index}" class="noticia-resumen-texto">${noticia.resumen}</p>
+                                        
+                                        ${htmlAdjunto}
+                                        ${htmlGaleria}
+
+                                        <button class="btn-leer-noticia" 
+                                                id="btn-${index}"
+                                                data-resumen="${noticia.resumen}" 
+                                                data-completo="${textoLargo}" 
+                                                onclick="alternarNoticia(${index})">Leer más →</button>
+                                    </div>
+                                </article>
+                            `;
+                            contenedor.innerHTML += tarjetaHtml;
+                        });
+                    }
+                }
+            }
+
+            // ==========================================================
+            // 2. LÓGICA INTERACTIVA DEL CALENDARIO DINÁMICO (TIRO)
+            // ==========================================================
+            // Formato de fechas en JS: Enero=0, Febrero=1, ..., Junio=5, Julio=6, etc.
+            const eventosClub = {
+                '2026-4-10': '🏆 <strong>Competición:</strong> Trofeo Social de Primavera - Foso Universal (75 platos).',
+                '2026-5-24': '🎯 <strong>Jornada Técnica:</strong> Curso avanzado sobre reglajes de culata y técnica de encare.',
+                '2026-6-14': '🏅 <strong>Gran Premio:</strong> Campeonato Ferroviario Anual - Modalidad Foso Olímpico.',
+                '2026-7-19': '⚠️ <strong>Mantenimiento:</strong> Revisión y puesta a punto de las máquinas lanzaplatos del campo.'
+            };
+
+            let fechaActual = new Date();
+            const nombresMeses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+
+            function renderizarCalendario() {
+                const año = fechaActual.getFullYear();
+                const mes = fechaActual.getMonth();
+
+                const textoMesAño = document.getElementById('calendar-month-year');
+                if (!textoMesAño) return;
+                
+                textoMesAño.innerText = `${nombresMeses[mes]} ${año}`;
+
+                const primerDiaMes = new Date(año, mes, 1).getDay();
+                const lunesIndex = primerDiaMes === 0 ? 6 : primerDiaMes - 1;
+
+                const diasTotalesMes = new Date(año, mes + 1, 0).getDate();
+                const gridDias = document.getElementById('calendar-days');
+                if (!gridDias) return;
+                gridDias.innerHTML = '';
+
+                // Espacios vacíos para cuadrar el inicio de semana
+                for (let i = 0; i < lunesIndex; i++) {
+                    const divVacio = document.createElement('div');
+                    divVacio.classList.add('calendar-day', 'empty');
+                    gridDias.appendChild(divVacio);
+                }
+
+                // Generación de los días reales del mes
+                for (let dia = 1; dia <= diasTotalesMes; dia++) {
+                    const elementoDia = document.createElement('div');
+                    elementoDia.classList.add('calendar-day');
+                    elementoDia.innerText = dia;
+
+                    const claveFecha = `${año}-${mes}-${dia}`;
+
+                    if (eventosClub[claveFecha]) {
+                        elementoDia.classList.add('has-event');
+                    }
+
+                    const hoy = new Date();
+                    if (dia === hoy.getDate() && mes === hoy.getMonth() && año === hoy.getFullYear()) {
+                        elementoDia.classList.add('today');
+                    }
+
+                    elementoDia.addEventListener('click', () => {
+                        abrirModalInformacion(dia, nombresMeses[mes], año, eventosClub[claveFecha]);
+                    });
+
+                    gridDias.appendChild(elementoDia);
+                }
+            }
+
+            function abrirModalInformacion(dia, mesTxt, año, info) {
+                const modal = document.getElementById('event-modal');
+                const modalTitle = document.getElementById('modal-date-title');
+                const modalText = document.getElementById('modal-info-text');
+
+                if (!modal || !modalTitle || !modalText) return;
+
+                modalTitle.innerText = `${dia} de ${mesTxt} de ${año}`;
+                
+                if (info) {
+                    modalText.innerHTML = info;
+                } else {
+                    modalText.innerHTML = 'ℹ️ No hay tiradas especiales ni trofeos programados para este día. Las canchas de foso mantienen sus entrenamientos libres programados.';
+                }
+                
+                modal.classList.add('active');
+            }
+
+            // Asignación de cierres del modal interactivo
+            const btnCloseModal = document.querySelector('.modal-close-btn');
+            if (btnCloseModal) {
+                btnCloseModal.addEventListener('click', () => {
+                    document.getElementById('event-modal').classList.remove('active');
+                });
+            }
+            
+            window.addEventListener('click', (e) => {
+                const modal = document.getElementById('event-modal');
+                if (e.target === modal) modal.classList.remove('active');
+            });
+
+            // Flechas de navegación
+            const btnPrevMonth = document.getElementById('prev-month-btn');
+            const btnNextMonth = document.getElementById('next-month-btn');
+
+            if (btnPrevMonth) {
+                btnPrevMonth.addEventListener('click', () => {
+                    fechaActual.setMonth(fechaActual.getMonth() - 1);
+                    renderizarCalendario();
+                });
+            }
+
+            if (btnNextMonth) {
+                btnNextMonth.addEventListener('click', () => {
+                    fechaActual.setMonth(fechaActual.getMonth() + 1);
+                    renderizarCalendario();
+                });
+            }
+
+            // Ejecución inicial del calendario dinámico
+            renderizarCalendario();
+        });
+
+        // Función global requerida para alternar el tamaño de las tarjetas de noticias
+        function alternarNoticia(id) {
+            const parrafo = document.getElementById(`texto-noticia-${id}`);
+            const boton = document.getElementById(`btn-${id}`);
+            
+            const tarjeta = boton.closest('.tarjeta-noticia-comp');
+            const bloqueAdjunto = tarjeta.querySelector('.noticia-adjunto-bloque');
+            const bloqueGaleria = tarjeta.querySelector('.noticia-galeria-grid');
+
+            const textoResumen = boton.getAttribute('data-resumen');
+            const textoCompleto = boton.getAttribute('data-completo');
+
+            if (parrafo.innerHTML === textoResumen) {
+                parrafo.innerHTML = textoCompleto;
+                parrafo.className = "noticia-completa-texto";
+                boton.innerHTML = "Leer menos ↑";
+                if (bloqueAdjunto) bloqueAdjunto.style.display = 'block';
+                if (bloqueGaleria) bloqueGaleria.style.display = 'grid';
+            } else {
+                parrafo.innerHTML = textoResumen;
+                parrafo.className = "noticia-resumen-texto";
+                boton.innerHTML = "Leer más →";
+                if (bloqueAdjunto) bloqueAdjunto.style.display = 'none';
+                if (bloqueGaleria) bloqueGaleria.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
