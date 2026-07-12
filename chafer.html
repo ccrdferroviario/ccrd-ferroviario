@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modelismo Ferroviario (Chafer) - CCRD Ferroviario</title>
+    <title>CCRD Ferroviario - Modelismo Ferroviario (CHAFER)</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="noticias.js?v=1.3"></script>
@@ -51,12 +51,12 @@
         </nav>
     </header>
 
-    <div class="seccion-hero-banner" style="background-image: url('img/modelismo_banner.png');">
+    <div class="seccion-hero-banner" style="background-image: url('img/Chafer.png');">
         <div class="banner-overlay">
             <div class="container">
-                <span class="banner-tag">Asociación Chafer</span>
-                <h1>Modelismo Ferroviario</h1>
-                <p>Preservando la historia del ferrocarril a escala, vía a vía.</p>
+                <span class="banner-tag">Sección Oficial</span>
+                <h1>Modelismo Ferroviario (CHAFER)</h1>
+                <p>Pequeña escala, gran pasión ferroviaria</p>
             </div>
         </div>
     </div>
@@ -66,12 +66,12 @@
             
             <div class="col-principal">
                 <section class="info-introduccion">
-                    <h2>Arte, Precisión e Historia en Miniatura</h2>
-                    <p>La sección de modelismo ferroviario (Asociación Chafer) es el rincón donde la nostalgia y la ingeniería a escala se dan la mano. En nuestros talleres nos dedicamos al diseño, construcción y digitalización de maquetas modulares, recreando con fidelidad estaciones históricas, paisajes ferroviarios y composiciones de todas las épocas. Si te apasiona la electrónica aplicada, el maquetismo, el modelado de paisajes o simplemente ver rodar los trenes a escala (H0, N...), este es tu sitio.</p>
+                    <h2>Arte, Técnica y Ferrocarril</h2>
+                    <p>La sección CHAFER es el corazón histórico del modelismo en nuestro club. Nos dedicamos a la construcción de dioramas, maquetas de trenes a diversas escalas y la recreación de paisajes ferroviarios. Fomentamos el aprendizaje de técnicas de modelismo, electrónica aplicada al control de trenes y la conservación del patrimonio ferroviario en miniatura.</p>
                 </section>
 
                 <section class="noticias-seccion-contenedor">
-                    <h3 class="titulo-bloque"><i class="fa-solid fa-newspaper"></i> Últimas Noticias de Modelismo</h3>
+                    <h3 class="titulo-bloque"><i class="fa-solid fa-newspaper"></i> Últimas Noticias de CHAFER</h3>
                     <div id="contenedor-noticias-dinamicas" class="noticias-lista">
                         <p class="cargando">Cargando noticias de modelismo...</p>
                     </div>
@@ -81,11 +81,11 @@
             <aside class="seccion-sidebar">
                 <div class="sidebar-card">
                     <div class="sidebar-card-body">
-                        <h4>Taller y Encuentros</h4>
-                        <p><i class="fa-regular fa-clock"></i> Martes y Jueves</p>
-                        <p class="horario-detalle">18:00h a 21:00h (Trabajo en maquetas)</p>
-                        <p><i class="fa-regular fa-calendar"></i> Sábados por la mañana</p>
-                        <p class="horario-detalle">10:00h a 13:30h (Rodajes oficiales y visitas)</p>
+                        <h4>Horarios de Taller</h4>
+                        <p><i class="fa-solid fa-screwdriver-wrench"></i> Martes y Viernes</p>
+                        <p class="horario-detalle">17:30h a 20:30h (Montaje y pruebas)</p>
+                        <p><i class="fa-regular fa-calendar-days"></i> Sábados</p>
+                        <p class="horario-collapse horario-detalle">10:00h (Exhibición y visitas)</p>
                         <hr>
                         <a href="socio.html" class="btn-sidebar-action">Unirse al Taller</a>
                     </div>
@@ -95,100 +95,272 @@
         </div>
     </main>
 
-    <section class="calendario-seccion-bloque">
+    <section class="calendar-section">
         <div class="container">
-            <div class="calendario-header-compacto">
-                <h3><i class="fa-regular fa-calendar"></i> Calendario del Taller y Exposiciones</h3>
-                <div class="cal-flechas">
-                    <button class="btn-cal-flecha">◀</button>
-                    <span class="cal-mes-actual">JULIO 2026</span>
-                    <button class="btn-cal-flecha">▶</button>
-                </div>
+            <div class="calendar-header-block">
+                <h2>Calendario de Actividades</h2>
+                <p>Consulte las jornadas de montaje, exposiciones y mantenimiento del circuito.</p>
             </div>
-
-            <div class="calendario-tabla-compacta">
-                <div class="dia-semana-comp">Lun</div><div class="dia-semana-comp">Mar</div><div class="dia-semana-comp">Mié</div><div class="dia-semana-comp">Jue</div><div class="dia-semana-comp">Vie</div><div class="dia-semana-comp">Sáb</div><div class="dia-semana-comp">Dom</div>
+            
+            <div class="calendar-wrapper">
+                <div class="calendar-nav">
+                    <button id="prev-month-btn">◀</button>
+                    <h3 id="calendar-month-year">Julio 2026</h3>
+                    <button id="next-month-btn">▶</button>
+                </div>
                 
-                <div class="celda-dia-comp apagado">29</div><div class="celda-dia-comp apagado">30</div>
-                <div class="celda-dia-comp">1</div><div class="celda-dia-comp">2</div><div class="celda-dia-comp">3</div>
-                <div class="celda-dia-comp evento-verde" data-info="Jornada Puertas Abiertas">4</div><div class="celda-dia-comp">5</div>
+                <div class="calendar-weekdays">
+                    <div>Lun</div><div>Mar</div><div>Mié</div><div>Jue</div><div>Vie</div><div>Sáb</div><div>Dom</div>
+                </div>
                 
-                <div class="celda-dia-comp">6</div><div class="celda-dia-comp evento-verde" data-info="Taller Electrónica DCC">7</div><div class="celda-dia-comp">8</div><div class="celda-dia-comp">9</div><div class="celda-dia-comp">10</div>
-                <div class="celda-dia-comp">11</div><div class="celda-dia-comp">12</div>
-
-                <div class="celda-dia-comp">13</div><div class="celda-dia-comp">14</div><div class="celda-dia-comp">15</div><div class="celda-dia-comp">16</div><div class="celda-dia-comp">17</div><div class="celda-dia-comp">18</div><div class="celda-dia-comp">19</div>
-                <div class="celda-dia-comp">20</div><div class="celda-dia-comp">21</div><div class="celda-dia-comp">22</div><div class="celda-dia-comp">23</div><div class="celda-dia-comp">24</div><div class="celda-dia-comp">25</div><div class="celda-dia-comp">26</div>
-                <div class="celda-dia-comp">27</div><div class="celda-dia-comp">28</div><div class="celda-dia-comp">29</div><div class="celda-dia-comp">30</div><div class="celda-dia-comp">31</div><div class="celda-dia-comp apagado">1</div><div class="celda-dia-comp apagado">2</div>
+                <div id="calendar-days" class="calendar-days-grid"></div>
             </div>
         </div>
     </section>
 
+    <div id="event-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close-btn">&times;</span>
+            <h3 id="modal-date-title">Fecha del evento</h3>
+            <div id="modal-info-text"></div>
+        </div>
+    </div>
+
+    <section class="sponsors-section">
+        <div class="container">
+            <h3 class="sponsors-title"></h3>
+            <div class="sponsors-grid">
+                <div class="sponsor-logo">PATROCINADOR 1</div>
+                <div class="sponsor-logo">PATROCINADOR 2</div>
+                <div class="sponsor-logo">PATROCINADOR 3</div>
+                <div class="sponsor-logo">PATROCINADOR 4</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container footer-columns">
+            <div class="footer-column">
+                <h3>CCRD Ferroviario</h3>
+                <p class="footer-about">Uniendo cultura, deporte e identidad desde Sevilla. Un espacio dedicado al desarrollo de nuestros atletas y al encuentro de nuestros socios.</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <ul class="footer-contact-list">
+                    <li>📍 Calle Salvador allende s/n, Sevilla, España</li>
+                    <li>✉️ ccrdferroviario@hotmail.com</li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Síguenos</h3>
+                <div class="footer-social-links">
+                    <a href="https://www.facebook.com/ccrdferroviario/" target="_blank" aria-label="Facebook del Club" class="social-icon fb">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/ccrdferroviario1986/" target="_blank" aria-label="Instagram del Club" class="social-icon ig">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-container">
+                <p class="copyright">&copy; 2026 CCRD Ferroviario. Todos los derechos reservados.</p>
+                <div class="legal-links">
+                    <a href="#">Aviso Legal</a>
+                    <a href="#">Política de Privacidad</a>
+                    <a href="#">Política de Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <script>
         window.addEventListener('DOMContentLoaded', () => {
+            // ==========================================================
+            // 1. CONTROL DE NOTICIAS DINÁMICAS (CHAFER)
+            // ==========================================================
             const contenedor = document.getElementById('contenedor-noticias-dinamicas');
-            if (!contenedor) return;
-            contenedor.innerHTML = ''; 
+            if (contenedor) {
+                contenedor.innerHTML = ''; 
 
-            if (typeof misNoticias === 'undefined') {
-                contenedor.innerHTML = '<p>Error: No se ha podido acceder a la base de datos de noticias.</p>';
-                return;
+                if (typeof misNoticias === 'undefined') {
+                    contenedor.innerHTML = '<p>Error: No se ha podido acceder a la base de datos de noticias.</p>';
+                } else {
+                    const noticiasChafer = misNoticias.filter(n => n.seccion === 'chafer');
+
+                    if (noticiasChafer.length === 0) {
+                        contenedor.innerHTML = '<p>No hay noticias recientes de modelismo en este momento.</p>';
+                    } else {
+                        noticiasChafer.forEach((noticia, index) => {
+                            const textoLargo = noticia.contenido || noticia.resumen;
+
+                            let htmlAdjunto = '';
+                            if (noticia.adjunto) {
+                                htmlAdjunto = `
+                                    <div class="noticia-adjunto-bloque">
+                                        <a href="${noticia.adjunto.ruta}" class="btn-adjunto-descarga" download>
+                                            <i class="fa-solid fa-file-pdf"></i> ${noticia.adjunto.texto}
+                                        </a>
+                                    </div>
+                                `;
+                            }
+
+                            let htmlGaleria = '';
+                            if (noticia.galeria && noticia.galeria.length > 0) {
+                                htmlGaleria = '<div class="noticia-galeria-grid">';
+                                noticia.galeria.forEach(foto => {
+                                    htmlGaleria += `<img src="${foto}" alt="Foto de la galería" class="img-galeria-item" onclick="window.open(this.src)">`;
+                                });
+                                htmlGaleria += '</div>';
+                            }
+
+                            const tarjetaHtml = `
+                                <article class="tarjeta-noticia-comp">
+                                    <div class="noticia-img-wrap">
+                                        <img src="${noticia.imagen}" alt="Foto principal">
+                                    </div>
+                                    <div class="noticia-info-wrap">
+                                        <span class="noticia-fecha"><i class="fa-regular fa-calendar"></i> ${noticia.fecha}</span>
+                                        <h4>${noticia.titulo}</h4>
+                                        <p id="texto-noticia-${index}" class="noticia-resumen-texto">${noticia.resumen}</p>
+                                        
+                                        ${htmlAdjunto}
+                                        ${htmlGaleria}
+
+                                        <button class="btn-leer-noticia" 
+                                                id="btn-${index}"
+                                                data-resumen="${noticia.resumen}" 
+                                                data-completo="${textoLargo}" 
+                                                onclick="alternarNoticia(${index})">Leer más →</button>
+                                    </div>
+                                </article>
+                            `;
+                            contenedor.innerHTML += tarjetaHtml;
+                        });
+                    }
+                }
             }
 
-            // Filtramos exactamente por el identificador 'modelismo'
-            const noticiasModelismo = misNoticias.filter(n => n.seccion === 'modelismo');
+            // ==========================================================
+            // 2. LÓGICA INTERACTIVA DEL CALENDARIO DINÁMICO (CHAFER)
+            // ==========================================================
+            const eventosClub = {
+                '2026-7-15': '🛠️ <strong>Taller Técnico:</strong> Jornada de cableado y mantenimiento del circuito principal.',
+                '2026-8-05': '🚂 <strong>Exhibición:</strong> Rodada de material histórico en la maqueta social.',
+                '2026-9-10': '🏗️ <strong>Proyecto:</strong> Inicio de construcción del nuevo módulo paisajístico (zona norte).',
+                '2026-9-25': '💼 <strong>Reunión:</strong> Asamblea mensual de la sección CHAFER para planificación de otoño.'
+            };
 
-            if (noticiasModelismo.length === 0) {
-                contenedor.innerHTML = '<p>No hay noticias recientes de modelismo ferroviario en este momento.</p>';
-            } else {
-                noticiasModelismo.forEach((noticia, index) => {
-                    const textoLargo = noticia.contenido || noticia.resumen;
+            let fechaActual = new Date();
+            const nombresMeses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 
-                    let htmlAdjunto = '';
-                    if (noticia.adjunto) {
-                        htmlAdjunto = `
-                            <div class="noticia-adjunto-bloque">
-                                <a href="${noticia.adjunto.ruta}" class="btn-adjunto-descarga" download>
-                                    <i class="fa-solid fa-file-pdf"></i> ${noticia.adjunto.texto}
-                                </a>
-                            </div>
-                        `;
+            function renderizarCalendario() {
+                const año = fechaActual.getFullYear();
+                const mes = fechaActual.getMonth();
+
+                const textoMesAño = document.getElementById('calendar-month-year');
+                if (!textoMesAño) return;
+                
+                textoMesAño.innerText = `${nombresMeses[mes]} ${año}`;
+
+                const primerDiaMes = new Date(año, mes, 1).getDay();
+                const lunesIndex = primerDiaMes === 0 ? 6 : primerDiaMes - 1;
+
+                const diasTotalesMes = new Date(año, mes + 1, 0).getDate();
+                const gridDias = document.getElementById('calendar-days');
+                if (!gridDias) return;
+                gridDias.innerHTML = '';
+
+                // Espacios vacíos para cuadrar el inicio de semana
+                for (let i = 0; i < lunesIndex; i++) {
+                    const divVacio = document.createElement('div');
+                    divVacio.classList.add('calendar-day', 'empty');
+                    gridDias.appendChild(divVacio);
+                }
+
+                // Generación de los días reales del mes
+                for (let dia = 1; dia <= diasTotalesMes; dia++) {
+                    const elementoDia = document.createElement('div');
+                    elementoDia.classList.add('calendar-day');
+                    elementoDia.innerText = dia;
+
+                    const claveFecha = `${año}-${mes}-${dia}`;
+
+                    if (eventosClub[claveFecha]) {
+                        elementoDia.classList.add('has-event');
                     }
 
-                    let htmlGaleria = '';
-                    if (noticia.galeria && noticia.galeria.length > 0) {
-                        htmlGaleria = '<div class="noticia-galeria-grid">';
-                        noticia.galeria.forEach(foto => {
-                            htmlGaleria += `<img src="${foto}" alt="Foto de la galería" class="img-galeria-item" onclick="window.open(this.src)">`;
-                        });
-                        htmlGaleria += '</div>';
+                    const hoy = new Date();
+                    if (dia === hoy.getDate() && mes === hoy.getMonth() && año === hoy.getFullYear()) {
+                        elementoDia.classList.add('today');
                     }
 
-                    const tarjetaHtml = `
-                        <article class="tarjeta-noticia-comp">
-                            <div class="noticia-img-wrap">
-                                <img src="${noticia.imagen}" alt="Foto principal">
-                            </div>
-                            <div class="noticia-info-wrap">
-                                <span class="noticia-fecha"><i class="fa-regular fa-calendar"></i> ${noticia.fecha}</span>
-                                <h4>${noticia.titulo}</h4>
-                                <p id="texto-noticia-${index}" class="noticia-resumen-texto">${noticia.resumen}</p>
-                                
-                                ${htmlAdjunto}
-                                ${htmlGaleria}
+                    elementoDia.addEventListener('click', () => {
+                        abrirModalInformacion(dia, nombresMeses[mes], año, eventosClub[claveFecha]);
+                    });
 
-                                <button class="btn-leer-noticia" 
-                                        id="btn-${index}"
-                                        data-resumen="${noticia.resumen}" 
-                                        data-completo="${textoLargo}" 
-                                        onclick="alternarNoticia(${index})">Leer más →</button>
-                            </div>
-                        </article>
-                    `;
-                    contenedor.innerHTML += tarjetaHtml;
+                    gridDias.appendChild(elementoDia);
+                }
+            }
+
+            function abrirModalInformacion(dia, mesTxt, año, info) {
+                const modal = document.getElementById('event-modal');
+                const modalTitle = document.getElementById('modal-date-title');
+                const modalText = document.getElementById('modal-info-text');
+
+                if (!modal || !modalTitle || !modalText) return;
+
+                modalTitle.innerText = `${dia} de ${mesTxt} de ${año}`;
+                
+                if (info) {
+                    modalText.innerHTML = info;
+                } else {
+                    modalText.innerHTML = 'ℹ️ No hay actividades extraordinarias programadas para este día. El taller sigue abierto para el uso habitual de los socios.';
+                }
+                
+                modal.classList.add('active');
+            }
+
+            // Asignación de cierres del modal interactivo
+            const btnCloseModal = document.querySelector('.modal-close-btn');
+            if (btnCloseModal) {
+                btnCloseModal.addEventListener('click', () => {
+                    document.getElementById('event-modal').classList.remove('active');
                 });
             }
+            
+            window.addEventListener('click', (e) => {
+                const modal = document.getElementById('event-modal');
+                if (e.target === modal) modal.classList.remove('active');
+            });
+
+            // Flechas de navegación
+            const btnPrevMonth = document.getElementById('prev-month-btn');
+            const btnNextMonth = document.getElementById('next-month-btn');
+
+            if (btnPrevMonth) {
+                btnPrevMonth.addEventListener('click', () => {
+                    fechaActual.setMonth(fechaActual.getMonth() - 1);
+                    renderizarCalendario();
+                });
+            }
+
+            if (btnNextMonth) {
+                btnNextMonth.addEventListener('click', () => {
+                    fechaActual.setMonth(fechaActual.getMonth() + 1);
+                    renderizarCalendario();
+                });
+            }
+
+            // Ejecución inicial del calendario dinámico
+            renderizarCalendario();
         });
 
+        // Función global requerida para alternar el tamaño de las tarjetas de noticias
         function alternarNoticia(id) {
             const parrafo = document.getElementById(`texto-noticia-${id}`);
             const boton = document.getElementById(`btn-${id}`);
@@ -215,49 +387,5 @@
             }
         }
     </script>
-
-    <section class="sponsors-section">
-        <div class="container">
-            <div class="sponsors-grid">
-                <div class="sponsor-logo">PATROCINADOR 1</div>
-                <div class="sponsor-logo">PATROCINADOR 2</div>
-                <div class="sponsor-logo">PATROCINADOR 3</div>
-                <div class="sponsor-logo">PATROCINADOR 4</div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="main-footer">
-        <div class="container footer-columns">
-            <div class="footer-column">
-                <h3>CCRD Ferroviario</h3>
-                <p class="footer-about">Uniendo cultura, deporte e identidad desde Sevilla. Un espacio dedicado al desarrollo de nuestros atletas y al encuentro de nuestros socios.</p>
-            </div>
-            <div class="footer-column">
-                <h3>Contacto</h3>
-                <ul class="footer-contact-list">
-                    <li>📍 Calle Salvador allende s/n, Sevilla, España</li>
-                    <li>✉️ ccrdferroviario@hotmail.com</li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Síguenos</h3>
-                <div class="footer-social-links">
-                    <a href="https://www.facebook.com/ccrdferroviario/" target="_blank" class="social-icon fb"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/ccrdferroviario1986/" target="_blank" class="social-icon ig"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div class="container footer-bottom-container">
-                <p class="copyright">&copy; 2026 CCRD Ferroviario. Todos los derechos reservados.</p>
-                <div class="legal-links">
-                    <a href="#">Aviso Legal</a>
-                    <a href="#">Política de Privacidad</a>
-                    <a href="#">Política de Cookies</a>
-                </div>
-            </div>
-        </div>
-    </footer>
 </body>
 </html>
