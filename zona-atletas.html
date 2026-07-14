@@ -3,81 +3,378 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CCRD Ferroviario - Zona Privada Atletismo</title>
+    <title>CCRD Ferroviario - Zona de Atletas</title>
     <link rel="stylesheet" href="styles.css">
-    
-    <!-- SCRIPT DE PROTECCIÓN PROVISIONAL -->
-    <script>
-        if (sessionStorage.getItem('acceso_atletismo') !== 'permitido') {
-            alert('Acceso denegado. Debes introducir la contraseña en la sección de Atletismo.');
-            window.location.href = 'atletismo.html'; // Lo enviamos de vuelta
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Estilos específicos para la Zona de Atletas */
+        .atletas-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/Atletismo.png') no-repeat center center/cover;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
         }
         
+        .logout-btn {
+            background-color: #e60000;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+            transition: background 0.2s;
+        }
+        
+        .logout-btn:hover {
+            background-color: #b30000;
+        }
+
+        /* Contenedor de Pestañas (Tabs) */
+        .atletas-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 40px auto;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 12px 24px;
+            font-size: 1.1em;
+            font-weight: bold;
+            background: none;
+            border: none;
+            color: #555;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab-button:hover {
+            color: #e60000;
+        }
+
+        .tab-button.active {
+            color: #e60000;
+            border-bottom-color: #e60000;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Grid de Subplanes (5k, 10k, MM, Maratón) */
+        .planes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .plan-card {
+            background: #fdfdfd;
+            border: 1px solid #e1e1e1;
+            border-top: 5px solid #e60000;
+            border-radius: 6px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .plan-card h3 {
+            margin-top: 0;
+            color: #222;
+        }
+
+        .plan-card .meta-dist {
+            font-size: 2em;
+            font-weight: 800;
+            color: #e60000;
+            margin: 10px 0;
+        }
+
+        /* Ejercicios Listados */
+        .ejercicios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .ejercicio-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .ejercicio-img-placeholder {
+            background: #e2e8f0;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            color: #cbd5e1;
+        }
+
+        .ejercicio-info {
+            padding: 20px;
+        }
+
+        .ejercicio-info h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #1a202c;
+        }
+
+        .badge-tecnica {
+            background-color: #3182ce;
+            color: white;
+            padding: 4px 8px;
+            font-size: 0.8em;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .badge-fuerza {
+            background-color: #38a169;
+            color: white;
+            padding: 4px 8px;
+            font-size: 0.8em;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CONTROL DE ACCESO (Script de seguridad) -->
+    <script>
+        // Si no se tiene la variable autorizada en sesión, rebota automáticamente a atletismo.html
+        if (sessionStorage.getItem('acceso_atletismo') !== 'permitido') {
+            alert('Acceso denegado. Por favor, introduzca la contraseña en la sección de atletismo.');
+            window.location.href = 'atletismo.html';
+        }
+    </script>
+
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container navbar-container">
+                <a href="index.html" class="logo">
+                    <img src="img/logo.png" alt="Logo CCRD Ferroviario" class="logo-img">
+                    <span class="logo-accent">CCRD</span> FERROVIARIO
+                </a>
+                <button onclick="cerrarSesion()" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Salir de zona privada</button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="atletas-hero">
+        <div class="container">
+            <h1>Área Privada de Atletismo</h1>
+            <p>Soporte técnico y planes oficiales para nuestros corredores</p>
+        </div>
+    </div>
+
+    <main class="container page-content-padding">
+        
+        <!-- PESTAÑAS PRINCIPALES DE LA ZONA -->
+        <div class="atletas-tabs">
+            <button class="tab-button active" onclick="cambiarPestana('planes')">
+                <i class="fa-solid fa-route"></i> Planes de Entrenamiento
+            </button>
+            <button class="tab-button" onclick="cambiarPestana('tecnica')">
+                <i class="fa-solid fa-person-running"></i> Técnica de Carrera
+            </button>
+            <button class="tab-button" onclick="cambiarPestana('fuerza')">
+                <i class="fa-solid fa-dumbbell"></i> Ejercicios de Fuerza
+            </button>
+        </div>
+
+        <!-- ================= PESTAÑA 1: PLANES DE ENTRENAMIENTO ================= -->
+        <section id="content-planes" class="tab-content active">
+            <h2>Planes Oficiales por Distancias</h2>
+            <p>Selecciona tu objetivo deportivo de la temporada para descargar o consultar tu rutina programada.</p>
+            
+            <div class="planes-grid">
+                <!-- 5 KM -->
+                <div class="plan-card">
+                    <div>
+                        <span class="badge-tecnica" style="background-color: #805ad5;">Iniciación / Velocidad</span>
+                        <div class="meta-dist">5K</div>
+                        <h3>Preparación 5 Kilómetros</h3>
+                        <p style="font-size: 0.9em; color: #555;">Ideal para iniciarse en el running, ganar potencia aeróbica y mejorar marcas cortas.</p>
+                    </div>
+                    <a href="docs/plan-5k.pdf" class="btn-sidebar-action" style="margin-top: 15px; width: 100%;" download>
+                        <i class="fa-solid fa-file-arrow-down"></i> Descargar PDF (5K)
+                    </a>
+                </div>
+
+                <!-- 10 KM -->
+                <div class="plan-card">
+                    <div>
+                        <span class="badge-tecnica" style="background-color: #3182ce;">Ruta Popular</span>
+                        <div class="meta-dist">10K</div>
+                        <h3>Circuito 10 Kilómetros</h3>
+                        <p style="font-size: 0.9em; color: #555;">Optimizado para el circuito del IMD de Sevilla. Series, ritmos sostenidos y fartlek.</p>
+                    </div>
+                    <a href="docs/plan-10k.pdf" class="btn-sidebar-action" style="margin-top: 15px; width: 100%;" download>
+                        <i class="fa-solid fa-file-arrow-down"></i> Descargar PDF (10K)
+                    </a>
+                </div>
+
+                <!-- MEDIA MARATÓN -->
+                <div class="plan-card">
+                    <div>
+                        <span class="badge-tecnica" style="background-color: #dd6b20;">Fondo</span>
+                        <div class="meta-dist">21K</div>
+                        <h3>Media Maratón (21.097 m)</h3>
+                        <p style="font-size: 0.9em; color: #555;">Planes específicos orientados a la Media Maratón de Sevilla y citas andaluzas de otoño.</p>
+                    </div>
+                    <a href="docs/plan-media-maraton.pdf" class="btn-sidebar-action" style="margin-top: 15px; width: 100%;" download>
+                        <i class="fa-solid fa-file-arrow-down"></i> Descargar PDF (MM)
+                    </a>
+                </div>
+
+                <!-- MARATÓN -->
+                <div class="plan-card">
+                    <div>
+                        <span class="badge-tecnica" style="background-color: #e53e3e;">Gran Fondo</span>
+                        <div class="meta-dist">42K</div>
+                        <h3>Maratón de Sevilla</h3>
+                        <p style="font-size: 0.9em; color: #555;">Planificación avanzada de 12 a 16 semanas. Control de kilometraje semanal estricto.</p>
+                    </div>
+                    <a href="docs/plan-maraton.pdf" class="btn-sidebar-action" style="margin-top: 15px; width: 100%;" download>
+                        <i class="fa-solid fa-file-arrow-down"></i> Descargar PDF (42K)
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PESTAÑA 2: TÉCNICA DE CARRERA ================= -->
+        <section id="content-tecnica" class="tab-content">
+            <h2>Ejercicios de Técnica de Carrera</h2>
+            <p>La eficiencia biomecánica reduce drásticamente el riesgo de lesiones y ahorra oxígeno por kilómetro.</p>
+            
+            <div class="ejercicios-grid">
+                <div class="ejercicio-card">
+                    <div class="ejercicio-img-placeholder"><i class="fa-solid fa-person-running"></i></div>
+                    <div class="ejercicio-info">
+                        <span class="badge-tecnica">Postura</span>
+                        <h3>Skiping Alto y Bajo</h3>
+                        <p>Trabaja la elevación de rodillas sin perder la alineación de la cadera. Clave para reactivar los tobillos.</p>
+                    </div>
+                </div>
+
+                <div class="ejercicio-card">
+                    <div class="ejercicio-img-placeholder"><i class="fa-solid fa-shoe-prints"></i></div>
+                    <div class="ejercicio-info">
+                        <span class="badge-tecnica">Impulso</span>
+                        <h3>Talones al Glúteo</h3>
+                        <p>Fomenta la flexión rápida de rodilla facilitando un recobro fluido del pie tras la zancada.</p>
+                    </div>
+                </div>
+
+                <div class="ejercicio-card">
+                    <div class="ejercicio-img-placeholder"><i class="fa-solid fa-arrows-up-to-line"></i></div>
+                    <div class="ejercicio-info">
+                        <span class="badge-tecnica">Tobillo</span>
+                        <h3>Carrera Lateral e Impulsos</h3>
+                        <p>Coordinación muscular y acondicionamiento reactivo del tendón de Aquiles.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PESTAÑA 3: EJERCICIOS DE FUERZA ================= -->
+        <section id="content-fuerza" class="tab-content">
+            <h2>Tablas de Fuerza para Corredores</h2>
+            <p>La fuerza es el escudo del corredor de fondo. Añade estas pautas a tus sesiones semanales.</p>
+            
+            <div class="ejercicios-grid">
+                <div class="ejercicio-card">
+                    <div class="ejercicio-img-placeholder"><i class="fa-solid fa-weight-hanging"></i></div>
+                    <div class="ejercicio-info">
+                        <span class="badge-fuerza">Tren Inferior</span>
+                        <h3>Sentadilla Goblet e Isométricos</h3>
+                        <p>Fortalece cuádriceps y glúteo mayor para resistir el impacto constante en el asfalto.</p>
+                    </div>
+                </div>
+
+                <div class="ejercicio-card">
+                    <div class="ejercicio-img-placeholder"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div class="ejercicio-info">
+                        <span class="badge-fuerza">Estabilidad CORE</span>
+                        <h3>Planchas Frontales y Laterales</h3>
+                        <p>Evita el bamboleo de la pelvis a medida que aparece la fatiga en las tiradas largas.</p>
+                    </div>
+                </div>
+
+                <div class="ejercicio-card">
+                    <div class="ejercicio-img-placeholder"><i class="fa-solid fa-child"></i></div>
+                    <div class="ejercicio-info">
+                        <span class="badge-fuerza">Compensación</span>
+                        <h3>Puente de Glúteo unilateral</h3>
+                        <p>Trabajo fundamental para isquiotibiales y prevención de la sobrecarga lumbar.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p class="copyright" style="text-align: center; padding: 20px 0;">&copy; 2026 CCRD Ferroviario. Zona privada del corredor.</p>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVIDAD DE LA PÁGINA (Javascript local) -->
+    <script>
+        // Función para cambiar entre las 3 pestañas
+        function cambiarPestana(seccion) {
+            // Ocultar todos los contenidos de pestaña
+            const contenidos = document.querySelectorAll('.tab-content');
+            contenidos.forEach(c => c.classList.remove('active'));
+
+            // Quitar la clase active a todos los botones
+            const botones = document.querySelectorAll('.tab-button');
+            botones.forEach(b => b.classList.remove('active'));
+
+            // Mostrar la pestaña seleccionada y activar su botón
+            document.getElementById(`content-${seccion}`).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        // Función para cerrar la sesión de atleta de manera segura
         function cerrarSesion() {
             sessionStorage.removeItem('acceso_atletismo');
             window.location.href = 'atletismo.html';
         }
     </script>
-</head>
-<body>
-    <!-- Menú de navegación (Puedes pegar aquí tu header habitual) -->
-
-    <main class="container page-content-padding" style="margin-top: 40px;">
-        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px;">
-            <h2><span style="color: red;">🔒</span> Área Técnica de Atletismo</h2>
-            <button onclick="cerrarSesion()" style="padding: 8px 15px; background-color: #333; color: white; border: none; border-radius: 4px; cursor: pointer;">Cerrar sesión</button>
-        </div>
-
-        <!-- CONTENIDO PRIVADO -->
-        <div class="seccion-grid">
-            
-            <!-- Bloque 1: Planes de Entrenamiento -->
-            <div class="sidebar-card">
-                <div class="sidebar-card-body">
-                    <h3>📅 Planes Semanales</h3>
-                    <ul>
-                        <li><a href="rutas/plan_maraton_sub3.pdf" download>Plan Maratón - Sub 3 horas (PDF)</a></li>
-                        <li><a href="rutas/plan_10k_iniciacion.pdf" download>Plan 10K - Iniciación (PDF)</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Bloque 2: Técnica de Carrera -->
-            <div class="sidebar-card">
-                <div class="sidebar-card-body">
-                    <h3>🏃‍♂️ Técnica de Carrera</h3>
-                  <img src="ruta_a_tu_imagen.jpg" alt="Técnica de carrera" style="width:100%; border-radius:4px; margin-bottom:10px;">
-        <p>Realiza estos ejercicios antes de cada sesión de series:</p>
-        <ul>
-            <li><strong>Skipping Medio-Alto:</strong> Enfoque en la caída de metatarso (3x30 metros).</li>
-            <li><strong>Talones al glúteo:</strong> Manteniendo el tronco erguido (3x30 metros).</li>
-        </ul>
-    </div>
-</div>
-                    <p>Ejercicios recomendados para el calentamiento:</p>
-                    <ul>
-                        <li>Skipping alto (3x30 metros)</li>
-                        <li>Talones a los glúteos (3x30 metros)</li>
-                        <li>Carrera lateral y cruce de piernas</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Bloque 3: Fuerza -->
-            <div class="sidebar-card">
-                <div class="sidebar-card-body">
-                    <h3>💪 Fuerza orientada</h3>
-                    <p>Rutina de gimnasio (2 días a la semana):</p>
-                    <ul>
-                        <li>Sentadilla búlgara: 3x10 cada pierna</li>
-                        <li>Peso muerto a una pierna: 3x8</li>
-                        <li>Planchas isométricas (Core): 4x45 segundos</li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-    </main>
-
 </body>
 </html>
