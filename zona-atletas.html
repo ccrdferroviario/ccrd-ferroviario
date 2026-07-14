@@ -80,7 +80,7 @@
         /* Grid de Subplanes (5k, 10k, MM, Maratón) */
         .planes-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
             margin-top: 25px;
         }
@@ -92,7 +92,6 @@
             border-radius: 6px;
             padding: 25px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            text-align: center;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -106,13 +105,71 @@
         .plan-card h3 {
             margin-top: 0;
             color: #222;
+            text-align: center;
         }
 
         .plan-card .meta-dist {
-            font-size: 2em;
+            font-size: 2.2em;
             font-weight: 800;
             color: #e60000;
             margin: 10px 0;
+            text-align: center;
+        }
+
+        .plan-card p {
+            text-align: center;
+            font-size: 0.9em;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        /* Lista de Descargas de PDFs */
+        .download-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+
+        .download-item {
+            margin-bottom: 8px;
+        }
+
+        .download-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 12px;
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            color: #333;
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .download-link:hover {
+            background-color: #e60000;
+            color: white;
+            border-color: #e60000;
+        }
+
+        .download-link i {
+            font-size: 1.1em;
+            margin-right: 8px;
+        }
+
+        .download-link .arrow-icon {
+            margin-left: auto;
+            font-size: 0.85em;
+            opacity: 0.7;
+        }
+
+        .download-link:hover .arrow-icon {
+            opacity: 1;
         }
 
         /* Ejercicios Listados */
@@ -174,7 +231,6 @@
 
     <!-- CONTROL DE ACCESO (Script de seguridad) -->
     <script>
-        // Si no se tiene la variable autorizada en sesión, rebota automáticamente a atletismo.html
         if (sessionStorage.getItem('acceso_atletismo') !== 'permitido') {
             alert('Acceso denegado. Por favor, introduzca la contraseña en la sección de atletismo.');
             window.location.href = 'atletismo.html';
@@ -218,59 +274,247 @@
         <!-- ================= PESTAÑA 1: PLANES DE ENTRENAMIENTO ================= -->
         <section id="content-planes" class="tab-content active">
             <h2>Planes Oficiales por Distancias</h2>
-            <p>Selecciona tu objetivo deportivo de la temporada para descargar o consultar tu rutina programada.</p>
+            <p style="margin-bottom: 30px;">Selecciona tu objetivo deportivo de la temporada para descargar o consultar tu rutina programada.</p>
             
             <div class="planes-grid">
                 <!-- 5 KM -->
                 <div class="plan-card">
                     <div>
-                        <span class="badge-tecnica" style="background-color: #805ad5;">Iniciación / Velocidad</span>
+                        <div style="text-align: center; margin-bottom: 10px;">
+                            <span class="badge-tecnica" style="background-color: #805ad5;">Iniciación / Velocidad</span>
+                        </div>
                         <div class="meta-dist">5K</div>
                         <h3>Preparación 5 Kilómetros</h3>
-                        <p style="font-size: 0.9em; color: #555;">Ideal para iniciarse en el running, ganar potencia aeróbica y mejorar marcas cortas.</p>
+                        <p>Planes tanto para empezar desde cero como para mejorar tu marca en pruebas cortas.</p>
+                        
+                        <ul class="download-list">
+                            <li class="download-item">
+                                <a href="docs/plan-5k-primer.pdf" class="download-link" download>
+                                    <span><i class="fa-solid fa-file-pdf"></i> Terminar tu primer 5k</span>
+                                    <i class="fa-solid fa-download arrow-icon"></i>
+                                </a>
+                            </li>
+                            <li class="download-item">
+                                <a href="docs/plan-5k-sub30.pdf" class="download-link" download>
+                                    <span><i class="fa-solid fa-file-pdf"></i> Bajar de 30 minutos</span>
+                                    <i class="fa-solid fa-download arrow-icon"></i>
+                                </a>
+                            </li>
+                            <li class="download-item">
+                                <a href="docs/plan-5k-sub25.pdf" class="download-link" download>
+                                    <span><i class="fa-solid fa-file-pdf"></i> Bajar de 25 minutos</span>
+                                    <i class="fa-solid fa-download arrow-icon"></i>
+                                </a>
+                            </li>
+                            <li class="download-item">
+                                <a href="docs/plan-5k-sub20.pdf" class="download-link" download>
+                                    <span><i class="fa-solid fa-file-pdf"></i> Bajar de 20 minutos</span>
+                                    <i class="fa-solid fa-download arrow-icon"></i>
+                                </a>
+                            </li>
+                            <li class="download-item">
+                                <a href="docs/plan-5k-sub18.pdf" class="download-link" download>
+                                    <span><i class="fa-solid fa-file-pdf"></i> Bajar de 18 minutos</span>
+                                    <i class="fa-solid fa-download arrow-icon"></i>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                    <a href="docs/plan-5k.pdf" class="btn-sidebar-action" style="margin-top: 15px; width: 100%;" download>
-                        <i class="fa-solid fa-file-arrow-down"></i> Descargar PDF (5K)
-                    </a>
                 </div>
 
                 <!-- 10 KM -->
                 <div class="plan-card">
                     <div>
-                        <span class="badge-tecnica" style="background-color: #3182ce;">Ruta Popular</span>
+                        <div style="text-align: center; margin-bottom: 10px;">
+                            <span class="badge-tecnica" style="background-color: #3182ce;">Ruta Popular</span>
+                        </div>
                         <div class="meta-dist">10K</div>
                         <h3>Circuito 10 Kilómetros</h3>
-                        <p style="font-size: 0.9em; color: #555;">Optimizado para el circuito del IMD de Sevilla. Series, ritmos sostenidos y fartlek.</p>
+                        <p>Diseñados para el circuito municipal con diferentes objetivos de rendimiento.</p>
+                        
+                        <ul class="download-list">
+                            <li class="download-item">
+                                <a href="docs/plan-10k-primer.pdf" class="download-link" download>
+                                    <span><i class="fa-solid fa-file-pdf"></i> Terminar tu primer 10k</span>
+                                    <i class="fa-solid fa-download arrow-icon"></i>
+                                </a>
+                            </li>
+                            <li class="download-item">
+                                <a href="docs/plan-10k-sub60.pdf" class="download-link" download>
+                                    <span><i class="fa-solid fa-file-pdf"></i> Bajar de 60 minutos</span>
+                                    <i class="fa-solid fa-download arrow-icon"></i>
+                                </a>
+                            </li>
+                            <li class="download-item">
+                                <a href="docs/plan-10k-sub55.pdf" class="download-link" download>
+                                    <span><i class="fa-solid fa-file-pdf"></i> Bajar de 55 minutos</span>
+                                    <i class="fa-solid fa-download arrow-icon"></i>
+                                </a>
+                            </li>
+                            <li class="download-item">
+                                <a href="docs/plan-10k-sub50.pdf" class="download-link" download>
+                                    <span><i class="fa-solid fa-file-pdf"></i> Bajar de 50 minutos</span>
+                                    <i class="fa-solid fa-download arrow-icon"></i>
+                                </a>
+                            </li>
+                            <li class="download-item">
+                                <a href="docs/plan-10k-sub45.pdf" class="download-link" download>
+                                    <span><i class="fa-solid fa-file-pdf"></i> Bajar de 45 minutos</span>
+                                    <i class="fa-solid fa-download arrow-icon"></i>
+                                </a>
+                            </li>
+                            <li class="download-item">
+                                <a href="docs/plan-10k-sub40.pdf" class="download-link" download>
+                                    <span><i class="fa-solid fa-file-pdf"></i> Bajar de 40 minutos</span>
+                                    <i class="fa-solid fa-download arrow-icon"></i>
+                                </a>
+                            </li>
+                            <li class="download-item">
+                                <a href="docs/plan-10k-sub38.pdf" class="download-link" download>
+                                    <span><i class="fa-solid fa-file-pdf"></i> Bajar de 38 minutos</span>
+                                    <i class="fa-solid fa-download arrow-icon"></i>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                    <a href="docs/plan-10k.pdf" class="btn-sidebar-action" style="margin-top: 15px; width: 100%;" download>
-                        <i class="fa-solid fa-file-arrow-down"></i> Descargar PDF (10K)
-                    </a>
                 </div>
 
                 <!-- MEDIA MARATÓN -->
                 <div class="plan-card">
                     <div>
-                        <span class="badge-tecnica" style="background-color: #dd6b20;">Fondo</span>
+                        <div style="text-align: center; margin-bottom: 10px;">
+                            <span class="badge-tecnica" style="background-color: #dd6b20;">Fondo</span>
+                        </div>
                         <div class="meta-dist">21K</div>
-                        <h3>Media Maratón (21.097 m)</h3>
-                        <p style="font-size: 0.9em; color: #555;">Planes específicos orientados a la Media Maratón de Sevilla y citas andaluzas de otoño.</p>
+                        <h3>Media Maratón</h3>
+                        <p>Planes específicos para afrontar con garantías los exigentes 21.097 metros.</p>
+                        
+                        <ul class="download-list">
+                            <li class="download-item">
+                                <a href="docs/plan-mm-primer.pdf" class="download-link" download>
+                                    <span><i class="fa-solid fa-file-pdf"></i> Terminar tu primera MM</span>
+                                    <i class="fa-solid fa-download arrow-icon"></i>
+                                </a>
+                            </li>
+                            <li class="download-item">
+                                <a href="docs/plan-mm-sub2h.pdf" class="download-link" download>
+                                    <span><i class="fa-solid fa-file-pdf"></i> Bajar de 2h 00'</span>
+                                    <i class="fa-solid fa-download arrow-icon"></i>
+                                </a>
+                            </li>
+                            <li class="download-item">
+                                <a href="docs/plan-mm-sub1h55.pdf" class="download-link" download>
+                                    <span><i class="fa-solid fa-file-pdf"></i> Bajar de 1h 55'</span>
+                                    <i class="fa-solid fa-download arrow-icon"></i>
+                                </a>
+                            </li>
+                            <li class="download-item">
+                                <a href="docs/plan-mm-sub1h50.pdf" class="download-link" download>
+                                    <span><i class="fa-solid fa-file-pdf"></i> Bajar de 1h 50'</span>
+                                    <i class="fa-solid fa-download arrow-icon"></i>
+                                </a>
+                            </li>
+                            <li class="download-item">
+                                <a href="docs/plan-mm-sub1h45.pdf" class="download-link" download>
+                                    <span><i class="fa-solid fa-file-pdf"></i> Bajar de 1h 45'</span>
+                                    <i class="fa-solid fa-download arrow-icon"></i>
+                                </a>
+                            </li>
+                            <li class="download-item">
+                                <a href="docs/plan-mm-sub1h40.pdf" class="download-link" download>
+                                    <span><i class="fa-solid fa-file-pdf"></i> Bajar de 1h 40'</span>
+                                    <i class="fa-solid fa-download arrow-icon"></i>
+                                </a>
+                            </li>
+                            <li class="download-item">
+                                <a href="docs/plan-mm-sub1h35.pdf" class="download-link" download>
+                                    <span><i class="fa-solid fa-file-pdf"></i> Bajar de 1h 35'</span>
+                                    <i class="fa-solid fa-download arrow-icon"></i>
+                                </a>
+                            </li>
+                            <li class="download-item">
+                                <a href="docs/plan-mm-sub1h30.pdf" class="download-link" download>
+                                    <span><i class="fa-solid fa-file-pdf"></i> Bajar de 1h 30'</span>
+                                    <i class="fa-solid fa-download arrow-icon"></i>
+                                </a>
+                            </li>
+                            <li class="download-item">
+                                <a href="docs/plan-mm-sub1h25.pdf" class="download-link" download>
+                                    <span><i class="fa-solid fa-file-pdf"></i> Bajar de 1h 25'</span>
+                                    <i class="fa-solid fa-download arrow-icon"></i>
+                                </a>
+                            </li>
+                            <li class="download-item">
+                                <a href="docs/plan-mm-sub1h20.pdf" class="download-link" download>
+                                    <span><i class="fa-solid fa-file-pdf"></i> Bajar de 1h 20'</span>
+                                    <i class="fa-solid fa-download arrow-icon"></i>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                    <a href="docs/plan-media-maraton.pdf" class="btn-sidebar-action" style="margin-top: 15px; width: 100%;" download>
-                        <i class="fa-solid fa-file-arrow-down"></i> Descargar PDF (MM)
-                    </a>
                 </div>
 
                 <!-- MARATÓN -->
                 <div class="plan-card">
                     <div>
-                        <span class="badge-tecnica" style="background-color: #e53e3e;">Gran Fondo</span>
+                        <div style="text-align: center; margin-bottom: 10px;">
+                            <span class="badge-tecnica" style="background-color: #e53e3e;">Gran Fondo</span>
+                        </div>
                         <div class="meta-dist">42K</div>
-                        <h3>Maratón de Sevilla</h3>
-                        <p style="font-size: 0.9em; color: #555;">Planificación avanzada de 12 a 16 semanas. Control de kilometraje semanal estricto.</p>
+                        <h3>Maratón</h3>
+                        <p>Planificaciones completas de resistencia para coronar con éxito la mítica distancia.</p>
+                        
+                        <ul class="download-list">
+                            <li class="download-item">
+                                <a href="docs/plan-maraton-primer.pdf" class="download-link" download>
+                                    <span><i class="fa-solid fa-file-pdf"></i> Terminar tu primera Maratón</span>
+                                    <i class="fa-solid fa-download arrow-icon"></i>
+                                </a>
+                            </li>
+                            <li class="download-item">
+                                <a href="docs/plan-maraton-sub5h.pdf" class="download-link" download>
+                                    <span><i class="fa-solid fa-file-pdf"></i> Bajar de 5 horas</span>
+                                    <i class="fa-solid fa-download arrow-icon"></i>
+                                </a>
+                            </li>
+                            <li class="download-item">
+                                <a href="docs/plan-maraton-sub4h30.pdf" class="download-link" download>
+                                    <span><i class="fa-solid fa-file-pdf"></i> Bajar de 4h 30'</span>
+                                    <i class="fa-solid fa-download arrow-icon"></i>
+                                </a>
+                            </li>
+                            <li class="download-item">
+                                <a href="docs/plan-maraton-sub4h.pdf" class="download-link" download>
+                                    <span><i class="fa-solid fa-file-pdf"></i> Bajar de 4 horas</span>
+                                    <i class="fa-solid fa-download arrow-icon"></i>
+                                </a>
+                            </li>
+                            <li class="download-item">
+                                <a href="docs/plan-maraton-sub3h45.pdf" class="download-link" download>
+                                    <span><i class="fa-solid fa-file-pdf"></i> Bajar de 3h 45'</span>
+                                    <i class="fa-solid fa-download arrow-icon"></i>
+                                </a>
+                            </li>
+                            <li class="download-item">
+                                <a href="docs/plan-maraton-sub3h30.pdf" class="download-link" download>
+                                    <span><i class="fa-solid fa-file-pdf"></i> Bajar de 3h 30'</span>
+                                    <i class="fa-solid fa-download arrow-icon"></i>
+                                </a>
+                            </li>
+                            <li class="download-item">
+                                <a href="docs/plan-maraton-sub3h15.pdf" class="download-link" download>
+                                    <span><i class="fa-solid fa-file-pdf"></i> Bajar de 3h 15'</span>
+                                    <i class="fa-solid fa-download arrow-icon"></i>
+                                </a>
+                            </li>
+                            <li class="download-item">
+                                <a href="docs/plan-maraton-sub3h.pdf" class="download-link" download>
+                                    <span><i class="fa-solid fa-file-pdf"></i> Bajar de 3 horas</span>
+                                    <i class="fa-solid fa-download arrow-icon"></i>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                    <a href="docs/plan-maraton.pdf" class="btn-sidebar-action" style="margin-top: 15px; width: 100%;" download>
-                        <i class="fa-solid fa-file-arrow-down"></i> Descargar PDF (42K)
-                    </a>
                 </div>
             </div>
         </section>
@@ -353,24 +597,18 @@
         </div>
     </footer>
 
-    <!-- INTERACTIVIDAD DE LA PÁGINA (Javascript local) -->
     <script>
-        // Función para cambiar entre las 3 pestañas
         function cambiarPestana(seccion) {
-            // Ocultar todos los contenidos de pestaña
             const contenidos = document.querySelectorAll('.tab-content');
             contenidos.forEach(c => c.classList.remove('active'));
 
-            // Quitar la clase active a todos los botones
             const botones = document.querySelectorAll('.tab-button');
             botones.forEach(b => b.classList.remove('active'));
 
-            // Mostrar la pestaña seleccionada y activar su botón
             document.getElementById(`content-${seccion}`).classList.add('active');
             event.currentTarget.classList.add('active');
         }
 
-        // Función para cerrar la sesión de atleta de manera segura
         function cerrarSesion() {
             sessionStorage.removeItem('acceso_atletismo');
             window.location.href = 'atletismo.html';
