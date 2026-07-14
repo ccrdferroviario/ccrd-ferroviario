@@ -90,56 +90,33 @@
                         <a href="socio.html" class="btn-sidebar-action">Unirse al Grupo</a>
                     </div>
                 </div>
-                <!-- NUEVA TARJETA 2: ACCESO ZONA PRIVADA (Con lógica integrada) -->
-<div class="sidebar-card" style="margin-top: 20px; border-top: 4px solid red;">
-    <div class="sidebar-card-body">
-        <h4 style="margin-bottom: 5px; display: flex; align-items: center; gap: 8px;">
-            🔒 Área Privada Atletas
-        </h4>
-        <p class="horario-detalle" style="font-size: 0.9em; color: #666; margin-bottom: 15px;">
-            Planes de entrenamiento, técnica de carrera y tablas de fuerza.
-        </p>
-        
-        <div id="login-atletas">
-            <input type="password" id="pass-atletismo" placeholder="Contraseña del club" 
-                   style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
-            
-            <button onclick="validarAccesoLocal()" class="btn-sidebar-action" 
-                    style="width: 100%; padding: 10px; background-color: #e60000; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; transition: background 0.2s; display: block; text-align: center;">
-                Entrar al Área Técnica
-            </button>
-            
-            <p id="error-login" style="color: #d9534f; font-size: 0.85em; display: none; margin-top: 10px; font-weight: bold;">
-                ⚠️ Contraseña incorrecta.
-            </p>
-        </div>
-    </div>
 
-    <!-- Metemos el script aquí dentro para garantizar que se defina correctamente -->
-    <script>
-        function validarAccesoLocal() {
-            const campo = document.getElementById('pass-atletismo');
-            const pass = campo ? campo.value.trim() : '';
-            const errorLabel = document.getElementById('error-login');
-
-            if (pass === 'ferroviario2026') {
-                sessionStorage.setItem('acceso_atletismo', 'permitido');
-                window.location.href = 'zona-atletas.html'; 
-            } else {
-                if (errorLabel) {
-                    errorLabel.style.display = 'block';
-                }
-            }
-        }
-
-        // Permitir que funcione también al pulsar la tecla Enter en el teclado
-        document.getElementById('pass-atletismo').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                validarAccesoLocal();
-            }
-        });
-    </script>
-</div>
+                <!-- TARJETA ACCESO ZONA PRIVADA (Verificada) -->
+                <div class="sidebar-card" style="margin-top: 20px; border-top: 4px solid red;">
+                    <div class="sidebar-card-body">
+                        <h4 style="margin-bottom: 5px; display: flex; align-items: center; gap: 8px;">
+                            🔒 Área Privada Atletas
+                        </h4>
+                        <p class="horario-detalle" style="font-size: 0.9em; color: #666; margin-bottom: 15px;">
+                            Planes de entrenamiento, técnica de carrera y tablas de fuerza.
+                        </p>
+                        
+                        <div id="login-atletas">
+                            <input type="password" id="pass-atletismo" placeholder="Contraseña del club" 
+                                   style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+                            
+                            <button onclick="validarAcceso()" class="btn-sidebar-action" 
+                                    style="width: 100%; padding: 10px; background-color: #e60000; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; transition: background 0.2s; display: block; text-align: center;">
+                                Entrar al Área Técnica
+                            </button>
+                            
+                            <p id="error-login" style="color: #d9534f; font-size: 0.85em; display: none; margin-top: 10px; font-weight: bold;">
+                                ⚠️ Contraseña incorrecta.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
         </div>
     </main>
 
@@ -176,7 +153,7 @@
 
     <section class="sponsors-section">
         <div class="container">
-            <h3 class="sponsors-title"></h3>
+            <h3 class="sponsors-title">Colaboradores oficiales</h3>
             <div class="sponsors-grid">
                 <div class="sponsor-logo">PATROCINADOR 1</div>
                 <div class="sponsor-logo">PATROCINADOR 2</div>
@@ -226,7 +203,51 @@
         </div>
     </footer>
 
+    <!-- UNIFICACIÓN DE SCRIPTS (Garantiza orden de ejecución) -->
     <script>
+        // Función global para validar acceso (Debe estar declarada globalmente)
+        function validarAcceso() {
+            const campoContrasena = document.getElementById('pass-atletismo');
+            const pass = campoContrasena ? campoContrasena.value : '';
+            const errorLabel = document.getElementById('error-login');
+
+            if (pass === 'ferroviario2026') {
+                sessionStorage.setItem('acceso_atletismo', 'permitido');
+                window.location.href = 'zona-atletas.html'; 
+            } else {
+                if (errorLabel) {
+                    errorLabel.style.display = 'block';
+                }
+            }
+        }
+
+        // Función global para expandir/colapsar noticias
+        function alternarNoticia(id) {
+            const parrafo = document.getElementById(`texto-noticia-${id}`);
+            const boton = document.getElementById(`btn-${id}`);
+            
+            const tarjeta = boton.closest('.tarjeta-noticia-comp');
+            const bloqueAdjunto = tarjeta.querySelector('.noticia-adjunto-bloque');
+            const bloqueGaleria = tarjeta.querySelector('.noticia-galeria-grid');
+
+            const textoResumen = boton.getAttribute('data-resumen');
+            const textoCompleto = boton.getAttribute('data-completo');
+
+            if (parrafo.innerHTML === textoResumen) {
+                parrafo.innerHTML = textoCompleto;
+                parrafo.className = "noticia-completa-texto";
+                boton.innerHTML = "Leer menos ↑";
+                if (bloqueAdjunto) bloqueAdjunto.style.display = 'block';
+                if (bloqueGaleria) bloqueGaleria.style.display = 'grid';
+            } else {
+                parrafo.innerHTML = textoResumen;
+                parrafo.className = "noticia-resumen-texto";
+                boton.innerHTML = "Leer más →";
+                if (bloqueAdjunto) bloqueAdjunto.style.display = 'none';
+                if (bloqueGaleria) bloqueGaleria.style.display = 'none';
+            }
+        }
+
         window.addEventListener('DOMContentLoaded', () => {
             // ==========================================================
             // 1. CONTROL DE NOTICIAS DINÁMICAS
@@ -249,7 +270,7 @@
                             let htmlAdjunto = '';
                             if (noticia.adjunto) {
                                 htmlAdjunto = `
-                                    <div class="noticia-adjunto-bloque">
+                                    <div class="noticia-adjunto-bloque" style="display: none;">
                                         <a href="${noticia.adjunto.ruta}" class="btn-adjunto-descarga" download>
                                             <i class="fa-solid fa-file-pdf"></i> ${noticia.adjunto.texto}
                                         </a>
@@ -259,7 +280,7 @@
 
                             let htmlGaleria = '';
                             if (noticia.galeria && noticia.galeria.length > 0) {
-                                htmlGaleria = '<div class="noticia-galeria-grid">';
+                                htmlGaleria = '<div class="noticia-galeria-grid" style="display: none;">';
                                 noticia.galeria.forEach(foto => {
                                     htmlGaleria += `<img src="${foto}" alt="Foto de la galería" class="img-galeria-item" onclick="window.open(this.src)">`;
                                 });
@@ -296,7 +317,7 @@
             // ==========================================================
             // 2. LÓGICA INTERACTIVA DEL CALENDARIO DINÁMICO (ATLETISMO)
             // ==========================================================
-            // Formato de fechas en JS: Enero=0, Febrero=1, ..., Junio=5, Julio=6, etc.
+            // Agrupamos eventos coincidentes en el mismo día (clave)
             const eventosClub = {
                 '2026-5-6': '🏆 <strong>Carrera nocturna de Alcalá de Guadaira</strong>',
                 '2026-5-6': '🏃‍♂️ <strong>Carrera contra la pobreza infantil</strong>',
@@ -339,7 +360,7 @@
                 '2026-10-29': '🎯 <strong>Media Maratón Entreparques</strong>',
                 '2026-11-13': '🎯 <strong>Media Maratón Sevilla-Los Palacios</strong>',
                 '2026-11-31': '🎯 <strong>San Silvestre Sevillana</strong>',
-            };
+           };
 
             let fechaActual = new Date();
             const nombresMeses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
@@ -444,68 +465,17 @@
 
             // Ejecución inicial del calendario dinámico
             renderizarCalendario();
+
+            // Atajo de teclado 'Enter' para el Login del club
+            const inputPass = document.getElementById('pass-atletismo');
+            if (inputPass) {
+                inputPass.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        validarAcceso();
+                    }
+                });
+            }
         });
-
-        // Función global requerida para alternar el tamaño de las tarjetas de noticias
-        function alternarNoticia(id) {
-            const parrafo = document.getElementById(`texto-noticia-${id}`);
-            const boton = document.getElementById(`btn-${id}`);
-            
-            const tarjeta = boton.closest('.tarjeta-noticia-comp');
-            const bloqueAdjunto = tarjeta.querySelector('.noticia-adjunto-bloque');
-            const bloqueGaleria = tarjeta.querySelector('.noticia-galeria-grid');
-
-            const textoResumen = boton.getAttribute('data-resumen');
-            const textoCompleto = boton.getAttribute('data-completo');
-
-            if (parrafo.innerHTML === textoResumen) {
-                parrafo.innerHTML = textoCompleto;
-                parrafo.className = "noticia-completa-texto";
-                boton.innerHTML = "Leer menos ↑";
-                if (bloqueAdjunto) bloqueAdjunto.style.display = 'block';
-                if (bloqueGaleria) bloqueGaleria.style.display = 'grid';
-            } else {
-                parrafo.innerHTML = textoResumen;
-                parrafo.className = "noticia-resumen-texto";
-                boton.innerHTML = "Leer más →";
-                if (bloqueAdjunto) bloqueAdjunto.style.display = 'none';
-                if (bloqueGaleria) bloqueGaleria.style.display = 'none';
-            }
-        }
     </script>
-    <script>
-    function validarAcceso() {
-        // 1. Obtenemos el texto que ha escrito el atleta
-        const campoContrasena = document.getElementById('pass-atletismo');
-        const pass = campoContrasena ? campoContrasena.value : '';
-        const errorLabel = document.getElementById('error-login');
-
-        // 2. Comprobamos si coincide con la contraseña elegida
-        if (pass === 'ferroviario2026') {
-            // Guardamos en la sesión que el usuario ha accedido correctamente
-            sessionStorage.setItem('acceso_atletismo', 'permitido');
-            
-            // Redirigimos a la página de destino
-            window.location.href = 'zona-atletas.html'; 
-        } else {
-            // Si es incorrecta, mostramos el mensaje de error en rojo
-            if (errorLabel) {
-                errorLabel.style.display = 'block';
-            }
-        }
-    }
-    
-    // Opcional: Permitir entrar también al pulsar la tecla "Enter"
-    document.addEventListener('DOMContentLoaded', () => {
-        const inputPass = document.getElementById('pass-atletismo');
-        if (inputPass) {
-            inputPass.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    validarAcceso();
-                }
-            });
-        }
-    });
-</script>
 </body>
 </html>
