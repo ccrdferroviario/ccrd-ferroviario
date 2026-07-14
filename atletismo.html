@@ -449,5 +449,39 @@
             }
         }
     </script>
+    <script>
+    function validarAcceso() {
+        // 1. Obtenemos el texto que ha escrito el atleta
+        const campoContrasena = document.getElementById('pass-atletismo');
+        const pass = campoContrasena ? campoContrasena.value : '';
+        const errorLabel = document.getElementById('error-login');
+
+        // 2. Comprobamos si coincide con la contraseña elegida
+        if (pass === 'ferroviario2026') {
+            // Guardamos en la sesión que el usuario ha accedido correctamente
+            sessionStorage.setItem('acceso_atletismo', 'permitido');
+            
+            // Redirigimos a la página de destino
+            window.location.href = 'zona-atletas.html'; 
+        } else {
+            // Si es incorrecta, mostramos el mensaje de error en rojo
+            if (errorLabel) {
+                errorLabel.style.display = 'block';
+            }
+        }
+    }
+    
+    // Opcional: Permitir entrar también al pulsar la tecla "Enter"
+    document.addEventListener('DOMContentLoaded', () => {
+        const inputPass = document.getElementById('pass-atletismo');
+        if (inputPass) {
+            inputPass.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    validarAcceso();
+                }
+            });
+        }
+    });
+</script>
 </body>
 </html>
