@@ -1,1 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCRD Ferroviario - Zona Privada Atletismo</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- SCRIPT DE PROTECCIÓN PROVISIONAL -->
+    <script>
+        if (sessionStorage.getItem('acceso_atletismo') !== 'permitido') {
+            alert('Acceso denegado. Debes introducir la contraseña en la sección de Atletismo.');
+            window.location.href = 'atletismo.html'; // Lo enviamos de vuelta
+        }
+        
+        function cerrarSesion() {
+            sessionStorage.removeItem('acceso_atletismo');
+            window.location.href = 'atletismo.html';
+        }
+    </script>
+</head>
+<body>
+    <!-- Menú de navegación (Puedes pegar aquí tu header habitual) -->
 
+    <main class="container page-content-padding" style="margin-top: 40px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px;">
+            <h2><span style="color: red;">🔒</span> Área Técnica de Atletismo</h2>
+            <button onclick="cerrarSesion()" style="padding: 8px 15px; background-color: #333; color: white; border: none; border-radius: 4px; cursor: pointer;">Cerrar sesión</button>
+        </div>
+
+        <!-- CONTENIDO PRIVADO -->
+        <div class="seccion-grid">
+            
+            <!-- Bloque 1: Planes de Entrenamiento -->
+            <div class="sidebar-card">
+                <div class="sidebar-card-body">
+                    <h3>📅 Planes Semanales</h3>
+                    <ul>
+                        <li><a href="rutas/plan_maraton_sub3.pdf" download>Plan Maratón - Sub 3 horas (PDF)</a></li>
+                        <li><a href="rutas/plan_10k_iniciacion.pdf" download>Plan 10K - Iniciación (PDF)</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bloque 2: Técnica de Carrera -->
+            <div class="sidebar-card">
+                <div class="sidebar-card-body">
+                    <h3>🏃‍♂️ Técnica de Carrera</h3>
+                  <img src="ruta_a_tu_imagen.jpg" alt="Técnica de carrera" style="width:100%; border-radius:4px; margin-bottom:10px;">
+        <p>Realiza estos ejercicios antes de cada sesión de series:</p>
+        <ul>
+            <li><strong>Skipping Medio-Alto:</strong> Enfoque en la caída de metatarso (3x30 metros).</li>
+            <li><strong>Talones al glúteo:</strong> Manteniendo el tronco erguido (3x30 metros).</li>
+        </ul>
+    </div>
+</div>
+                    <p>Ejercicios recomendados para el calentamiento:</p>
+                    <ul>
+                        <li>Skipping alto (3x30 metros)</li>
+                        <li>Talones a los glúteos (3x30 metros)</li>
+                        <li>Carrera lateral y cruce de piernas</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bloque 3: Fuerza -->
+            <div class="sidebar-card">
+                <div class="sidebar-card-body">
+                    <h3>💪 Fuerza orientada</h3>
+                    <p>Rutina de gimnasio (2 días a la semana):</p>
+                    <ul>
+                        <li>Sentadilla búlgara: 3x10 cada pierna</li>
+                        <li>Peso muerto a una pierna: 3x8</li>
+                        <li>Planchas isométricas (Core): 4x45 segundos</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>
