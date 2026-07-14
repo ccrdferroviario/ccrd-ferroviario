@@ -90,32 +90,56 @@
                         <a href="socio.html" class="btn-sidebar-action">Unirse al Grupo</a>
                     </div>
                 </div>
-                <!-- NUEVA TARJETA 2: ACCESO ZONA PRIVADA (Añadida justo aquí) -->
-                <div class="sidebar-card" style="margin-top: 20px; border-top: 4px solid red;">
-                    <div class="sidebar-card-body">
-                        <h4 style="margin-bottom: 5px; display: flex; align-items: center; gap: 8px;">
-                            🔒 Área Privada Atletas
-                        </h4>
-                        <p class="horario-detalle" style="font-size: 0.9em; color: #666; margin-bottom: 15px;">
-                            Planes de entrenamiento, técnica de carrera y tablas de fuerza.
-                        </p>
-                        
-                        <div id="login-atletas">
-                            <input type="password" id="pass-atletismo" placeholder="Contraseña del club" 
-                                   style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
-                            
-                            <button onclick="validarAcceso()" class="btn-sidebar-action" 
-                                    style="width: 100%; padding: 10px; background-color: #e60000; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; transition: background 0.2s; display: block; text-align: center;">
-                                Entrar al Área Técnica
-                            </button>
-                            
-                            <p id="error-login" style="color: #d9534f; font-size: 0.85em; display: none; margin-top: 10px; font-weight: bold;">
-                                ⚠️ Contraseña incorrecta.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </aside>
+                <!-- NUEVA TARJETA 2: ACCESO ZONA PRIVADA (Con lógica integrada) -->
+<div class="sidebar-card" style="margin-top: 20px; border-top: 4px solid red;">
+    <div class="sidebar-card-body">
+        <h4 style="margin-bottom: 5px; display: flex; align-items: center; gap: 8px;">
+            🔒 Área Privada Atletas
+        </h4>
+        <p class="horario-detalle" style="font-size: 0.9em; color: #666; margin-bottom: 15px;">
+            Planes de entrenamiento, técnica de carrera y tablas de fuerza.
+        </p>
+        
+        <div id="login-atletas">
+            <input type="password" id="pass-atletismo" placeholder="Contraseña del club" 
+                   style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+            
+            <button onclick="validarAccesoLocal()" class="btn-sidebar-action" 
+                    style="width: 100%; padding: 10px; background-color: #e60000; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; transition: background 0.2s; display: block; text-align: center;">
+                Entrar al Área Técnica
+            </button>
+            
+            <p id="error-login" style="color: #d9534f; font-size: 0.85em; display: none; margin-top: 10px; font-weight: bold;">
+                ⚠️ Contraseña incorrecta.
+            </p>
+        </div>
+    </div>
+
+    <!-- Metemos el script aquí dentro para garantizar que se defina correctamente -->
+    <script>
+        function validarAccesoLocal() {
+            const campo = document.getElementById('pass-atletismo');
+            const pass = campo ? campo.value.trim() : '';
+            const errorLabel = document.getElementById('error-login');
+
+            if (pass === 'ferroviario2026') {
+                sessionStorage.setItem('acceso_atletismo', 'permitido');
+                window.location.href = 'zona-atletas.html'; 
+            } else {
+                if (errorLabel) {
+                    errorLabel.style.display = 'block';
+                }
+            }
+        }
+
+        // Permitir que funcione también al pulsar la tecla Enter en el teclado
+        document.getElementById('pass-atletismo').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                validarAccesoLocal();
+            }
+        });
+    </script>
+</div>
         </div>
     </main>
 
