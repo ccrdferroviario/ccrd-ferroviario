@@ -1,11 +1,11 @@
 const misNoticias = [
     {
         "seccion": "senderismo",
-        "titulo": "¡Próxima Ruta Nocturna de Verano programada!",
-        "fecha": "5 de Julio, 2026",
-        "resumen": "Abiertas las plazas para la ruta nocturna estival con observación astronómica.",
-        "contenido": "Aprovechando las temperaturas más suaves del atardecer, realizaremos nuestra clásica ruta nocturna de senderismo por la Sierra Norte. Un recorrido circular de dificultad baja ideal para disfrutar del paisaje bajo las estrellas. Contaremos con un guía especializado que realizará una pequeña parada interpretativa de constelaciones a mitad del camino.",
-        "imagen": "img/senderismo1.png"
+        "titulo": "¡Próxima Ruta Nocturna Cuesta Maneli a la luz de la luna llena!",
+        "fecha": "23 de Julio, 2026",
+        "resumen": "LLega la tradicional Ruta Nocturna Cuesta Maneli a la luz de la luna llena",
+        "contenido": "El proximo miércoles 29 de Julio la sección de senderismo ha programado la tradicional Ruta Nocturna a la luz de la luna llena. Lugar de encuentro: 19:15 rotonda Olímpica ó 20:45 aparcamiento de Cuesta Maneli (km 40 de la A-494 Mazagón -Matalascañas). Más información en el cartel adjunto.",
+        "imagen": "img/luna.png"
     },
     {
         "seccion": "tiro",
