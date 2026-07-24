@@ -8,6 +8,14 @@ const misNoticias = [
         "imagen": "img/luna.png"
     },
     {
+        "seccion": "ciclismo",
+        "titulo": "Fin de semana de competición y entrenos para la sección",
+        "fecha": "19 de Julio, 2026",
+        "resumen": "Gran participación de Celia Saez en el XII Acuatlon Vela de Santa Ana",
+        "contenido": "Nuestra compañera de la sección de ciclismo y triatlón acabó en una grandísima 22ª posición en el XII Acuatlón Vela de Santa Ana. Celia completó los 2,5km/1km/2,5km en un total de 51'31'' con un magnífico sector de natación. Por otra parte, el fin de semana se completó con una ruta larga a Las Pajanosas. ",
+        "imagen": "img/equip10.png"
+    },
+    {
         "seccion": "tiro",
         "titulo": "¡Gran éxito en la competición interempresas!",
         "fecha": "13 de Junio, 2026",
