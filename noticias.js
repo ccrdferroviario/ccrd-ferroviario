@@ -1,4 +1,16 @@
 const misNoticias = [
+     {
+        "seccion": "padel",
+        "titulo": "Apertura de inscripciones para la II Liga de padel ferroviaria!",
+        "fecha": "19 de Agosto, 2026",
+        "resumen": "Se abren las inscripciones para la II Liga de padel ferroviaria",
+        "contenido": "Comienza el plazo de inscripción para la II Liga de padel ferroviaria. Se podrán inscribir trabajadores y personal desvinculado de cualquier empresa ferroviaria hasta el próximo 9 de Septiembre. Aquellos jugadores que deseen inscribirse deberán contactar con Alberto Ruiz en el 627922779. Con esta segunda edición la Liga de Padel Ferroviaria se consolida como uno de los principales eventos del CCRD Ferroviario",
+        "imagen": "img/padel6.png"
+         "adjunto": {
+            "ruta": "documentos/II_liga_padel.pdf",
+            "texto": "Descargar Bases de la Liga (PDF)"
+        }
+    },
     {
         "seccion": "senderismo",
         "titulo": "¡Próxima Ruta Nocturna Cuesta Maneli a la luz de la luna llena!",
