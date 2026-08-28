@@ -1,5 +1,13 @@
 const misNoticias = [
      {
+        "seccion": "senderismo",
+        "titulo": "¡Próxima Ruta Nocturna Cuesta Maneli a la luz de la luna llena!",
+        "fecha": "25 de Agosto, 2026",
+        "resumen": "Repetimos tradicional Ruta Nocturna Cuesta Maneli a la luz de la luna llena!!",
+        "contenido": "El proximo viernes 28 de Agosto la sección de senderismo ha programado una nueva Ruta Nocturna a la luz de la luna llena. Lugar de encuentro: 18:45 rotonda Olímpica ó 20:15 aparcamiento de Cuesta Maneli (km 40 de la A-494 Mazagón -Matalascañas). Más información en el cartel adjunto.",
+        "imagen": "img/luna2.png"
+    },
+     {
         "seccion": "padel",
         "titulo": "Apertura de inscripciones para la II Liga de padel ferroviaria!",
         "fecha": "19 de Agosto, 2026",
