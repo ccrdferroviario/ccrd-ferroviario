@@ -1,5 +1,13 @@
 const misNoticias = [
      {
+        "seccion": "ciclismo",
+        "titulo": "Fin de la temporada de triatlón",
+        "fecha": "4 de Octubre, 2026",
+        "resumen": "Cierre de la temporada de verano con la participación de la sección en históricas pruebas del panorama andaluz",
+        "contenido": "La sección de triatlón ha cerrado la temporada de verano con la participación en el V Triatlon Playas de Mazagón. La sección, que comenzó la temporada el pasado mes de Mayo en el XXIX Triatlón de Sevilla, ha participado en históricas pruebas del panorama andaluz como la II Travesía a nado María de Valdés, en Fuengirola, la VII Travesía solidaria Discovery Zahara de la Sierra, la IX Travesía solidaria Río Guadalquivir del Club Naútico de Sevilla, el VII Triatlón Ciudad de San Fernando, el XII Triatlón de San Roque y los citados triatlones Playas de Mazagón y Sevilla  ",
+        "imagen": "img/tri.png"
+    },
+     {
         "seccion": "senderismo",
         "titulo": "¡Próxima Ruta Nocturna Cuesta Maneli a la luz de la luna llena!",
         "fecha": "25 de Agosto, 2026",
